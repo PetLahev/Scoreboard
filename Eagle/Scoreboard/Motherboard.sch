@@ -8,20 +8,20 @@
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="no"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="no"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="no"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="no"/>
-<layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="no"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="no"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="no"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="no"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="no"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="no"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="no"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="no"/>
+<layer number="20" name="Dimension" color="24" fill="1" visible="no" active="no"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="no"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="no"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="no"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="no"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="no"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="no"/>
@@ -30,8 +30,8 @@
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="no"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="no"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="no"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="no"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="no"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="no"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="no"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="no"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="no"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="no"/>
@@ -39,12 +39,12 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="no"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="no"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="no"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="no"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="no"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="no"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="no"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="no"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="no"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="no"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="no"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="no"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="no"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -14863,6 +14863,84 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="buzzer" urn="urn:adsk.eagle:library:113">
+<description>&lt;b&gt;Speakers and Buzzers&lt;/b&gt;&lt;p&gt;
+&lt;ul&gt;Distributors:
+&lt;li&gt;Buerklin
+&lt;li&gt;Spoerle
+&lt;li&gt;Schukat
+&lt;/ul&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="EB2505" urn="urn:adsk.eagle:footprint:5236/1" library_version="1">
+<description>&lt;b&gt;BUZZER&lt;/b&gt;</description>
+<wire x1="-1.524" y1="-10.045" x2="1.524" y2="-10.045" width="0.1524" layer="21" curve="-342.746232"/>
+<wire x1="3.628" y1="3.556" x2="3.628" y2="-3.556" width="0.1524" layer="21" curve="271.145271"/>
+<wire x1="-1.524" y1="-12.48" x2="-1.524" y2="-10.045" width="0.1524" layer="21"/>
+<wire x1="-8.255" y1="3.302" x2="-6.985" y2="3.302" width="0.1524" layer="21"/>
+<wire x1="-7.62" y1="2.667" x2="-7.62" y2="3.937" width="0.1524" layer="21"/>
+<wire x1="6.096" y1="-3.556" x2="6.096" y2="3.556" width="0.1524" layer="21" curve="180"/>
+<wire x1="1.524" y1="-12.48" x2="1.524" y2="-10.045" width="0.1524" layer="21"/>
+<wire x1="3.628" y1="-3.556" x2="6.096" y2="-3.556" width="0.1524" layer="21"/>
+<wire x1="3.628" y1="3.556" x2="6.096" y2="3.556" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="12.573" width="0.1524" layer="21"/>
+<circle x="-7.62" y="3.302" radius="1.016" width="0.1524" layer="21"/>
+<pad name="+" x="-7.493" y="0" drill="1.3208" diameter="2.54" shape="octagon"/>
+<pad name="-" x="7.493" y="0" drill="1.3208" diameter="2.54" shape="octagon"/>
+<text x="3.175" y="12.7" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.429" y="-7.62" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="EB2505" urn="urn:adsk.eagle:package:5275/1" type="box" library_version="1">
+<description>BUZZER</description>
+<packageinstances>
+<packageinstance name="EB2505"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="B" urn="urn:adsk.eagle:symbol:5216/1" library_version="1">
+<wire x1="-2.54" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94" curve="180"/>
+<wire x1="-2.54" y1="5.08" x2="1.27" y2="5.08" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="5.08" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="2.54" y2="1.397" width="0.1524" layer="94"/>
+<wire x1="0" y1="-2.54" x2="0" y2="1.397" width="0.1524" layer="94"/>
+<text x="-2.54" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="5.08" y="0" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="-" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="+" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="EB2505" urn="urn:adsk.eagle:component:5318/1" prefix="SG" library_version="1">
+<description>&lt;b&gt;BUZZER&lt;/b&gt;&lt;p&gt; Source: Buerklin</description>
+<gates>
+<gate name="G$1" symbol="B" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="EB2505">
+<connects>
+<connect gate="G$1" pin="+" pad="+"/>
+<connect gate="G$1" pin="-" pad="-"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:5275/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14892,7 +14970,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="BLUETOOTH" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="BLUETOOTH1" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="DISP_POWER" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="SCORE" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-103" device="" package3d_urn="urn:adsk.eagle:package:10691/1"/>
 <part name="SETS" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-103" device="" package3d_urn="urn:adsk.eagle:package:10691/1"/>
 <part name="SERVE" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-103" device="" package3d_urn="urn:adsk.eagle:package:10691/1"/>
@@ -14907,6 +14984,11 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="VAC" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-103" device="" package3d_urn="urn:adsk.eagle:package:10691/1"/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/5" package3d_urn="urn:adsk.eagle:package:25955/1" value="10k"/>
+<part name="12V" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
+<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/5" package3d_urn="urn:adsk.eagle:package:25955/1" value="470"/>
+<part name="LED" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="EB2505" device="" package3d_urn="urn:adsk.eagle:package:5275/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -14956,8 +15038,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <instance part="BLUETOOTH1" gate="-1" x="-25.4" y="86.36"/>
 <instance part="BLUETOOTH1" gate="-2" x="-25.4" y="81.28"/>
 <instance part="GND3" gate="1" x="-12.7" y="78.74"/>
-<instance part="DISP_POWER" gate="-1" x="104.14" y="27.94" rot="R180"/>
-<instance part="DISP_POWER" gate="-2" x="104.14" y="33.02" rot="R180"/>
 <instance part="SCORE" gate="-1" x="104.14" y="68.58" rot="R180"/>
 <instance part="SCORE" gate="-2" x="104.14" y="73.66" rot="R180"/>
 <instance part="SCORE" gate="-3" x="104.14" y="78.74" rot="R180"/>
@@ -14989,6 +15069,16 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <attribute name="NAME" x="9.1186" y="24.13" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="9.398" y="29.21" size="1.778" layer="96" rot="R270"/>
 </instance>
+<instance part="12V" gate="-1" x="45.72" y="104.14" rot="R180"/>
+<instance part="12V" gate="-2" x="45.72" y="109.22" rot="R180"/>
+<instance part="R7" gate="G$1" x="33.02" y="104.14" smashed="yes" rot="R90">
+<attribute name="NAME" x="36.6014" y="105.41" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="36.322" y="100.33" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="LED" gate="-1" x="45.72" y="93.98" rot="R180"/>
+<instance part="LED" gate="-2" x="45.72" y="99.06" rot="R180"/>
+<instance part="GND7" gate="1" x="35.56" y="91.44"/>
+<instance part="SG1" gate="G$1" x="99.06" y="101.6"/>
 </instances>
 <busses>
 </busses>
@@ -15069,7 +15159,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <junction x="7.62" y="50.8"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="12V" class="0">
 <segment>
 <pinref part="VCC" gate="-1" pin="KL"/>
 <pinref part="REG" gate="A1" pin="VI"/>
@@ -15078,6 +15168,16 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="-15.24" y1="106.68" x2="-15.24" y2="109.22" width="0.1524" layer="91"/>
 <junction x="-15.24" y="109.22"/>
 <pinref part="C1" gate="G$1" pin="+"/>
+<label x="-25.4" y="111.76" size="1.778" layer="95"/>
+<pinref part="12V" gate="-1" pin="KL"/>
+<pinref part="12V" gate="-2" pin="KL"/>
+<wire x1="40.64" y1="104.14" x2="40.64" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="109.22" x2="40.64" y2="116.84" width="0.1524" layer="91"/>
+<junction x="40.64" y="109.22"/>
+<wire x1="40.64" y1="116.84" x2="-15.24" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="-15.24" y1="116.84" x2="-15.24" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="40.64" y1="109.22" x2="33.02" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -15137,13 +15237,11 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="-20.32" y1="81.28" x2="-12.7" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="DISP_POWER" gate="-1" pin="KL"/>
 <pinref part="GND4" gate="1" pin="GND"/>
-<wire x1="99.06" y1="27.94" x2="99.06" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="27.94" x2="81.28" y2="27.94" width="0.1524" layer="91"/>
-<junction x="99.06" y="27.94"/>
+<wire x1="99.06" y1="22.86" x2="99.06" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="22.86" x2="81.28" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="INFRA" gate="-2" pin="KL"/>
-<wire x1="81.28" y1="27.94" x2="81.28" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="22.86" x2="81.28" y2="20.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="433MHZ" gate="-1" pin="KL"/>
@@ -15155,6 +15253,11 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="!RESET@1"/>
 <pinref part="GND6" gate="1" pin="GND"/>
 <wire x1="68.58" y1="40.64" x2="68.58" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="LED" gate="-1" pin="KL"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+<wire x1="40.64" y1="93.98" x2="35.56" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -15303,13 +15406,9 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="DISP_POWER" gate="-2" pin="KL"/>
-<wire x1="99.06" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="33.02" x2="93.98" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="20.32" x2="93.98" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="INFRA" gate="-3" pin="KL"/>
-<wire x1="86.36" y1="20.32" x2="86.36" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="33.02" x2="93.98" y2="33.02" width="0.1524" layer="91"/>
-<junction x="93.98" y="33.02"/>
+<wire x1="86.36" y1="20.32" x2="93.98" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="P+3" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
@@ -15341,6 +15440,13 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="SCK/D13"/>
 <wire x1="71.12" y1="83.82" x2="27.94" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="83.82" x2="27.94" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="LED" gate="-2" pin="KL"/>
+<wire x1="33.02" y1="99.06" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
