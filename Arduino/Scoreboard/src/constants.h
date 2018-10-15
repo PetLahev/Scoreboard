@@ -1,6 +1,6 @@
 /*
   Contains all shared constatnts
-  Note: Objects that need to be initialized are in globalsc.pp
+  Note: Objects that need to be initialized are in globals.cpp
 */
 
 #ifndef Constants_h
@@ -14,5 +14,10 @@
 */
 const int BLUE_RX = A0;
 const int BLUE_TX = A1;
+
+/*
+  Defines pins for wireless communication (433Mhz)
+*/
+const uint8_t RECEIVER_PIN = A5;
 
 #endif
