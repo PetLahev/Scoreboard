@@ -27,32 +27,25 @@ void swapScore();
  /**
     Resets all internal variables (starts the game from begining)
 **/
-void reset();
-  
-const char TEAM1_UP = 'h';
-const char TEAM1_DOWN = 'v';
-const char TEAM2_UP = 'a';
-const char TEAM2_DOWN = 'm';
+void reset();  
 
 private:
-  
-  // If a team won three games then the team won the whole match
-  const int gamesPerMatch = 3;
-  int score1;
-  int score2;
-  int games;
-  int gamesWon1;
-  int gamesWon2;
-  uint8_t data1[4];
-  uint8_t data2[4];
+    
+  uint8_t score1;
+  uint8_t score2;    
+  uint8_t team1Sets;
+  uint8_t team2Sets;  
+  bool team1Server1; // true means the first player server otherwise the second player
+  bool team2Server1; // true means the first player server otherwise the second player
+  uint8_t whoWonLastPoint; // 1 => team 1 won the last point, 2 => team 2 won the last point  
+  uint8_t whoStartedGame;// 1 => team 1 start serving, 2 => team 2 start serving  
 
-  void displayScore();
-  void updateScore(int& score, bool up);
-  void playGoalTone();
-  void playLoseTone();
+  void hasSetFinished(bool& result);
+  void hasMatchFinished(bool& result);
+  void team1WonSet(uint8_t& result);
+  void team1WonMatch(uint8_t& result);
   void resetGame();
-  void logGameResult(const char* team);
-  void gameWonTheme(bool team1Won);  
+  void logGameResult();  
 };
 
 #endif
