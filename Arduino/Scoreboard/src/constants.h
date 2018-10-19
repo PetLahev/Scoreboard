@@ -20,6 +20,7 @@ const uint8_t BLUE_TX = A1;
 */
 const uint8_t RECEIVER_PIN = A5;
 
+const uint8_t SEGMENT_OFF = 0b00000000;
 
 /*
   Defines pins for display controllers  

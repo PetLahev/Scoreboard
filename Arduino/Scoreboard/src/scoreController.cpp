@@ -84,7 +84,8 @@ void scoreController::updateScore(uint8_t message) {
         
         resetGame();
     }
-    else {        
+    else {
+        display.displayScore();
         logGameResult();
     }
 }

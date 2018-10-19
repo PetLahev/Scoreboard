@@ -5,6 +5,7 @@
 #include "globals.h"
 #include "NeoSWSerial.h"
 #include "constants.h"
+#include "displayController.h"
 
 /**
 *  Initializes bluetooth object with pins
@@ -18,3 +19,5 @@ uint8_t pointsPerSet = 11;
 uint8_t setsPerGame = 2;
 // Sets the minimum difference of points to win a set, can be overriden by the settings class
 uint8_t winningPoints = 2;
+// true if flags for servers should be displayed
+bool displayServers = true;
