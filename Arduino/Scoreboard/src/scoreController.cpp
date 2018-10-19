@@ -30,8 +30,7 @@ void scoreController::updateScore(uint8_t message) {
             break;
         case TEAM1_DOWN:
             if (score1 < 1) return;
-            whoWonLastPoint = TEAM2;
-            // TODO: need to figure out how to handle servers here
+            revertLastPointData(true); // supports just one point down
             score1 -=1;
             break;
         case TEAM2_UP:
@@ -44,17 +43,14 @@ void scoreController::updateScore(uint8_t message) {
             break;
         case TEAM2_DOWN:
             if (score2 < 1) return;
-            whoWonLastPoint = TEAM1;
-            // TODO: need to figure out how to handle servers here
+            revertLastPointData(false); // supports just one point down
             score2 -=1;
             break;
         case SET_SERVER:
-            //TODO: Need to finish the logic here, always the first player for a team will start serving
-            team1Server1 = true;
-            whoWonLastPoint = 1;
+            setPlayerServe();
             break;
         default:
-            bluetooth.write("Unknown command");
+            bluetooth.println("Unknown command");
             Serial.println("Unknown command");
             break;
     }
@@ -179,13 +175,79 @@ void scoreController::resetGame() {
     score2 = 0;
 }
 
+/**
+ * When going down, eg. due to a mistake or referee changes the result, we need to update the data of the players
+ * >>>>>>>>>> SUPPORTS JUST ONE STEP DOWN <<<<<<<<<< to not occupy Arduino memory with too much data
+ * Score is not updated here, it's done in the calling method
+ **/
+void scoreController::revertLastPointData(bool team1GoingDown) {
+    // all the data - score, who should server, who won the last point - is already changed, now we need to revert
+    if (team1GoingDown) {
+        // team 1 lost their point  - score is updated in the main method
+        // change the team server back to the previous state
+        team1Server1 = !team1Server1;
+        // revert back who won the last point
+        whoWonLastPoint = TEAM2;
+    }
+    else {
+        // team 2 lost their point - score is updated in the main method
+        // change the team server back to the previous state
+        team2Server1 = !team2Server1;
+        // revert back who won the last point
+        whoWonLastPoint = TEAM1;
+    }
+}
+
+/**
+ *  Sets the player who will serve and also sets the team who won last point
+ *  to be able to determine how the server should change.
+ * Reads additional data from bluetooth
+ **/
+void scoreController::setPlayerServe() {
+    // the flag for setting a player who should server was set, now we need to listen for the actual player
+    uint8_t data;
+    while (bluetooth.available() > 0) {
+            bluetooth.write(data);
+            Serial.write(data);
+
+            switch (data) {
+                case '1':
+                    team1Server1 = true;
+                    whoWonLastPoint = TEAM1;
+                    break;
+                case '2':
+                    team1Server1 = false;
+                    whoWonLastPoint = TEAM1;
+                    break;
+                case '3':
+                    team2Server1 = true;
+                    whoWonLastPoint = TEAM2;
+                    break;
+                case '4':
+                    team2Server1 = false;
+                    whoWonLastPoint = TEAM2;
+                    break;
+                default:
+                    bluetooth.write("Unknown player");
+                    Serial.write("Unknown player");
+            }
+          delay(10);
+          data = bluetooth.read();
+    }
+}
+
+/**
+ * Prints the score back to bluetooth device and serial monitor
+ **/ 
 void scoreController::logGameResult() {
-    bluetooth.write("~Score updated|");
-    bluetooth.write(score1);
-    bluetooth.write(score2);
-    bluetooth.write("~");
+    bluetooth.print("~Score updated|");
+    bluetooth.print(score1);
+    bluetooth.print(":");
+    bluetooth.print(score2);
+    bluetooth.println("~");
     Serial.print("~Score updated|");
     Serial.print(score1);
+    Serial.print(":");
     Serial.print(score2);
     Serial.println("~");
 }

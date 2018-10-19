@@ -44,6 +44,8 @@ private:
   void hasMatchFinished(bool& result);
   void team1WonSet(uint8_t& result);
   void team1WonMatch(uint8_t& result);
+  void revertLastPointData(bool team1GoingDown);
+  void setPlayerServe();
   void resetGame();
   void logGameResult();  
 };
