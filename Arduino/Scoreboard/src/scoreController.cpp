@@ -24,6 +24,8 @@ void scoreController::updateScore(uint8_t message) {
             if (score1 > MAX_SCORE) return;
             if (whoWonLastPoint == TEAM2) {
                 team1Server1 = !team1Server1;
+                player = 2;
+                if (team1Server1) player = 1;
                 whoWonLastPoint = TEAM1;
             }
             score1 +=1;
@@ -37,6 +39,8 @@ void scoreController::updateScore(uint8_t message) {
             if (score2 > MAX_SCORE) return;
             if (whoWonLastPoint == TEAM1) {
                 team2Server1 = !team2Server1;
+                player = 4;
+                if (team2Server1) player = 3;
                 whoWonLastPoint = TEAM2;
             } 
             score2 +=1;
@@ -85,7 +89,7 @@ void scoreController::updateScore(uint8_t message) {
         resetGame();
     }
     else {
-        display.displayScore();
+        display.score(score1, score2, team1Sets, team2Sets, player);
         logGameResult();
     }
 }
@@ -187,6 +191,8 @@ void scoreController::revertLastPointData(bool team1GoingDown) {
         // team 1 lost their point  - score is updated in the main method
         // change the team server back to the previous state
         team1Server1 = !team1Server1;
+        player = 2;
+        if (team1Server1) player = 1;
         // revert back who won the last point
         whoWonLastPoint = TEAM2;
     }
@@ -194,6 +200,8 @@ void scoreController::revertLastPointData(bool team1GoingDown) {
         // team 2 lost their point - score is updated in the main method
         // change the team server back to the previous state
         team2Server1 = !team2Server1;
+        player = 4;
+        if (team2Server1) player = 3;
         // revert back who won the last point
         whoWonLastPoint = TEAM1;
     }
@@ -214,18 +222,22 @@ void scoreController::setPlayerServe() {
             switch (data) {
                 case '1':
                     team1Server1 = true;
+                    player = 1;
                     whoWonLastPoint = TEAM1;
                     break;
                 case '2':
                     team1Server1 = false;
+                    player = 2;
                     whoWonLastPoint = TEAM1;
                     break;
                 case '3':
                     team2Server1 = true;
+                    player = 3;
                     whoWonLastPoint = TEAM2;
                     break;
                 case '4':
                     team2Server1 = false;
+                    player = 4;
                     whoWonLastPoint = TEAM2;
                     break;
                 default:

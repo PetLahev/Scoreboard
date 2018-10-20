@@ -37,6 +37,7 @@ private:
   uint8_t team2Sets;  
   bool team1Server1; // true means the first player server otherwise the second player
   bool team2Server1; // true means the first player server otherwise the second player
+  uint8_t player; // 1 - 4 who is on service 
   uint8_t whoWonLastPoint; // 1 => team 1 won the last point, 2 => team 2 won the last point  
   uint8_t whoStartedGame;// 1 => team 1 start serving, 2 => team 2 start serving  
 

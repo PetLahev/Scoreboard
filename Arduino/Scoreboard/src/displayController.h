@@ -12,8 +12,15 @@ public:
 **/
 displayController();
 
-
-void displayScore();
+/**
+ *  Displays score include sets and servers if enabled
+ *  @params score1 - score for the team 1
+ *          score2 - score for the team 2
+ *          set1   - number of sets won by first team (if enabled)
+ *          set2   - number of sets won by second team (if enabled) 
+ *          player - player on service, supports value from 1- 4 (if enabled)
+ **/
+void score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player);
 void blinkPoints();
 void blink();
 
