@@ -30,6 +30,6 @@ extern uint8_t winningPoints;
 // true if flags for servers should be displayed
 extern bool enableServers;
 // true if displaying sets is enabled
-extern bool eneableSets;
+extern bool enableSets;
 
 #endif

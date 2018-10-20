@@ -163,7 +163,7 @@ void displayController::showWhoServe(uint8_t player) {
 
 void displayController::showSets(uint8_t set1, uint8_t set2) {
     // Checks if displaying sets is enabled
-    if (eneableSets) {
+    if (enableSets) {
 
         data.firstSmallSegment = set1;
         data.secondSmallSegment = set2;

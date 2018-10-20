@@ -181,7 +181,9 @@ void scoreController::resetGame() {
     score2 = 0;
     // if this is a match based on sets I set the next player to the team who lost previous set
     // this is different in almost every sport so I provide a way how to set it directly before each set
-    if (team1WonMatch) {
+    uint8_t team1Won;
+    team1WonMatch(team1Won);
+    if (team1Won == 1) {
         whoWonLastPoint = TEAM2;
         team2Server1 = !team2Server1;
         player = 4;
