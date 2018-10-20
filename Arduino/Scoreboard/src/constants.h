@@ -26,7 +26,7 @@ const uint8_t SEGMENT_OFF = 0b00000000;
   vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
       ALL THESE PINS NEED TO BE CONFIRMED
   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-/*
+*/
 
 /*
   Defines pins for score controlles

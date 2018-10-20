@@ -75,25 +75,26 @@ void scoreController::updateScore(uint8_t message) {
         }
     }
 
+    // update the scoreboard to reflect the latest result
+    display.score(score1, score2, team1Sets, team2Sets, player);
+    logGameResult();
 
     // check if a match has finished
     bool matchDone;
     hasMatchFinished(matchDone);
     if(matchDone) {
         // if match is finished, just blink the whole display and write down the result
-
+        delay(700);
+        display.blink();
+        reset();
     }
     else if(setDone) {
-        // if a set is finished, blink with the whole display, write down the result and resets score
-        
+        // if a set is finished, blink with the whole display, write down the result and resets score        
+        delay(700);
+        display.blinkScore();
         resetGame();
     }
-    else {
-        display.score(score1, score2, team1Sets, team2Sets, player);
-        logGameResult();
-    }
 }
-
 
 /**
  * Checks if at least one team has reached the maximum winning points per set
@@ -173,11 +174,40 @@ void scoreController::team1WonMatch(uint8_t& result) {
 }
 
 /**
- *  Resets the game but the match continues 
+ *  Resets the game but the match continues
  **/
 void scoreController::resetGame() {
     score1 = 0;
     score2 = 0;
+    // if this is a match based on sets I set the next player to the team who lost previous set
+    // this is different in almost every sport so I provide a way how to set it directly before each set
+    if (team1WonMatch) {
+        whoWonLastPoint = TEAM2;
+        team2Server1 = !team2Server1;
+        player = 4;
+        if (team2Server1) player = 3;
+    }
+    else {
+        whoWonLastPoint = TEAM1;
+        team1Server1 = !team1Server1;
+        player = 2;
+        if (team1Server1) player = 1;
+    }
+}
+
+/**
+ *  Resets all variables and display
+ **/
+void scoreController::reset() {
+    score1 = 0;
+    score2 = 0;
+    team1Sets = 0;
+    team2Sets = 0;
+    whoWonLastPoint = TEAM1;
+    team1Server1 = true;
+    team2Server1 = true;
+    player = 1;
+    display.score(score1, score2, team1Sets, team2Sets, player);
 }
 
 /**
@@ -251,6 +281,7 @@ void scoreController::setPlayerServe() {
 
 /**
  * Prints the score back to bluetooth device and serial monitor
+ * TODO: Should create some loging class to support some standard ways
  **/ 
 void scoreController::logGameResult() {
     bluetooth.print("~Score updated|");
