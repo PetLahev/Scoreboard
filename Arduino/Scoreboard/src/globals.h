@@ -28,6 +28,8 @@ extern uint8_t setsPerGame;
 // the difference between points to win a set, like 2 (e.g. final score 15:13)
 extern uint8_t winningPoints;
 // true if flags for servers should be displayed
-extern bool displayServers;
+extern bool enableServers;
+// true if displaying sets is enabled
+extern bool eneableSets;
 
 #endif

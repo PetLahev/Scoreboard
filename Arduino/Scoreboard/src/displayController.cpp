@@ -18,7 +18,14 @@ displayController::displayController() {
  *          player - player on service, supports value from 1- 4 (if enabled)
  **/
 void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player) {
-    
+        
+    displayScore(score1, score2);
+    displayWhoServer(player);
+    displaySets(set1, set2);
+
+}
+
+void displayController::displayScore(uint8_t score1, uint8_t score2) {
     // We are going from left (team1) to right (team2) 
     // so the first index of the array will be the very left segment on the scoreboard
     // the the last index will be the very right segment on the scoreboard
@@ -60,11 +67,30 @@ void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint
          shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST,digits[i]);
     }        
     digitalWrite(SCORE_LATCH_PIN, HIGH);
+}
 
+void displayController::displayWhoServer(uint8_t player) {
+    // Checks if displaying who should serve is enabled
+    if (enableServers) {
+        if (player >= 1 && player <= 4 ) {
+            // here we don't use 7-segment display, just move the the voltage to correct pins
+            if (player == 3) player = 4; //0b00100000 we use LSBFIRST so going from left
+            if (player == 4) player = 8; //0b00010000 we use LSBFIRST so going from left
+            digitalWrite(PLAYER_LATCH_PIN, LOW);
+            shiftOut(PLAYER_DATA_PIN, PLAYER_CLK_PIN, LSBFIRST, player);
+            digitalWrite(PLAYER_LATCH_PIN, LOW);
+        }    
+    }
+}
 
-    //TODO: write data for player on service
-    //TODO: write data for sets
-
+void displayController::displaySets(uint8_t set1, uint8_t set2) {
+    // Checks if displaying sets is enabled
+    if (eneableSets) {
+        digitalWrite(SETS_LATCH_PIN, LOW);
+        shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, digitOne[set1]);
+        shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, digitOne[set2]);
+        digitalWrite(SETS_LATCH_PIN, LOW);
+    }
 }
 
 /**
