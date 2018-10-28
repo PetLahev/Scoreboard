@@ -22,12 +22,7 @@ void scoreController::updateScore(uint8_t message) {
     switch (message) {
         case TEAM1_UP:
             if (score1 > MAX_SCORE) return;
-            if (whoWonLastPoint == TEAM2) {
-                team1Server1 = !team1Server1;
-                player = 2;
-                if (team1Server1) player = 1;
-                whoWonLastPoint = TEAM1;
-            }
+            manageWhoServe(true);
             score1 +=1;
             break;
         case TEAM1_DOWN:
@@ -37,12 +32,7 @@ void scoreController::updateScore(uint8_t message) {
             break;
         case TEAM2_UP:
             if (score2 > MAX_SCORE) return;
-            if (whoWonLastPoint == TEAM1) {
-                team2Server1 = !team2Server1;
-                player = 4;
-                if (team2Server1) player = 3;
-                whoWonLastPoint = TEAM2;
-            } 
+            manageWhoServe(false);
             score2 +=1;
             break;
         case TEAM2_DOWN:
@@ -103,14 +93,29 @@ void scoreController::updateScore(uint8_t message) {
  *                   True if at least one team reached the global 'pointsPerSet' value
 **/
 void scoreController::hasSetFinished(bool& result) {
+    
     if (pointsPerSet == 0) return;
+    
+    // sets the initial values for point difference and pints per set
+    uint8_t points = winningPoints;
+    uint8_t pointsSet = pointsPerSet;
+
+
+    if (supportTiebreak && team1Sets == (tiebreakSet-1) && team2Sets == (tiebreakSet-1) ) {
+        // tiebreak section may have different points per set or the difference between score
+        points = winningPointsTiebreak;
+        pointsSet = pointsTiebreak;
+    }
+    
+
     // counts the difference between the two teams
     uint8_t pointsDiff = abs(score1 - score2);
+
     // check if the difference is enough to win a set 
     // ie. when a set must be win by 2 points difference
-    if (pointsDiff >= winningPoints) {
+    if (pointsDiff >= points) {
         // check if at least one team has reached the minimum score to win
-        if (score1 >= pointsPerSet || score2 >= pointsPerSet) {
+        if (score1 >= pointsSet || score2 >= pointsSet) {
             result = true;
         }
     }
@@ -118,6 +123,7 @@ void scoreController::hasSetFinished(bool& result) {
     {
         result = false;
     }
+    
 }
 
 /**
@@ -211,6 +217,31 @@ void scoreController::reset() {
     player = 1;
     display.score(score1, score2, team1Sets, team2Sets, player);
 }
+
+/**
+ * Manages state of the player who will serve after a point was won
+ * This is most for beach volleyball where the player on service changes after a ball is lost 
+ **/
+void scoreController::manageWhoServe(bool team1GoingUp) {
+
+    if (team1GoingUp) {
+        if (whoWonLastPoint == TEAM2) {
+            team1Server1 = !team1Server1;
+            player = 2;
+            if (team1Server1) player = 1;
+            whoWonLastPoint = TEAM1;
+        }
+    }
+    else {
+        if (whoWonLastPoint == TEAM1) {
+            team2Server1 = !team2Server1;
+            player = 4;
+            if (team2Server1) player = 3;
+            whoWonLastPoint = TEAM2;
+        } 
+    }
+}
+
 
 /**
  * When going down, eg. due to a mistake or referee changes the result, we need to update the data of the players

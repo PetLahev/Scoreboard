@@ -31,5 +31,13 @@ extern uint8_t winningPoints;
 extern bool enableServers;
 // true if displaying sets is enabled
 extern bool enableSets;
+// true if the game supports tiebreak
+extern bool supportTiebreak;
+// the set that will be considered as tiebreak set, like 3
+extern uint8_t tiebreakSet;
+// the number of points to win a tiebreak set
+extern uint8_t pointsTiebreak;
+// the difference between points to win the tiebreak set
+extern uint8_t winningPointsTiebreak;
 
 #endif

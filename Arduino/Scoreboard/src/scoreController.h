@@ -45,6 +45,7 @@ private:
   void hasMatchFinished(bool& result);
   void team1WonSet(uint8_t& result);
   void team1WonMatch(uint8_t& result);
+  void manageWhoServe(bool team1GoingUp);
   void revertLastPointData(bool team1GoingDown);
   void setPlayerServe();
   void resetGame();

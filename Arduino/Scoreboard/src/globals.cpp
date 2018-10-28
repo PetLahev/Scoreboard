@@ -23,3 +23,11 @@ uint8_t winningPoints = 2;
 bool enableServers = true;
 // true if displaying sets is enabled
 bool enableSets = true;
+// true if the game supports tiebreak
+bool supportTiebreak = true;
+// the set that will be considered as tiebreak set, like 3
+uint8_t tiebreakSet = 2;
+// the number of points to win a tiebreak set
+uint8_t pointsTiebreak = 9;
+// the difference between points to win the tiebreak set
+uint8_t winningPointsTiebreak = 2;
