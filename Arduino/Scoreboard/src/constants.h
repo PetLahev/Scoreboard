@@ -59,6 +59,7 @@ const char TEAM1_DOWN = 'v';
 const char TEAM2_UP = 'a';
 const char TEAM2_DOWN = 'm';
 const char SET_SERVER = 'p';
+const char SETTINGS = '!';
 const uint8_t MAX_SCORE = 99;
 const uint8_t TEAM1 = 1;
 const uint8_t TEAM2 = 2;

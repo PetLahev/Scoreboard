@@ -9,10 +9,12 @@
 #include "displayController.h"
 #include "scoreController.h"
 #include "VirtualWire.h"
+#include "settingController.h"
 
 bool inSettingsMode;
 scoreController score;
 displayController display;
+settingsController settings;
 
 void setup() {
     
@@ -40,8 +42,22 @@ void loop() {
     if (bluetooth.available() > 0) {
         // read the data from bluetooth
         data = bluetooth.read();
+        if (data == SETTINGS)  {
+            // if the first received char equals the flag for settings mode
+            // it will toggle betwen the ON/OFF state
+            inSettingsMode = !inSettingsMode;
+            if (inSettingsMode) {
+                bluetooth.println("In settings mode");
+                Serial.write("In settings mode");                               
+                // prints out current setting
+                settings.read();                
+            }
+        }
+
         if (inSettingsMode) {
-            
+            // if required, change the settings here
+            // when user wants to end the settings mode 
+            // the SETTINGS constant needs to be sent
         }
         else {
             score.updateScore(data);
