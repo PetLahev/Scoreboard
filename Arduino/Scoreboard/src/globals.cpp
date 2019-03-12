@@ -1,5 +1,5 @@
 /*
-*  Provides access to globaly available objects
+*  Provides access to globally available objects
 */
 
 #include "globals.h"

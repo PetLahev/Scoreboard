@@ -57,7 +57,20 @@ void loop() {
         if (inSettingsMode) {
             // if required, change the settings here
             // when user wants to end the settings mode 
-            // the SETTINGS constant needs to be sent
+            // the SETTINGS constant needs to be sent            
+            char keyValuePair [30];            
+            for(size_t i = 0; i < strlen(keyValuePair); i++)
+            {
+                if (bluetooth.available() > 0) {
+                    keyValuePair[i] = bluetooth.read();
+                    delay(10);
+                }
+                else {
+                    // write char for end of string
+                    keyValuePair[i] = '\0';
+                }
+            }            
+            settings.set(keyValuePair);
         }
         else {
             score.updateScore(data);

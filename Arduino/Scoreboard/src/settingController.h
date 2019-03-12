@@ -8,10 +8,12 @@ class settingsController {
 public:
 
     /**
-     * 
-     *  @params message - what the hell I meant by it?
+     *  Sets the given setting (key) with the provided value
+     *  @params message - the key value pair of a setting. Must be in 
+     *                    'key'='value' format (delimiter is the '=')
+     *                    example: numOfSets=2  
      **/ 
-    void set(uint8_t message);
+    void set(char *keyValuePair);
 
     /**
      * Reads the current settings and prints them out to bluetooth and serial monitor
@@ -29,7 +31,12 @@ private:
     const char *msgTiebreakSupport = "Supports tiebreak:"; 
     const char *msgTiebreakSet = "Tiebreak set:";
     const char *msgTiebreakPoints = "Points in tiebreak:";
-    const char *msgTiebreakDiference = "Tiebreak points difference:";    
+    const char *msgTiebreakDifference = "Tiebreak points difference:";
+    const char *msgnotValidSetting = "Not valid setting";
+
+    const char *s_setsPerGame = "s";
+    const char *s_pointsPerSet = "p";
+
 };
 
 #endif
