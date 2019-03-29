@@ -22,12 +22,13 @@ void settingsController::set(char *keyValuePair) {
     char *key = strtok (keyValuePair,"=");
     char *value =  strtok (NULL, "");
     
-    if ( strcmp(key, s_setsPerGame) == 0 && isdigit((unsigned char)value)) {
-        setsPerGame = (unsigned char)value;
+    if ( strcmp(key, s_setsPerGame) == 0 && isNumber(value)) {        
+        setsPerGame = convertToNumber(value);
+        bluetooth.print(msgSets); bluetooth.println(setsPerGame);
     }
 
-    if ( strcmp(key, s_pointsPerSet) == 0 && isdigit((unsigned char)value)) {
-        pointsPerSet = (unsigned char)value;
+    if ( strcmp(key, s_pointsPerSet) == 0 && isNumber(value)) {
+        pointsPerSet = convertToNumber(value);
     }
 
     //12 Mar 2019 to be finished
@@ -40,30 +41,62 @@ void settingsController::set(char *keyValuePair) {
 **/
 void settingsController::read() {
 
-    bluetooth.println(msgSets + setsPerGame);
-    Serial.println(msgSets + setsPerGame);
+    bluetooth.print(msgSets);
+    bluetooth.println(setsPerGame);
+    Serial.print(msgSets);
+    Serial.println(setsPerGame);
 
-    bluetooth.println(msgPoints + pointsPerSet);
-    Serial.println(msgPoints + pointsPerSet);
+    bluetooth.print(msgPoints);
+    bluetooth.println(pointsPerSet);
+    Serial.print(msgPoints);
+    Serial.println(pointsPerSet);
 
-    bluetooth.println(msgDiff + winningPoints);
-    Serial.println(msgDiff + winningPoints);
+    bluetooth.print(msgDiff);
+    bluetooth.println(winningPoints);
+    Serial.print(msgDiff);
+    Serial.println(winningPoints);
 
-    bluetooth.println(msgServe + enableServers);
-    Serial.println(msgServe + enableServers);
+    bluetooth.print(msgServe);
+    bluetooth.println(enableServers);
+    Serial.print(msgServe);
+    Serial.println(enableServers);
 
-    bluetooth.println(msgDisplaySets + enableSets);
-    Serial.println(msgDisplaySets + enableSets);
+    bluetooth.print(msgDisplaySets);
+    bluetooth.println(enableSets);
+    Serial.print(msgDisplaySets);
+    Serial.println(enableSets);
 
-    bluetooth.println(msgTiebreakSupport + supportTiebreak);
-    Serial.println(msgTiebreakSupport + supportTiebreak);
+    bluetooth.print(msgTiebreakSupport);
+    bluetooth.println(supportTiebreak);
+    Serial.print(msgTiebreakSupport);
+    Serial.println(supportTiebreak);
 
-    bluetooth.println(msgTiebreakSet + tiebreakSet);
-    Serial.println(msgTiebreakSet + tiebreakSet);
+    bluetooth.print(msgTiebreakSet);
+    bluetooth.println(tiebreakSet);
+    Serial.print(msgTiebreakSet);
+    Serial.println(tiebreakSet);
 
-    bluetooth.println(msgTiebreakPoints + pointsTiebreak);
-    Serial.println(msgTiebreakPoints + pointsTiebreak);
+    bluetooth.print(msgTiebreakPoints);
+    bluetooth.println(pointsTiebreak);
+    Serial.print(msgTiebreakPoints);
+    Serial.println(pointsTiebreak);
 
-    bluetooth.println(msgTiebreakDifference + winningPointsTiebreak);
-    Serial.println(msgTiebreakDifference + winningPointsTiebreak);
+    bluetooth.print(msgTiebreakDifference);
+    bluetooth.println(winningPointsTiebreak);
+    Serial.print(msgTiebreakDifference);
+    Serial.println(winningPointsTiebreak);
+}
+
+bool settingsController::isNumber(char* valueToCheck) {
+
+    int arraySize = sizeof(valueToCheck)/sizeof(int);
+    for(int i = 0; i < arraySize; i++) {
+        if (!isdigit(valueToCheck[i])) return false;
+    }
+    return true;
+}
+
+int settingsController::convertToNumber(char* value) {
+    if (!isNumber(value)) return 0;
+    return strtol(value, NULL, 0);
 }

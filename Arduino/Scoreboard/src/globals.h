@@ -7,6 +7,7 @@
 
 #include "NeoSWSerial.h"
 #include "displayController.h"
+#include "scoreController.h"
 
 /**
 *  A globally available reference to bluetooth object
@@ -17,6 +18,12 @@ extern NeoSWSerial bluetooth;
  * A globally available reference to the display controller class 
  **/
 extern displayController display;
+
+
+/**
+ *  A globally available reference to the score controller class
+ **/ 
+extern scoreController score;
 
 /*
   Settings - initial values

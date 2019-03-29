@@ -21,8 +21,21 @@ public:
     void read();
 
 private:
+
+    /**
+     *  Checks if given array of chars is all numeric
+     *  @params valueToCheck  - an array of chars to check
+     **/ 
+    bool isNumber(char* valueToCheck);
+
+    /**
+     *  Converts given array of characters to integer
+     *  @params value  - the array of chars to convert
+     **/ 
+    int convertToNumber(char* value);
+
     // Defines constants for messages displayed to user
-    // Would be better if it doesn't take that much memory but hey ..
+    // Would be better if it doesn't take that much memory but hey ..    
     const char *msgSets = "Sets per game:";
     const char *msgPoints = "Points per set:";
     const char *msgDiff  = "Set points difference:";

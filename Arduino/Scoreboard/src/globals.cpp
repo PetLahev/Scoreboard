@@ -6,12 +6,13 @@
 #include "NeoSWSerial.h"
 #include "constants.h"
 #include "displayController.h"
+#include "scoreController.h"
 
 /**
 *  Initializes bluetooth object with pins
 *  This object will be accessible anywhere in the project
 **/
-NeoSWSerial bluetooth(BLUE_RX, BLUE_TX);
+NeoSWSerial bluetooth(BLUE_TX, BLUE_RX);
 
 // Sets the points per set, can be overriden by the settings class
 uint8_t pointsPerSet = 11;
