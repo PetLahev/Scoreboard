@@ -93,10 +93,9 @@ void loop() {
             if (dataAvailable) settings.set(keyValuePair);
             
         }
-        else {
-            bluetooth.println("TEST - SCORE IF");
-            // set the variable for receiver message, max length is 78 
-            score.updateScore(data);                  
+        else {            
+            // set the variable for receiver message, max length is 78             
+            score.updateScore(data);            
         }
         return; // if bluethoot data processed do not check other channels
     }    

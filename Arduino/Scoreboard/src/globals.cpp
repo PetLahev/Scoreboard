@@ -6,7 +6,6 @@
 #include "NeoSWSerial.h"
 #include "constants.h"
 #include "displayController.h"
-#include "scoreController.h"
 
 /**
 *  Initializes bluetooth object with pins

@@ -51,10 +51,10 @@ void scoreController::updateScore(uint8_t message) {
 
     // check if a set has finished
     // if so, update set variables
-    bool setDone;
+    bool setDone = false;
     hasSetFinished(setDone);
-    if(setDone) {
-        // a set has finished
+    if(setDone) {        
+        Serial.println("A set has finished");
         uint8_t setResult;
         team1WonSet(setResult);
         if (setResult == 1) {
@@ -65,25 +65,27 @@ void scoreController::updateScore(uint8_t message) {
         }
     }
 
-    // update the scoreboard to reflect the latest result
+    // update the scoreboard to reflect the latest result    
     display.score(score1, score2, team1Sets, team2Sets, player);
-    logGameResult();
+    logGameResult();    
 
     // check if a match has finished
-    bool matchDone;
-    hasMatchFinished(matchDone);
+    bool matchDone = false;
+    hasMatchFinished(matchDone);    
     if(matchDone) {
+        Serial.println("Match has finished");
         // if match is finished, just blink the whole display and write down the result
         delay(700);
         display.blink();
         reset();
     }
     else if(setDone) {
-        // if a set is finished, blink with the whole display, write down the result and resets score        
+        // if a set is finished, blink with the whole display, write down the result and resets score
+        Serial.println("Set has finished - blinking display and reseting score");
         delay(700);
         display.blinkScore();
         resetGame();
-    }
+    }    
 }
 
 /**
@@ -133,8 +135,8 @@ void scoreController::hasSetFinished(bool& result) {
  *                   True if at least one team reached the global 'setsPerGame' value
 **/
 void scoreController::hasMatchFinished(bool& result) {
-    if (setsPerGame == 0) return;
-    if (team1Sets >= setsPerGame || team2Sets >= setsPerGame) {
+    if (setsPerGame == 0) return;    
+    if (team1Sets >= setsPerGame || team2Sets >= setsPerGame) {        
         result = true;
     }
 }
@@ -183,6 +185,7 @@ void scoreController::team1WonMatch(uint8_t& result) {
  *  Resets the game but the match continues
  **/
 void scoreController::resetGame() {
+    Serial.println("Reseting game");
     score1 = 0;
     score2 = 0;
     // if this is a match based on sets I set the next player to the team who lost previous set
@@ -207,6 +210,7 @@ void scoreController::resetGame() {
  *  Resets all variables and display
  **/
 void scoreController::reset() {
+    Serial.println("Reseting the whole match = Everything");
     score1 = 0;
     score2 = 0;
     team1Sets = 0;
@@ -273,7 +277,8 @@ void scoreController::revertLastPointData(bool team1GoingDown) {
 /**
  *  Sets the player who will serve and also sets the team who won last point
  *  to be able to determine how the server should change.
- * Reads additional data from bluetooth
+ *   Reads additional data from bluetooth
+ * TODO: Not sure if this works. Test it
  **/
 void scoreController::setPlayerServe() {
     // the flag for setting a player who should server was set, now we need to listen for the actual player
