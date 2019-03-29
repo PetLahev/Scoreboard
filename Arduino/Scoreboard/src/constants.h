@@ -23,12 +23,6 @@ const uint8_t RECEIVER_PIN = A5;
 const uint8_t SEGMENT_OFF = 0b00000000;
 
 /*
-  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-      ALL THESE PINS NEED TO BE CONFIRMED
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-*/
-
-/*
   Defines pins for score controlles
 */
 const uint8_t SCORE_LATCH_PIN = 3;
@@ -48,11 +42,7 @@ const uint8_t SETS_DATA_PIN = 8;
 const uint8_t PLAYER_LATCH_PIN = 9;
 const uint8_t PLAYER_CLK_PIN = 10;
 const uint8_t PLAYER_DATA_PIN = 11;
-/*
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      ALL THESE PINS NEED TO BE CONFIRMED
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-*/
+
 
 const char TEAM1_UP = 'h';
 const char TEAM1_DOWN = 'v';
