@@ -32,6 +32,10 @@ void setup() {
     vw_set_rx_pin(RECEIVER_PIN);
     vw_rx_start();
     Serial.write("VirtualWire initialized");
+    
+    pinMode(SCORE_LATCH_PIN, OUTPUT);
+    pinMode(SCORE_CLK_PIN, OUTPUT);
+    pinMode(SCORE_DATA_PIN, OUTPUT);
 
     display.greetings();
 }
