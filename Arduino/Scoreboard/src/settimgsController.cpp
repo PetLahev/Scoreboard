@@ -24,15 +24,48 @@ void settingsController::set(char *keyValuePair) {
     
     if ( strcmp(key, s_setsPerGame) == 0 && isNumber(value)) {        
         setsPerGame = convertToNumber(value);
-        bluetooth.print(msgSets); bluetooth.println(setsPerGame);
+        printMessage(SetsPerGame);
     }
 
     if ( strcmp(key, s_pointsPerSet) == 0 && isNumber(value)) {
         pointsPerSet = convertToNumber(value);
+        printMessage(PointsPerSets);
     }
 
-    //12 Mar 2019 to be finished
+    if ( strcmp(key, s_pointsDifference) == 0 && isNumber(value)) {
+        winningPoints = convertToNumber(value);
+        printMessage(SetPointsDifference);
+    }
 
+    if ( strcmp(key, s_enableServer) == 0 ) {
+        enableServers = convertToBoolean(value);
+        printMessage(Server);
+    }
+
+    if ( strcmp(key, s_enableSets) == 0 ) {
+        enableSets = convertToBoolean(value);
+        printMessage(DisplaySets);
+    }
+
+    if ( strcmp(key, s_supportTiebreak) == 0 ) {
+        supportTiebreak = convertToBoolean(value);
+        printMessage(TieBreakSupport);
+    }
+
+    if ( strcmp(key, s_tiebreakSet) == 0 && isNumber(value)) {
+        tiebreakSet = convertToNumber(value);
+        printMessage(TiebreakSet);
+    }
+
+    if ( strcmp(key, s_tiebreakPoints) == 0 && isNumber(value)) {
+        pointsTiebreak = convertToNumber(value);
+        printMessage(PointsInTiebreak);
+    }
+
+    if ( strcmp(key, s_tiebreakPointsDifference) == 0 && isNumber(value)) {
+        winningPointsTiebreak = convertToNumber(value);
+        printMessage(PointsTiebreakDifference);
+    }
 }
 
 
@@ -41,50 +74,92 @@ void settingsController::set(char *keyValuePair) {
 **/
 void settingsController::read() {
 
-    bluetooth.print(msgSets);
-    bluetooth.println(setsPerGame);
-    Serial.print(msgSets);
-    Serial.println(setsPerGame);
+    printMessage(SetsPerGame);
+    printMessage(PointsPerSets);
+    printMessage(SetPointsDifference);
+    printMessage(Server);
+    printMessage(DisplaySets);
+    printMessage(TieBreakSupport);
+    printMessage(TiebreakSet);
+    printMessage(PointsInTiebreak);
+    printMessage(PointsTiebreakDifference);
+}
 
-    bluetooth.print(msgPoints);
-    bluetooth.println(pointsPerSet);
-    Serial.print(msgPoints);
-    Serial.println(pointsPerSet);
+/**
+ *  Prints message to the bluetooth device and Serial monitor 
+ *  @params msg  - a value of the Messages enumeration to be displayed
+**/
+void settingsController::printMessage(Messages msg) {
+    switch (msg)
+    {
+        case SetsPerGame :
+            bluetooth.print(msgSets);
+            bluetooth.println(setsPerGame);
+            Serial.print(msgSets);
+            Serial.println(setsPerGame);
+            break;
 
-    bluetooth.print(msgDiff);
-    bluetooth.println(winningPoints);
-    Serial.print(msgDiff);
-    Serial.println(winningPoints);
+        case PointsPerSets :
+            bluetooth.print(msgPoints);
+            bluetooth.println(pointsPerSet);
+            Serial.print(msgPoints);
+            Serial.println(pointsPerSet);
+            break;
 
-    bluetooth.print(msgServe);
-    bluetooth.println(enableServers);
-    Serial.print(msgServe);
-    Serial.println(enableServers);
+        case SetPointsDifference :
+            bluetooth.print(msgDiff);
+            bluetooth.println(winningPoints);
+            Serial.print(msgDiff);
+            Serial.println(winningPoints);
+            break;
 
-    bluetooth.print(msgDisplaySets);
-    bluetooth.println(enableSets);
-    Serial.print(msgDisplaySets);
-    Serial.println(enableSets);
+        case Server :
+            bluetooth.print(msgServe);
+            bluetooth.println(enableServers);
+            Serial.print(msgServe);
+            Serial.println(enableServers);
+            break;
 
-    bluetooth.print(msgTiebreakSupport);
-    bluetooth.println(supportTiebreak);
-    Serial.print(msgTiebreakSupport);
-    Serial.println(supportTiebreak);
+        case DisplaySets :
+            bluetooth.print(msgDisplaySets);
+            bluetooth.println(enableSets);
+            Serial.print(msgDisplaySets);
+            Serial.println(enableSets);
+            break;
 
-    bluetooth.print(msgTiebreakSet);
-    bluetooth.println(tiebreakSet);
-    Serial.print(msgTiebreakSet);
-    Serial.println(tiebreakSet);
+        case TieBreakSupport :
+            bluetooth.print(msgTiebreakSupport);
+            bluetooth.println(supportTiebreak);
+            Serial.print(msgTiebreakSupport);
+            Serial.println(supportTiebreak);
+            break;
 
-    bluetooth.print(msgTiebreakPoints);
-    bluetooth.println(pointsTiebreak);
-    Serial.print(msgTiebreakPoints);
-    Serial.println(pointsTiebreak);
+        case TiebreakSet :
+            bluetooth.print(msgTiebreakSet);
+            bluetooth.println(tiebreakSet);
+            Serial.print(msgTiebreakSet);
+            Serial.println(tiebreakSet);
+            break;
 
-    bluetooth.print(msgTiebreakDifference);
-    bluetooth.println(winningPointsTiebreak);
-    Serial.print(msgTiebreakDifference);
-    Serial.println(winningPointsTiebreak);
+        case PointsInTiebreak :
+            bluetooth.print(msgTiebreakPoints);
+            bluetooth.println(pointsTiebreak);
+            Serial.print(msgTiebreakPoints);
+            Serial.println(pointsTiebreak);
+            break;
+
+        case PointsTiebreakDifference :
+            bluetooth.print(msgTiebreakDifference);
+            bluetooth.println(winningPointsTiebreak);
+            Serial.print(msgTiebreakDifference);
+            Serial.println(winningPointsTiebreak);
+            break;
+
+        default:
+            bluetooth.println(msgnotValidSetting);
+            Serial.println(msgnotValidSetting);
+            break;
+    }
 }
 
 bool settingsController::isNumber(char* valueToCheck) {
@@ -99,4 +174,12 @@ bool settingsController::isNumber(char* valueToCheck) {
 int settingsController::convertToNumber(char* value) {
     if (!isNumber(value)) return 0;
     return strtol(value, NULL, 0);
+}
+
+bool settingsController::convertToBoolean(char* value) {
+    if ( strcmp(value, "Y") ) return true;
+    if ( strcmp(value, "y") ) return true;
+    if ( strcmp(value, "true") ) return true;
+    if ( strcmp(value, "TRUE") ) return true;
+    return false;
 }

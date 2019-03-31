@@ -20,6 +20,11 @@ public:
      **/
     void read();
 
+    /**
+     *  Enumeration for messages
+     **/ 
+    enum Messages { SetsPerGame, PointsPerSets, SetPointsDifference, Server, DisplaySets, TieBreakSupport, TiebreakSet, PointsInTiebreak, PointsTiebreakDifference };
+
 private:
 
     /**
@@ -34,6 +39,18 @@ private:
      **/ 
     int convertToNumber(char* value);
 
+    /**
+     *  Converts given array of characters to boolean
+     *  @params value  - the array of chars to convert
+     **/ 
+    bool convertToBoolean(char* value);
+
+    /**
+     *  Prints message to the bluetooth device and Serial monitor 
+     *  @params msg  - a value of the Messages enumeration to be displayed
+     **/
+    void printMessage(Messages msg);
+
     // Defines constants for messages displayed to user
     // Would be better if it doesn't take that much memory but hey ..    
     const char *msgSets = "Sets per game:";
@@ -47,9 +64,16 @@ private:
     const char *msgTiebreakDifference = "Tiebreak points difference:";
     const char *msgnotValidSetting = "Not valid setting";
 
+    // Defines constants for settings values
     const char *s_setsPerGame = "s";
-    const char *s_pointsPerSet = "p";
-
+    const char *s_pointsPerSet = "e";
+    const char *s_pointsDifference = "d";
+    const char *s_enableServer = "r";
+    const char *s_enableSets = "b";
+    const char *s_supportTiebreak = "t";    
+    const char *s_tiebreakSet = "q";
+    const char *s_tiebreakPoints = "f";
+    const char *s_tiebreakPointsDifference = "w";
 };
 
 #endif

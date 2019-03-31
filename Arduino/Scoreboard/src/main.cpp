@@ -37,6 +37,14 @@ void setup() {
     pinMode(SCORE_CLK_PIN, OUTPUT);
     pinMode(SCORE_DATA_PIN, OUTPUT);
 
+    pinMode(SETS_LATCH_PIN, OUTPUT);
+    pinMode(SETS_CLK_PIN, OUTPUT);
+    pinMode(SETS_DATA_PIN, OUTPUT);
+
+    pinMode(PLAYER_LATCH_PIN, OUTPUT);
+    pinMode(PLAYER_CLK_PIN, OUTPUT);
+    pinMode(PLAYER_DATA_PIN, OUTPUT);
+
     display.greetings();
 }
 
