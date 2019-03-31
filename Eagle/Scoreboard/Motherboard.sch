@@ -16386,6 +16386,145 @@ naming: grid - package width</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="con-samtec" urn="urn:adsk.eagle:library:184">
+<description>&lt;b&gt;Samtec Connectors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SSW-106-02-G-S" library_version="2">
+<description>&lt;b&gt;THROUGH-HOLE .025" SQ POST SOCKET&lt;/b&gt;&lt;p&gt;
+Source: Samtec SSW.pdf</description>
+<wire x1="-7.749" y1="1.155" x2="7.749" y2="1.155" width="0.2032" layer="21"/>
+<wire x1="7.749" y1="1.155" x2="7.749" y2="-1.155" width="0.2032" layer="21"/>
+<wire x1="7.749" y1="-1.155" x2="-7.749" y2="-1.155" width="0.2032" layer="21"/>
+<wire x1="-7.749" y1="-1.155" x2="-7.749" y2="1.155" width="0.2032" layer="21"/>
+<wire x1="-7.095" y1="0.755" x2="-5.595" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="-5.595" y1="0.755" x2="-5.595" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-5.595" y1="-0.745" x2="-7.095" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-7.095" y1="-0.745" x2="-7.095" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="-4.555" y1="0.755" x2="-3.055" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="-3.055" y1="0.755" x2="-3.055" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-3.055" y1="-0.745" x2="-4.555" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-4.555" y1="-0.745" x2="-4.555" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="-2.015" y1="0.755" x2="-0.515" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="-0.515" y1="0.755" x2="-0.515" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-0.515" y1="-0.745" x2="-2.015" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="-2.015" y1="-0.745" x2="-2.015" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="0.525" y1="0.755" x2="2.025" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="2.025" y1="0.755" x2="2.025" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="2.025" y1="-0.745" x2="0.525" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="0.525" y1="-0.745" x2="0.525" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="3.065" y1="0.755" x2="4.565" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="4.565" y1="0.755" x2="4.565" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="4.565" y1="-0.745" x2="3.065" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="3.065" y1="-0.745" x2="3.065" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="5.605" y1="0.755" x2="7.105" y2="0.755" width="0.2032" layer="51"/>
+<wire x1="7.105" y1="0.755" x2="7.105" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="7.105" y1="-0.745" x2="5.605" y2="-0.745" width="0.2032" layer="51"/>
+<wire x1="5.605" y1="-0.745" x2="5.605" y2="0.755" width="0.2032" layer="51"/>
+<pad name="1" x="-6.35" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="2" x="-3.81" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="3" x="-1.27" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="4" x="1.27" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="5" x="3.81" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="6" x="6.35" y="0" drill="1" diameter="1.5" shape="octagon"/>
+<text x="-6.858" y="-3.048" size="1.6764" layer="21" font="vector">1</text>
+<text x="-8.255" y="-1.27" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="9.525" y="-1.27" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
+<package name="SSW-106-02-G-S-RA" library_version="2">
+<description>&lt;b&gt;THROUGH-HOLE .025" SQ POST SOCKET&lt;/b&gt;&lt;p&gt;
+Source: Samtec SSW.pdf</description>
+<wire x1="-7.749" y1="-8.396" x2="7.749" y2="-8.396" width="0.2032" layer="21"/>
+<wire x1="7.749" y1="-8.396" x2="7.749" y2="-0.106" width="0.2032" layer="21"/>
+<wire x1="7.749" y1="-0.106" x2="-7.749" y2="-0.106" width="0.2032" layer="21"/>
+<wire x1="-7.749" y1="-0.106" x2="-7.749" y2="-8.396" width="0.2032" layer="21"/>
+<pad name="1" x="-6.35" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="2" x="-3.81" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="3" x="-1.27" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="4" x="1.27" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="5" x="3.81" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<pad name="6" x="6.35" y="1.524" drill="1" diameter="1.5" shape="octagon"/>
+<text x="-6.945" y="-7.65" size="1.6764" layer="21" font="vector">1</text>
+<text x="-8.255" y="-7.62" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="9.525" y="-7.62" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-6.604" y1="0" x2="-6.096" y2="1.778" layer="51"/>
+<rectangle x1="-4.064" y1="0" x2="-3.556" y2="1.778" layer="51"/>
+<rectangle x1="-1.524" y1="0" x2="-1.016" y2="1.778" layer="51"/>
+<rectangle x1="1.016" y1="0" x2="1.524" y2="1.778" layer="51"/>
+<rectangle x1="3.556" y1="0" x2="4.064" y2="1.778" layer="51"/>
+<rectangle x1="6.096" y1="0" x2="6.604" y2="1.778" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="FPINV" library_version="2">
+<wire x1="-1.778" y1="0.508" x2="0" y2="0.508" width="0.254" layer="94"/>
+<wire x1="0" y1="0.508" x2="0" y2="-0.508" width="0.254" layer="94"/>
+<wire x1="0" y1="-0.508" x2="-1.778" y2="-0.508" width="0.254" layer="94"/>
+<text x="-2.54" y="2.54" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-3.048" y="0.762" size="1.524" layer="95" rot="R180">&gt;NAME</text>
+<pin name="1" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+<symbol name="FPIN" library_version="2">
+<wire x1="-1.778" y1="0.508" x2="0" y2="0.508" width="0.254" layer="94"/>
+<wire x1="0" y1="0.508" x2="0" y2="-0.508" width="0.254" layer="94"/>
+<wire x1="0" y1="-0.508" x2="-1.778" y2="-0.508" width="0.254" layer="94"/>
+<text x="-3.048" y="0.762" size="1.524" layer="95" rot="R180">&gt;NAME</text>
+<pin name="1" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SSW-106-02-G-S" prefix="X" library_version="2">
+<description>&lt;b&gt;THROUGH-HOLE .025" SQ POST SOCKET&lt;/b&gt;&lt;p&gt;
+Source: Samtec SSW.pdf</description>
+<gates>
+<gate name="-1" symbol="FPINV" x="0" y="5.08" addlevel="always"/>
+<gate name="-2" symbol="FPIN" x="0" y="2.54" addlevel="always"/>
+<gate name="-3" symbol="FPIN" x="0" y="0" addlevel="always"/>
+<gate name="-4" symbol="FPIN" x="0" y="-2.54" addlevel="always"/>
+<gate name="-5" symbol="FPIN" x="0" y="-5.08" addlevel="always"/>
+<gate name="-6" symbol="FPIN" x="0" y="-7.62" addlevel="always"/>
+</gates>
+<devices>
+<device name="" package="SSW-106-02-G-S">
+<connects>
+<connect gate="-1" pin="1" pad="1"/>
+<connect gate="-2" pin="1" pad="2"/>
+<connect gate="-3" pin="1" pad="3"/>
+<connect gate="-4" pin="1" pad="4"/>
+<connect gate="-5" pin="1" pad="5"/>
+<connect gate="-6" pin="1" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MF" value="Samtec Inc." constant="no"/>
+<attribute name="MPN" value="SSW-106-02-G-S" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="11P9416" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="-RA" package="SSW-106-02-G-S-RA">
+<connects>
+<connect gate="-1" pin="1" pad="1"/>
+<connect gate="-2" pin="1" pad="2"/>
+<connect gate="-3" pin="1" pad="3"/>
+<connect gate="-4" pin="1" pad="4"/>
+<connect gate="-5" pin="1" pad="5"/>
+<connect gate="-6" pin="1" pad="6"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MF" value="Samtec Inc." constant="no"/>
+<attribute name="MPN" value="SSW-106-02-G-S-RA" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="11P9417" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -16436,6 +16575,7 @@ naming: grid - package width</description>
 <part name="433MHZ_VC" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="C3" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="5/2.5" package3d_urn="urn:adsk.eagle:package:5426/1" value="100n"/>
 <part name="C4" library="capacitor-wima" library_urn="urn:adsk.eagle:library:116" deviceset="C" device="5/2.5" package3d_urn="urn:adsk.eagle:package:5426/1" value="100n"/>
+<part name="B" library="con-samtec" library_urn="urn:adsk.eagle:library:184" deviceset="SSW-106-02-G-S" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16529,6 +16669,15 @@ naming: grid - package width</description>
 <instance part="433MHZ_VC" gate="-2" x="86.36" y="12.7" rot="R90"/>
 <instance part="C3" gate="G$1" x="-20.32" y="104.14"/>
 <instance part="C4" gate="G$1" x="20.32" y="104.14"/>
+<instance part="B" gate="-1" x="15.24" y="76.2" smashed="yes" rot="R180">
+<attribute name="VALUE" x="24.13" y="92.456" size="1.778" layer="96" rot="R180"/>
+<attribute name="NAME" x="18.288" y="75.438" size="1.524" layer="95"/>
+</instance>
+<instance part="B" gate="-2" x="15.24" y="78.74" rot="R180"/>
+<instance part="B" gate="-3" x="15.24" y="81.28" rot="R180"/>
+<instance part="B" gate="-4" x="15.24" y="83.82" rot="R180"/>
+<instance part="B" gate="-5" x="15.24" y="86.36" rot="R180"/>
+<instance part="B" gate="-6" x="15.24" y="88.9" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -16695,6 +16844,10 @@ naming: grid - package width</description>
 <pinref part="BLUETOOTH1" gate="-2" pin="KL"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="-20.32" y1="81.28" x2="-12.7" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="B" gate="-4" pin="1"/>
+<wire x1="12.7" y1="83.82" x2="-12.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="83.82" x2="-12.7" y2="81.28" width="0.1524" layer="91"/>
+<junction x="-12.7" y="81.28"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
@@ -16721,7 +16874,7 @@ naming: grid - package width</description>
 <wire x1="71.12" y1="43.18" x2="71.12" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="TXD" class="0">
+<net name="RXD" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC6/A6"/>
 <wire x1="27.94" y1="48.26" x2="10.16" y2="48.26" width="0.1524" layer="91"/>
@@ -16729,15 +16882,24 @@ naming: grid - package width</description>
 <pinref part="BLUETOOTH" gate="-1" pin="KL"/>
 <wire x1="-20.32" y1="76.2" x2="10.16" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="76.2" x2="10.16" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="B" gate="-2" pin="1"/>
+<wire x1="12.7" y1="78.74" x2="10.16" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="78.74" x2="10.16" y2="76.2" width="0.1524" layer="91"/>
+<junction x="10.16" y="76.2"/>
 </segment>
 </net>
-<net name="RXD" class="0">
+<net name="TXD" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC7/A7"/>
 <wire x1="12.7" y1="71.12" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="45.72" x2="12.7" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="BLUETOOTH" gate="-2" pin="KL"/>
-<wire x1="-20.32" y1="71.12" x2="12.7" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-20.32" y1="71.12" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="B" gate="-3" pin="1"/>
+<wire x1="7.62" y1="71.12" x2="12.7" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="81.28" x2="7.62" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="81.28" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
+<junction x="7.62" y="71.12"/>
 </segment>
 </net>
 <net name="SCORE_3" class="0">
@@ -16849,6 +17011,9 @@ naming: grid - package width</description>
 <pinref part="BLUETOOTH1" gate="-1" pin="KL"/>
 <wire x1="-20.32" y1="86.36" x2="-12.7" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
+<pinref part="B" gate="-5" pin="1"/>
+<wire x1="12.7" y1="86.36" x2="-12.7" y2="86.36" width="0.1524" layer="91"/>
+<junction x="-12.7" y="86.36"/>
 </segment>
 <segment>
 <wire x1="93.98" y1="17.78" x2="93.98" y2="12.7" width="0.1524" layer="91"/>
