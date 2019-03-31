@@ -19,6 +19,7 @@ displayController::displayController() {
  **/
 void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player) {
     
+    Serial.println("Score controller created");
     showScore(score1, score2);
     showWhoServe(player);
     showSets(set1, set2);
@@ -43,23 +44,35 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
     if (score1 > 9) {        
         remind = score1/10;
         digit = score1 % 10;
-        digits[0] = digitOne[digit];
-        digits[1] = digitOne[remind];
+        digits[0] = digitOne[remind];
+        digits[1] = digitOne[digit];
+        Serial.print("Score 1 - Left segment: ");
+        Serial.println(remind);
+        Serial.print("Score 1 - Right segment: ");
+        Serial.println(digit);
     }
     else {
         // the second segment from left will be set to the represent number from 0-9
         digits[1] = digitOne[score1];
+        Serial.print("Score 1 - Right segment: ");
+        Serial.println(score1);
     }
 
     if (score2 > 9) {
         remind = score2/10;
         digit = score2 % 10;
-        digits[2] = digitOne[digit];
-        digits[3] = digitOne[remind];
+        digits[2] = digitOne[remind];
+        digits[3] = digitOne[digit];        
+        Serial.print("Score 2 - Left segment: ");
+        Serial.println(remind);
+        Serial.print("Score 2 - Right segment: ");
+        Serial.println(digit);
     }
     else {
         // the from segment from left will be set to the represent number from 0-9
         digits[3] = digitOne[score2];
+        Serial.print("Score 2 - Right segment: ");
+        Serial.println(score2);
     }
 
     data.firstBigSegment = digits[0];
@@ -69,10 +82,12 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
 
     // Write the bytes to the score output
     digitalWrite(SCORE_LATCH_PIN, LOW);
+    Serial.println("Latch pin - LOw ");
     for (uint8_t i = 0; i < 4; i++) {
-         shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST,digits[i]);
+         shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, digits[i]);
     }        
     digitalWrite(SCORE_LATCH_PIN, HIGH);
+    Serial.println("Latch pin - HIGH ");
 }
 
 /**
@@ -80,6 +95,7 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
  **/
 void displayController::blink() {
 
+    Serial.println("Display blink start");
     // It assumes the information is already displayed 
     // turn everything off and then display again for 3 times
     for(uint8_t i = 0; i < 4; i++) {
@@ -120,9 +136,11 @@ void displayController::blink() {
         digitalWrite(SETS_LATCH_PIN, HIGH);
         if (i < 3) delay(700); // wait just first two cycles, last one no need to wait
     }
+    Serial.println("Display blink end");
 }
 
 void displayController::blinkScore() {
+    Serial.println("Display score blink start");
     // It assumes the information is already displayed 
     // turn everything off and then display again for 3 times
     for(uint8_t i = 0; i < 4; i++) {
@@ -144,11 +162,14 @@ void displayController::blinkScore() {
         digitalWrite(SCORE_LATCH_PIN, HIGH);        
         if (i < 3) delay(700); // wait just first two cycles, last one no need to wait
     }
+    Serial.println("Display score blink ends");
 }
 
 void displayController::showWhoServe(uint8_t player) {
+    Serial.println("Display who is on service start");
     // Checks if displaying who should serve is enabled
     if (enableServers) {
+        Serial.println("Displaying player on service");
         if (player >= 1 && player <= 4 ) {
             // here we don't use 7-segment display, just move the the voltage to correct pins
             if (player == 3) player = 4; //0b00100000 we use LSBFIRST so going from left
@@ -159,12 +180,14 @@ void displayController::showWhoServe(uint8_t player) {
             digitalWrite(PLAYER_LATCH_PIN, HIGH);
         }    
     }
+    Serial.println("Display who is on service ends");
 }
 
 void displayController::showSets(uint8_t set1, uint8_t set2) {
+    Serial.println("Display sets start");
     // Checks if displaying sets is enabled
     if (enableSets) {
-
+        Serial.println("Displaying sets");
         data.firstSmallSegment = set1;
         data.secondSmallSegment = set2;
 
@@ -173,13 +196,14 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
         shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, data.secondSmallSegment);
         digitalWrite(SETS_LATCH_PIN, HIGH);
     }
+    Serial.println("Display sets ends");
 }
 
 /**
  * Displays greetings on the display and blinks with it
  **/
 void displayController::greetings() {
-
+    Serial.println("Display greetings start");
     data.firstBigSegment = AHOJ[0];
     data.secondBigSegment = AHOJ[1];
     data.thirdBigSegment = AHOJ[2];
@@ -194,4 +218,5 @@ void displayController::greetings() {
     }
     delay(700);
     blink();
+    Serial.println("Display greetings end");
 }

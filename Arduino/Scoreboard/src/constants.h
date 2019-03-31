@@ -25,9 +25,9 @@ const uint8_t SEGMENT_OFF = 0b00000000;
 /*
   Defines pins for score controlles
 */
-const uint8_t SCORE_LATCH_PIN = 3;
-const uint8_t SCORE_CLK_PIN = 4;
-const uint8_t SCORE_DATA_PIN = 5;
+const uint8_t SCORE_LATCH_PIN = 3;  // RCLK (RCK) pin 12 74HC595
+const uint8_t SCORE_CLK_PIN = 4;    // SRCLK (SCK) pin 11 74HC595
+const uint8_t SCORE_DATA_PIN = 5;   // SER  pin 14 74HC595
 
 /*
   Defines pins for sets controlles 
