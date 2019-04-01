@@ -25,23 +25,23 @@ const uint8_t SEGMENT_OFF = 0b00000000;
 /*
   Defines pins for score controlles
 */
-const uint8_t SCORE_LATCH_PIN = 3;  // RCLK (RCK) pin 12 74HC595
-const uint8_t SCORE_CLK_PIN = 4;    // SRCLK (SCK) pin 11 74HC595
-const uint8_t SCORE_DATA_PIN = 5;   // SER  pin 14 74HC595
+const uint8_t SCORE_LATCH_PIN = 12;  // RCLK (RCK) pin 12 74HC595
+const uint8_t SCORE_CLK_PIN = 11;    // SRCLK (SCK) pin 11 74HC595
+const uint8_t SCORE_DATA_PIN = 10;   // SER  pin 14 74HC595
 
 /*
   Defines pins for sets controlles 
 */
-const uint8_t SETS_LATCH_PIN = 6;
-const uint8_t SETS_CLK_PIN = 7;
-const uint8_t SETS_DATA_PIN = 8;
+const uint8_t SETS_LATCH_PIN = 6;     // RCLK (RCK) pin 12 74HC595
+const uint8_t SETS_CLK_PIN = 5;       // SRCLK (SCK) pin 11 74HC595
+const uint8_t SETS_DATA_PIN = 4;      // SER  pin 14 74HC595
 
 /*
   Defines pins for players who should serve
 */
-const uint8_t PLAYER_LATCH_PIN = 9;
-const uint8_t PLAYER_CLK_PIN = 10;
-const uint8_t PLAYER_DATA_PIN = 11;
+const uint8_t PLAYER_LATCH_PIN = 9;   // RCLK (RCK) pin 12 74HC595
+const uint8_t PLAYER_CLK_PIN = 8;     // SRCLK (SCK) pin 11 74HC595
+const uint8_t PLAYER_DATA_PIN = 7;    // SER  pin 14 74HC595
 
 
 const char TEAM1_UP = 'h';
