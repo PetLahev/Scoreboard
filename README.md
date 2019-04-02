@@ -1,6 +1,9 @@
 # Scoreboard
 Scoreboard created with LED strips, [Arduino Nano](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_15?keywords=Arduino+Nano&qid=1554232867&s=gateway&sr=8-15) and some manual work. Handy for volleyball, table tennis, badminton, football etc.
 
+![Scoreboard no LED strips](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_small.jpg) ![Scoreboard powered](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_powered_small.jpg)
+
+
 * Controlled by bluetooth module ([HM-10 Bluetooth 4.0 BLE](https://www.amazon.com/DSD-TECH-Bluetooth-iBeacon-Arduino/dp/B06WGZB2N4/ref=sr_1_1_sspa?keywords=HM-10-Bluetooth&qid=1554232302&s=gateway&sr=8-1-spons&psc=1))
     * Also possible to control via an infra or 433MHz module (*code needs to be written though*)    
 * You can use pre-defined setup for a game
@@ -12,8 +15,6 @@ Scoreboard created with LED strips, [Arduino Nano](https://www.amazon.com/Arduin
 * The scoreboard case designed on thinkercad.com
     * [The box](https://www.tinkercad.com/things/gNmK0jQ22qv)
     * [The display board](https://www.tinkercad.com/things/9Don7XhJEvx) - just for measuring purpose
-
-![Scoreboard no LED strips](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_small.jpg) ![Scoreboard powered](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_powered_small.jpg)
 
 ## Setting the Serial Bluetooth Terminal
 Go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
@@ -48,7 +49,7 @@ The code now (*April 2019*) understands certain `key=value` pairs. Listed below 
 Examples of key-value setting
 
     `b=true`
-    WIll enable sets (*the LEDs will be powered*)
+    WIll enable sets (the LEDs will be powered)
 
     `s=2`
     A team/player needs to win 2 sets to win the match
@@ -93,7 +94,7 @@ Examples of key-value setting
     `t=false`   ' tiebreak disabled
     `r=false`   ' disable displaying player on service
 
-#### A beach volleyball match (like football)
+#### A beach volleyball match
     `b=true`    ' enable sets
     `s=2`       ' a team needs to win 2 sets to win a match
     `e=21`      ' a team needs to win 21 points to win a set
