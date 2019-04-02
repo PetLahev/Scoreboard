@@ -15,7 +15,7 @@ Scoreboard created with LED strips, [Arduino Nano](https://www.amazon.com/Arduin
 
 ![Scoreboard no LED strips](/images/Scoreboard no LED strips.png)
 
-![Scoreboard powered](/images/Scoreboard powered.png)
+![Scoreboard powered](\images\Scoreboard powered.png)
 
 ## Setting the Serial Bluetooth Terminal
 Go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
@@ -35,7 +35,8 @@ You can setup
         * Set a number that represents the set in the match considered as tiebreak set. *For example, in tennis you would set number `7` here*
 * Display player on service (*pre-set 4 players*) - enabled/disabled
 
-The code now (*April 2019*) understands certain `key=value` pairs. Listed below but always check [settingController](\Scoreboard\Arduino\Scoreboard\src\settingController.h) header file for the latest settings
+### Application settings
+The code now (*April 2019*) understands certain `key=value` pairs. Listed below but always check [settingController](/Arduino/Scoreboard/src/settingController.h) header file for the latest settings
 * Enable displaying sets = `b`
 * Sets per match = `s`
 * Points per set = `e`
