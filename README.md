@@ -13,7 +13,7 @@ Scoreboard created with LED strips, [Arduino Nano](https://www.amazon.com/Arduin
     * [The box](https://www.tinkercad.com/things/gNmK0jQ22qv)
     * [The display board](https://www.tinkercad.com/things/9Don7XhJEvx) - just for measuring purpose
 
-![Scoreboard no LED strips](\images\Scoreboard_small.jpg) ![Scoreboard powered](\images\Scoreboard_powered_small.jpg)
+![Scoreboard no LED strips](\images\Scoreboard_small.jpg) ![Scoreboard powered](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_small.jpg)
 
 ## Setting the Serial Bluetooth Terminal
 Go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
