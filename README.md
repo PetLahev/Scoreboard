@@ -50,65 +50,97 @@ The code now (*April 2019*) understands certain `key=value` pairs. Listed below 
 
 Examples of key-value setting
 
-    `b=true`
+    b=true
     WIll enable sets (the LEDs will be powered)
 
-    `s=2`
+    s=2
     A team/player needs to win 2 sets to win the match
 
-    `e=11`
+    e=11
     A team/player needs to win 11 points to win a set
     (The points difference setting will be considered here)
 
-    `d=2`
+    d=2
     A set will be considered as finished when the score between the teams/players
     1, reach the minimum points to win a set (e.g. 11)
     AND
     2, the difference is equal to 2
     examples: 11:9 or 13:11 or 12:10 or 21:19 etc.
 
-    `t=true`
+    t=true
     Tiebreak is enabled
 
-    `q=2`
+    q=2
     The tiebreak set is the second set to win. In other words this will be the third set
     For the above example the tiebreak settings will be considered when sets are 1:1
 
-    `f=9`
+    f=9
     A team/player needs to win 9 points to win the tiebreak set
 
-    `w=2`
+    w=2
     The tiebreak will be considered as finished when the score between the teams/players
     1, reach the minimum points to win the tiebreak set (e.g. 9)
     AND
     2, the difference is equal to 2
     examples: 9:7 or 10:8 or 11:9 etc.
     
-    `r=true`
+    r=true
     Will enable displaying player on service (The LEDs will be powered)
     Note: There are always 4 players pre-set, not configurable as of April 2019)
 
 ### Example of game settings
 #### A free match (like football)
-    `b=false`   ' disable sets
-    `s=0`       ' no sets per match  
-    `e=99`      ' set maximum of points
-    `t=false`   ' tiebreak disabled
-    `r=false`   ' disable displaying player on service
+    b=false   ' disable sets
+    s=0       ' no sets per match  
+    e=99      ' set maximum of points
+    t=false   ' tiebreak disabled
+    r=false   ' disable displaying player on service
 
 #### A beach volleyball match
-    `b=true`    ' enable sets
-    `s=2`       ' a team needs to win 2 sets to win a match
-    `e=21`      ' a team needs to win 21 points to win a set
-    `d=2`       ' the points difference between the two teams must be 2 to win a set
-    `t=enabled` ' tiebreak enabled
-    'q=2`       ' the tiebreak set is the second one to win. So the sets score is 1:1
-    `f=15`      ' a team needs to win 15 points to win the tiebreak set
-    `w=2`       ' the points difference between the two teams must be 2 to win the tiebreak set
-    `r=true`    ' enable displaying a player who serves
+    b=true    ' enable sets
+    s=2       ' a team needs to win 2 sets to win a match
+    e=21      ' a team needs to win 21 points to win a set
+    d=2       ' the points difference between the two teams must be 2 to win a set
+    t=enabled ' tiebreak enabled
+    q=2       ' the tiebreak set is the second one to win. So the sets score is 1:1
+    f=15      ' a team needs to win 15 points to win the tiebreak set
+    w=2       ' the points difference between the two teams must be 2 to win the tiebreak set
+    r=true    ' enable displaying a player who serves
 
 ## How to use
-TBD
+Once your game is set and you leave the settings mode (*by sending `!` flag*) your match can start. Based on the type of your match the scoreboard will control all the aspect of the match you will just increase or decrease number of points for the **Home** or **Away** team
+
+Send  
+`h` - to give a point to **Home** team  
+`a` - to give a point to **Away** team
+
+If you make a mistake (*we all do*) you can take a point back.  
+Send  
+`v` - to decrease points of **Home** team  
+`m` - to decrease score of **Away** team
+
+**Please note:** Taking point back may have an affect on number of sets played, match finished, player on service etc. The code as of April 2019 cares just about simple cases and supports returning all back just for *one* point so if you made a mistake and give a point in the middle of set to a wrong team, taking the point back will work but if you made the same mistake when the team you gave won a set/match then taking the point back will NOT have any affect. It's better to start a new match by resetting the match and setting the correct score by sending few `h` or `a`.
 
 ## How to build
-TBD
+OK if you get here you actually may want to build your own scoreboard and I do understand that, it's much more fun!
+
+If you just want to take the code and change it be aware that I didn't use the official Arduino IDE as I didn't find it as good as it should be. This project is made by [Visual Studio Code](https://code.visualstudio.com/) and [Platform IO](https://platformio.org/) extension both free. Once installed you should be able to build the project as it has all the settings done so you will get the right versions of used libraries and everything else. Please check [platformio.ini](/Arduino/platformio.ini) file to see if I added your Arduino board to the environment configuration. As of April 2019 I have this configuration
+
+    [platformio]
+    env_default = uno
+
+    [env:nanoatmega328]
+    platform = atmelavr
+    board = nanoatmega328
+    framework = arduino
+
+    [env:uno]
+    platform = atmelavr
+    framework = arduino
+    board = uno
+
+The `env_default = uno` specifies for which board Platform IO builds the code, in this case is Arduino Uno. Make sure you have the right one here otherwise the code won't work.  
+Let me also make you aware that I'm not C++ guy and I found it pretty hard to learn so the code is probably all messy but working.
+
+If you also want to build the scoreboard case check the [Tinkercad page](https://www.tinkercad.com/things/gNmK0jQ22qv). I tried to make it in 1:5 scale but again it was my first experience with 3D software. The [shield](https://www.tinkercad.com/things/9Don7XhJEvx) is there only for measurement purpose. I just wanted to see to what size all the LED strips will fit and how it will look like. Based on the size I designed the [case](https://www.tinkercad.com/things/gNmK0jQ22qv).  
+In terms of material use whatever will fit you. My original plan was using plastic because I didn't want to make it heavy but still not too fragile. For the first version I ended up with a 5mm wood board you can buy in hobby markets asked a joiner to cut the board into pieces and let him actually figure out how to put it all together, it cost me just ~$10 then you just need to a drill and couple screws and put it all together
