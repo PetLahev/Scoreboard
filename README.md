@@ -1,10 +1,11 @@
 # Scoreboard
 Scoreboard created with [LED strips](https://www.amazon.com/FAVOLCANO-Waterproof-Feet%EF%BC%885M%EF%BC%89-Flexible-Lighting/dp/B012FFZP70/ref=sr_1_28_sspa?keywords=LED+Strips+red&qid=1554275786&s=gateway&sr=8-28-spons&psc=1), [Arduino Nano](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_15?keywords=Arduino+Nano&qid=1554232867&s=gateway&sr=8-15) and some manual work. Handy for volleyball, table tennis, badminton, football etc.
 
-![Scoreboard no LED strips](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_small.jpg) ![Scoreboard powered](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_powered_small.jpg)
+![Scoreboard no LED strips](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_small.jpg) ![Scoreboard powered](https://github.com/PetLahev/Scoreboard/blob/master/images/Scoreboard_powered_small.jpg) ![Motherboard PCB](https://github.com/PetLahev/Scoreboard/blob/master/images/Motherboard.png) ![Scorecontroller PCB](https://github.com/PetLahev/Scoreboard/blob/master/images/Scorecontroller_board.png)
 
 * 50 x 70 cm (19.7 x 27.55 inch) height x width
 * Each segment 10 cm (3.93 inch) length so 20 cm (7.9 inch) one number! (*for points*)
+* Each LED strip controlled by its own transistor
 * Controlled by bluetooth module ([HM-10 Bluetooth 4.0 BLE](https://www.amazon.com/DSD-TECH-Bluetooth-iBeacon-Arduino/dp/B06WGZB2N4/ref=sr_1_1_sspa?keywords=HM-10-Bluetooth&qid=1554232302&s=gateway&sr=8-1-spons&psc=1))
     * Also possible to control via an infra or 433MHz module (*code needs to be written though*)    
 * You can use pre-defined setup for a game
