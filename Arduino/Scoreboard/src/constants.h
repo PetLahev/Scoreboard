@@ -12,14 +12,17 @@
 /*
   Defines pins for the bluetooth communication
 */
-const uint8_t BLUE_RX = A0; // for Arduino NANO it's A6
-const uint8_t BLUE_TX = A1; // for Arduino NANO it's A7
+const uint8_t BLUE_RX = A0;
+const uint8_t BLUE_TX = A1;
 
 /*
   Defines pins for wireless communication (433Mhz)
 */
 const uint8_t RECEIVER_PIN = A5;
 
+/*
+  All segments off
+*/
 const uint8_t SEGMENT_OFF = 0b00000000;
 
 /*

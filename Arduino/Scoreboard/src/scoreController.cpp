@@ -217,7 +217,7 @@ void scoreController::reset() {
     team2Sets = 0;
     whoWonLastPoint = TEAM1;
     team1Server1 = true;
-    team2Server1 = true;
+    team2Server1 = false; // the logic in the method will change it to true
     player = 1;
     display.score(score1, score2, team1Sets, team2Sets, player);
 }

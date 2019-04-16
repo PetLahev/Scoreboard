@@ -7,6 +7,7 @@
 #include "displayController.h"
 
 displayController::displayController() {
+    Serial.println("Score controller created");
 }
 
 /**
@@ -17,13 +18,10 @@ displayController::displayController() {
  *          set2   - number of sets won by second team (if enabled) 
  *          player - player on service, supports value from 1- 4 (if enabled)
  **/
-void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player) {
-    
-    Serial.println("Score controller created");
+void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player) {        
     showScore(score1, score2);
     showWhoServe(player);
     showSets(set1, set2);
-
 }
 
 void displayController::showScore(uint8_t score1, uint8_t score2) {
@@ -45,17 +43,11 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
         remind = score1/10;
         digit = score1 % 10;
         digits[0] = digitOne[remind];
-        digits[1] = digitOne[digit];
-        Serial.print("Score 1 - Left segment: ");
-        Serial.println(remind);
-        Serial.print("Score 1 - Right segment: ");
-        Serial.println(digit);
+        digits[1] = digitOne[digit];        
     }
     else {
         // the second segment from left will be set to the represent number from 0-9
         digits[1] = digitOne[score1];
-        Serial.print("Score 1 - Right segment: ");
-        Serial.println(score1);
     }
 
     if (score2 > 9) {
@@ -63,16 +55,10 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
         digit = score2 % 10;
         digits[2] = digitOne[remind];
         digits[3] = digitOne[digit];        
-        Serial.print("Score 2 - Left segment: ");
-        Serial.println(remind);
-        Serial.print("Score 2 - Right segment: ");
-        Serial.println(digit);
     }
     else {
         // the from segment from left will be set to the represent number from 0-9
         digits[3] = digitOne[score2];
-        Serial.print("Score 2 - Right segment: ");
-        Serial.println(score2);
     }
 
     data.firstBigSegment = digits[0];
@@ -82,12 +68,10 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
 
     // Write the bytes to the score output
     digitalWrite(SCORE_LATCH_PIN, LOW);
-    Serial.println("Latch pin - LOw ");
     for (uint8_t i = 0; i < 4; i++) {
          shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, digits[i]);
     }        
     digitalWrite(SCORE_LATCH_PIN, HIGH);
-    Serial.println("Latch pin - HIGH ");
 }
 
 /**
@@ -171,12 +155,19 @@ void displayController::showWhoServe(uint8_t player) {
     if (enableServers) {
         Serial.println("Displaying player on service");
         if (player >= 1 && player <= 4 ) {
-            // here we don't use 7-segment display, just move the the voltage to correct pins
-            if (player == 3) player = 4; //0b00100000 we use LSBFIRST so going from left
-            if (player == 4) player = 8; //0b00010000 we use LSBFIRST so going from left
-            data.flags = player;
+            // here we don't use 7-segment display, just move the voltage to the correct pins
+            // don't forget the shift register use just 7 bits!
+            // The player 1 is segment 'G', player 2 is segment 'F' and so on
+            // 128  64  32  16  8  4  2  1
+            // N/A  0   0   0   0  0  0  0
+            if (player == 1) data.flags = 0b01000000;
+            if (player == 2) data.flags = 0b00100000;
+            if (player == 3) data.flags = 0b00010000;
+            if (player == 4) data.flags = 0b00001000;
+            
+            // here we use Most Significant Bit First not like in the other two controllers 
             digitalWrite(PLAYER_LATCH_PIN, LOW);
-            shiftOut(PLAYER_DATA_PIN, PLAYER_CLK_PIN, LSBFIRST, player);
+            shiftOut(PLAYER_DATA_PIN, PLAYER_CLK_PIN, MSBFIRST,  data.flags);
             digitalWrite(PLAYER_LATCH_PIN, HIGH);
         }    
     }
@@ -188,8 +179,8 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
     // Checks if displaying sets is enabled
     if (enableSets) {
         Serial.println("Displaying sets");
-        data.firstSmallSegment = set1;
-        data.secondSmallSegment = set2;
+        data.firstSmallSegment = digitOne[set1];
+        data.secondSmallSegment = digitOne[set2];
 
         digitalWrite(SETS_LATCH_PIN, LOW);
         shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, data.firstSmallSegment);
@@ -208,6 +199,8 @@ void displayController::greetings() {
     data.secondBigSegment = AHOJ[1];
     data.thirdBigSegment = AHOJ[2];
     data.fourthdBigSegment = AHOJ[3];
+    data.firstSmallSegment = digitOne[0];
+    data.secondSmallSegment = digitOne[0];
 
     for(uint8_t i = 0; i < 4; i++) {
         digitalWrite(SCORE_LATCH_PIN, LOW);
@@ -216,6 +209,12 @@ void displayController::greetings() {
         }        
         digitalWrite(SCORE_LATCH_PIN, HIGH);       
     }
+
+    digitalWrite(SETS_LATCH_PIN, LOW);
+    shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, data.firstSmallSegment);
+    shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, data.secondSmallSegment);
+    digitalWrite(SETS_LATCH_PIN, HIGH);
+
     delay(700);
     blink();
     Serial.println("Display greetings end");

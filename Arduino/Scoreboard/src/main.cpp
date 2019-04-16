@@ -15,15 +15,11 @@ bool inSettingsMode;
 scoreController score;
 displayController display;
 settingsController settings;
-const int KEYVALUEPAIRLEN = 30;
+const int KEY_VALUE_PAIR_LEN = 30;
 
 void setup() {
     
-    Serial.write("Initializing…");
-    // Initializing bluetooth communication
-    bluetooth.begin(9600);    
-    bluetooth.println("Bluetooth turned on");
-    Serial.write("Bluetooth initialized");
+    Serial.println("Initializing…");    
 
     // Initializing transmitter/receiver communication
     Serial.begin(9600);
@@ -31,8 +27,13 @@ void setup() {
     vw_setup(1000);
     vw_set_rx_pin(RECEIVER_PIN);
     vw_rx_start();
-    Serial.write("VirtualWire initialized");
+    Serial.println("VirtualWire initialized");
     
+    // Initializing bluetooth communication
+    bluetooth.begin(9600);    
+    bluetooth.println("Bluetooth turned on");
+    Serial.println("Bluetooth initialized");
+
     pinMode(SCORE_LATCH_PIN, OUTPUT);
     pinMode(SCORE_CLK_PIN, OUTPUT);
     pinMode(SCORE_DATA_PIN, OUTPUT);
@@ -46,6 +47,7 @@ void setup() {
     pinMode(PLAYER_DATA_PIN, OUTPUT);
 
     display.greetings();
+    score.reset();
 }
 
 void loop() {
@@ -60,7 +62,7 @@ void loop() {
             inSettingsMode = !inSettingsMode;
             if (inSettingsMode) {
                 bluetooth.println("In settings mode");
-                Serial.write("In settings mode");
+                Serial.println("In settings mode");
                 // prints out current setting
                 settings.read();
                 return;
@@ -68,7 +70,7 @@ void loop() {
         }
         
         if (inSettingsMode) {
-            char keyValuePair [KEYVALUEPAIRLEN];
+            char keyValuePair [KEY_VALUE_PAIR_LEN];
             bool dataAvailable;
             // if required, change the settings here
             // when user wants to end the settings mode 
@@ -79,6 +81,7 @@ void loop() {
                 if (data == SETTINGS)  {
                     inSettingsMode = false;
                     bluetooth.println("Ended settings mode");
+                    Serial.println("Ended settings mode");
                     return;
                 }
                 else {
@@ -86,8 +89,8 @@ void loop() {
                     dataAvailable = true;                    
                 }
             }
-                        
-            for(size_t i = 1; i < KEYVALUEPAIRLEN; i++) // apparently not that easy to calculate size of array in C++
+
+            for(size_t i = 1; i < KEY_VALUE_PAIR_LEN; i++) // apparently not that easy to calculate size of array in C++
             {                
                 // gets the settings data
                 if (bluetooth.available() > 0) {
@@ -106,7 +109,8 @@ void loop() {
             
         }
         else {            
-            // set the variable for receiver message, max length is 78             
+            // set the variable for receiver message, max length is 78
+            Serial.println(data);
             score.updateScore(data);            
         }
         return; // if bluethoot data processed do not check other channels
@@ -124,5 +128,5 @@ void loop() {
         // I'd be probably able to construct a string but I've heard it consumes lots of memory
         score.updateScore(message[0]);
     }
-
+    delay(50);
 }
