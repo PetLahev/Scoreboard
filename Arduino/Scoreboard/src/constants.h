@@ -12,8 +12,8 @@
 /*
   Defines pins for the bluetooth communication
 */
-const uint8_t BLUE_RX = A0;
-const uint8_t BLUE_TX = A1;
+const uint8_t BLUE_RX = A1;
+const uint8_t BLUE_TX = A0;
 
 /*
   Defines pins for wireless communication (433Mhz)
