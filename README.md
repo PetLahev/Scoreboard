@@ -51,6 +51,9 @@ The code now (*April 2019*) understands certain `key=value` pairs. Listed below 
 * Points in tiebreak = `f`
 * Points difference to win a tiebreak = `w`
 * Enable displaying a player on service = `r`
+* Swap score = `$`
+* Set player on service = `p` and then number 1 - 4
+* Reset the whole game = `@`
 
 Examples of key-value setting
 
