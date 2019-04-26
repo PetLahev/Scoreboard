@@ -12,6 +12,7 @@
 #include "settingController.h"
 
 bool inSettingsMode;
+bool inPlayerSettings;
 scoreController score;
 displayController display;
 settingsController settings;
@@ -46,6 +47,7 @@ void setup() {
     pinMode(PLAYER_CLK_PIN, OUTPUT);
     pinMode(PLAYER_DATA_PIN, OUTPUT);
 
+    inPlayerSettings = false;
     display.greetings();
     score.reset();
 }
@@ -111,7 +113,35 @@ void loop() {
         else {            
             // set the variable for receiver message, max length is 78
             Serial.println(data);
-            score.updateScore(data);            
+
+            if (data == RESET_ALL) {
+                score.reset();
+                return;
+            }
+
+            if (data != SWAP_DISPLAY)  {
+             
+                if (data == SET_SERVER || inPlayerSettings) {
+                    Serial.println("in player setting IF");
+                    if (!inPlayerSettings) {
+                        // let's wait for a number that represents the player who should serve
+                        inPlayerSettings = !inPlayerSettings;
+                        Serial.println("Turning ON setting player mode");
+                    }
+                    else {
+                        score.setPlayerServe(data);
+                        // get out from the player settings mode
+                        inPlayerSettings = !inPlayerSettings;
+                        Serial.println("Turning OFF setting player mode");
+                    }
+                }
+                else {
+                    score.updateScore(data);
+                }
+            }            
+            else {
+                score.swapScore();
+            }
         }
         return; // if bluethoot data processed do not check other channels
     }    

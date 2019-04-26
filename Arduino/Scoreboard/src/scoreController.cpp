@@ -39,10 +39,7 @@ void scoreController::updateScore(uint8_t message) {
             if (score2 < 1) return;
             revertLastPointData(false); // supports just one point down
             score2 -=1;
-            break;
-        case SET_SERVER:
-            setPlayerServe();
-            break;
+            break;        
         default:
             bluetooth.println("Unknown command");
             Serial.println("Unknown command");
@@ -85,6 +82,7 @@ void scoreController::updateScore(uint8_t message) {
         delay(700);
         display.blinkScore();
         resetGame();
+        display.score(score1, score2, team1Sets, team2Sets, player);
     }    
 }
 
@@ -222,6 +220,33 @@ void scoreController::reset() {
     display.score(score1, score2, team1Sets, team2Sets, player);
 }
 
+/*
+    Swaps the score on the display
+    Team1 becomes Team2 etc.
+    Use when teams change sides after a set is finished
+*/
+void scoreController::swapScore() {
+    Serial.println("Swaping score");
+
+    uint8_t tmpScore2 = score2;
+    uint8_t tmpTeam2Sets = team2Sets;
+
+    score2 = score1;
+    team2Sets = team1Sets;
+
+    score1 = tmpScore2;
+    team1Sets = tmpTeam2Sets;
+
+    // like reset
+    whoWonLastPoint = TEAM1;
+    team1Server1 = true;
+    team2Server1 = false; // the logic in the method will change it to true
+    player = 1;
+
+    display.score(score1, score2, team1Sets, team2Sets, player);
+}
+
+
 /**
  * Manages state of the player who will serve after a point was won
  * This is most for beach volleyball where the player on service changes after a ball is lost 
@@ -277,44 +302,43 @@ void scoreController::revertLastPointData(bool team1GoingDown) {
 /**
  *  Sets the player who will serve and also sets the team who won last point
  *  to be able to determine how the server should change.
- *   Reads additional data from bluetooth
- * TODO: Not sure if this works. Test it
  **/
-void scoreController::setPlayerServe() {
-    // the flag for setting a player who should server was set, now we need to listen for the actual player
-    uint8_t data;
-    while (bluetooth.available() > 0) {
-            bluetooth.write(data);
-            Serial.write(data);
+void scoreController::setPlayerServe(uint8_t data) {
+    
+    Serial.print("Setting player on service: ");
+    Serial.println(data);
+    bool succeeded = false;
+    switch (data) {
+        case '1':
+            team1Server1 = true;
+            player = 1;
+            whoWonLastPoint = TEAM1;
+            succeeded = true;
+            break;
+        case '2':
+            team1Server1 = false;
+            player = 2;
+            whoWonLastPoint = TEAM1;
+            succeeded = true;
+            break;
+        case '3':
+            team2Server1 = true;
+            player = 3;
+            whoWonLastPoint = TEAM2;
+            succeeded = true;
+            break;
+        case '4':
+            team2Server1 = false;
+            player = 4;
+            whoWonLastPoint = TEAM2;
+            succeeded = true;
+            break;
+        default:
+            bluetooth.write("Unknown player");
+            Serial.write("Unknown player");
+    }    
 
-            switch (data) {
-                case '1':
-                    team1Server1 = true;
-                    player = 1;
-                    whoWonLastPoint = TEAM1;
-                    break;
-                case '2':
-                    team1Server1 = false;
-                    player = 2;
-                    whoWonLastPoint = TEAM1;
-                    break;
-                case '3':
-                    team2Server1 = true;
-                    player = 3;
-                    whoWonLastPoint = TEAM2;
-                    break;
-                case '4':
-                    team2Server1 = false;
-                    player = 4;
-                    whoWonLastPoint = TEAM2;
-                    break;
-                default:
-                    bluetooth.write("Unknown player");
-                    Serial.write("Unknown player");
-            }
-          delay(10);
-          data = bluetooth.read();
-    }
+    if (succeeded) display.score(score1, score2, team1Sets, team2Sets, player);
 }
 
 /**

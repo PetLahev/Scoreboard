@@ -19,8 +19,8 @@ scoreController();
 void updateScore(uint8_t message);
 
 /*
-    Swaps the score on the display but keeps the data untouched
-    So Team1 is still Team1 etc.
+    Swaps the score on the display
+    Team1 becomes Team2
 */
 void swapScore();
 
@@ -28,6 +28,12 @@ void swapScore();
     Resets all internal variables (starts the game from begining)
 **/
 void reset();
+
+/**
+ *  Sets a player who will be on service
+ *  @params data - expected a number from 1 - 4 that will set the player on service
+ **/ 
+void setPlayerServe(uint8_t data);
 
 private:
 
@@ -46,8 +52,7 @@ private:
   void team1WonSet(uint8_t& result);
   void team1WonMatch(uint8_t& result);
   void manageWhoServe(bool team1GoingUp);
-  void revertLastPointData(bool team1GoingDown);
-  void setPlayerServe();
+  void revertLastPointData(bool team1GoingDown);  
   void resetGame();
   void logGameResult();
 };
