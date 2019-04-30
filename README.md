@@ -1,4 +1,4 @@
-# Scoreboard ![Build status](https://travis-ci.org/PetLahev/Scoreboard.svg?branch=master)
+# Scoreboard [![Build Status](https://travis-ci.org/PetLahev/Scoreboard.svg?branch=master)](https://travis-ci.org/PetLahev/Scoreboard)
 Scoreboard created with [LED strips](https://www.amazon.com/FAVOLCANO-Waterproof-Feet%EF%BC%885M%EF%BC%89-Flexible-Lighting/dp/B012FFZP70/ref=sr_1_28_sspa?keywords=LED+Strips+red&qid=1554275786&s=gateway&sr=8-28-spons&psc=1), ~~[Arduino Nano](https://www.amazon.com/Arduino-A000005-ARDUINO-Nano/dp/B0097AU5OU/ref=sr_1_15?keywords=Arduino+Nano&qid=1554232867&s=gateway&sr=8-15)~~ [Arduino Uno](https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/ref=sr_1_3?keywords=arduino+UNO&qid=1555441457&s=gateway&sr=8-3) and some manual work. Handy for volleyball, table tennis, badminton, football etc.
 
 ### Why Arduino UNO
