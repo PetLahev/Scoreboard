@@ -29,16 +29,16 @@ cache:
         - "~/.platformio"
 
 env:
-    - PLATFORMIO_CI_SRC=src/main.cpp
-    - PLATFORMIO_CI_SRC=src/globals.cpp
-    - PLATFORMIO_CI_SRC=src/globals.h    
-    - PLATFORMIO_CI_SRC=src/constants.h
-    - PLATFORMIO_CI_SRC=src/settimgsController.cpp
-    - PLATFORMIO_CI_SRC=src/settimgsController.h
-    - PLATFORMIO_CI_SRC=src/settimgsController.cpp
-    - PLATFORMIO_CI_SRC=src/settimgsController.h
-    - PLATFORMIO_CI_SRC=src/displayController.cpp
-    - PLATFORMIO_CI_SRC=src/displayController.h
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/main.cpp
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/globals.cpp
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/globals.h
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/constants.h
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/settimgsController.cpp
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/settimgsController.h
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/settimgsController.cpp
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/settimgsController.h
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/displayController.cpp
+    - PLATFORMIO_CI_SRC=Arduino/Scoreboard/src/displayController.h
 
 install:
     - pip install -U platformio
