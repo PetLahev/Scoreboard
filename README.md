@@ -23,10 +23,11 @@ Thus after I built everything and was in the testing phase I found out that blue
     * [The display board](https://www.tinkercad.com/things/9Don7XhJEvx) - just for measuring purpose
 
 ## Setting the Serial Bluetooth Terminal
-Go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
+Just one device can be connected to the module at time!
+Make sure you pair the bluetooth module with your smart phone, add it under the `Devices` tab and then go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
 
 ## Settings
-You can setup your own game either in code - [globals.cpp](/Arduino/Scoreboard/src/globals.cpp) - or at runtime when sending the SETTING character via the Serial Bluetooth Terminal. The SETTING character is = `!` (*exclamation mark*). This behaves as a toggle switch so when send first time `!` the scoreboard will switch to 'setting mode' and will accept certain settings, when sending second time `!` it will ends the 'setting mode' and will be ready for a game!
+You can setup your own game either in code - [globals.cpp](/Arduino/Scoreboard/src/globals.cpp) - or at runtime when sending the SETTING character via the Serial Bluetooth Terminal. The SETTING character is = `!` (*exclamation mark*). This behaves as a toggle switch so when send first time `!` the scoreboard will switch to 'setting mode' and will accept certain settings, when sending second time `!` it will end the 'setting mode' and will be ready for a game!
 
 You can setup
 * Number of sets (up to 9)
