@@ -71,6 +71,10 @@ void scoreController::updateScore(uint8_t message) {
     hasMatchFinished(matchDone);    
     if(matchDone) {
         Serial.println("Match has finished");
+        bluetooth.print("Match has finished ");
+        bluetooth.print(team1Sets);
+        bluetooth.print(":");
+        bluetooth.println(team2Sets);
         // if match is finished, just blink the whole display and write down the result
         delay(700);
         display.blink();
@@ -79,6 +83,10 @@ void scoreController::updateScore(uint8_t message) {
     else if(setDone) {
         // if a set is finished, blink with the whole display, write down the result and resets score
         Serial.println("Set has finished - blinking display and reseting score");
+        bluetooth.print("Set has finished ");
+        bluetooth.print(team1Sets);
+        bluetooth.print(":");
+        bluetooth.println(team2Sets);
         delay(700);
         display.blinkScore();
         resetGame();
