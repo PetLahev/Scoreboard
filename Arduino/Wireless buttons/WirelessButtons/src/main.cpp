@@ -21,10 +21,13 @@
 #define BTN_GAME_4 A3
 #define COMMUNICATION_PIN 12
 
+bool homePlayer = true;
+bool awayPlayer = true;
+
 // Instance of the button.
 EasyButton btnHomeUp(BTN_HOME_UP);
 EasyButton btnHomeDown(BTN_HOME_DOWN);
-EasyButton btnAwayUp(BTN_AWAY_UP);
+EasyButton btnAwayUp(BTN_AWAY_UP);  
 EasyButton btnAwayDown(BTN_AWAY_DOWN);
 EasyButton btnHomePlayer(BTN_HOME_PLAYER);
 EasyButton btnAwayPlayer(BTN_AWAY_PLAYER);
@@ -35,12 +38,12 @@ EasyButton btnGame3(BTN_GAME_3);
 EasyButton btnGame4(BTN_GAME_4);
 
 void sendMessage(char* message) {
-  
-  digitalWrite(13, true);  
+  Serial.println("Sending message");
+  digitalWrite(13, HIGH);  
   vw_send((uint8_t *)message, strlen(message));  
   vw_wait_tx();  
-  digitalWrite(13, false);  
   delay(1000);
+  digitalWrite(13, LOW);
 }
 
 // Callback functions 
@@ -66,14 +69,35 @@ void onAwayDownPressed() {
 
 void onHomePlayerPressed() {	
   Serial.println("Home player pressed");
+  sendMessage("p");
+  if (homePlayer) {
+    sendMessage("1");
+    homePlayer = false;
+  }
+  else {
+    sendMessage("2");
+    homePlayer = true;
+  }
 }
 
 void onAwayPlayerPressed() {	
   Serial.println("Away player pressed");
+  sendMessage("p");
+  if (awayPlayer) {
+    sendMessage("3");
+    awayPlayer = false;
+  }
+  else {
+    sendMessage("4");
+    awayPlayer = true;
+  }
 }
 
 void onGame1Pressed() {	
   Serial.println("Game 1 pressed");
+  sendMessage("!");
+  
+  sendMessage("!");
 }
 
 void onGame2Pressed() {	
@@ -130,6 +154,7 @@ void setup() {
   btnGame4.onPressed(onGame4Pressed);
   btnReset.onPressedFor(5000, onResetPressed);
 
+  pinMode(13, OUTPUT);  
   Serial.println("Buttons initialized");
 }
 
