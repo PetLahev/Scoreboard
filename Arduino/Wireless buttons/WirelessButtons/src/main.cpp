@@ -8,18 +8,13 @@
 #include <EasyButton.h>
 #include <VirtualWire.h> 
 
-#define BTN_HOME_UP 2
-#define BTN_HOME_DOWN 3
-#define BTN_AWAY_UP 4
-#define BTN_AWAY_DOWN 5
-#define BTN_HOME_PLAYER 6
-#define BTN_AWAY_PLAYER 7
-#define BTN_RESET_ALL 8
-#define BTN_GAME_1 A0
-#define BTN_GAME_2 A1
-#define BTN_GAME_3 A2
-#define BTN_GAME_4 A3
-#define COMMUNICATION_PIN 12
+#define BTN_HOME_UP A2
+#define BTN_HOME_DOWN A3
+#define BTN_AWAY_UP A0
+#define BTN_AWAY_DOWN A1
+#define BTN_SWAP A4
+#define BTN_RESET_ALL A5
+#define COMMUNICATION_PIN 3
 
 bool homePlayer = true;
 bool awayPlayer = true;
@@ -29,13 +24,9 @@ EasyButton btnHomeUp(BTN_HOME_UP);
 EasyButton btnHomeDown(BTN_HOME_DOWN);
 EasyButton btnAwayUp(BTN_AWAY_UP);  
 EasyButton btnAwayDown(BTN_AWAY_DOWN);
-EasyButton btnHomePlayer(BTN_HOME_PLAYER);
-EasyButton btnAwayPlayer(BTN_AWAY_PLAYER);
+EasyButton btnSwapScore(BTN_SWAP);
 EasyButton btnReset(BTN_RESET_ALL);
-EasyButton btnGame1(BTN_GAME_1);
-EasyButton btnGame2(BTN_GAME_2);
-EasyButton btnGame3(BTN_GAME_3);
-EasyButton btnGame4(BTN_GAME_4);
+
 
 void sendMessage(char* message) {
   Serial.println("Sending message");
@@ -67,49 +58,9 @@ void onAwayDownPressed() {
   sendMessage("m");
 }
 
-void onHomePlayerPressed() {	
-  Serial.println("Home player pressed");
-  sendMessage("p");
-  if (homePlayer) {
-    sendMessage("1");
-    homePlayer = false;
-  }
-  else {
-    sendMessage("2");
-    homePlayer = true;
-  }
-}
-
-void onAwayPlayerPressed() {	
-  Serial.println("Away player pressed");
-  sendMessage("p");
-  if (awayPlayer) {
-    sendMessage("3");
-    awayPlayer = false;
-  }
-  else {
-    sendMessage("4");
-    awayPlayer = true;
-  }
-}
-
-void onGame1Pressed() {	
-  Serial.println("Game 1 pressed");
-  sendMessage("!");
-  
-  sendMessage("!");
-}
-
-void onGame2Pressed() {	
-  Serial.println("Game 2 pressed");
-}
-
-void onGame3Pressed() {	
-  Serial.println("Game 3 pressed");
-}
-
-void onGame4Pressed() {	
-  Serial.println("Game 4 pressed");
+void onSwapScorePressed() {	
+  Serial.println("Swap score pressed");
+  sendMessage("$");  
 }
 
 void onResetPressed() {	
@@ -134,25 +85,16 @@ void setup() {
   btnHomeDown.begin();
   btnAwayUp.begin();
   btnAwayDown.begin();
-  btnHomePlayer.begin();
-  btnAwayPlayer.begin();
-  btnReset.begin();
-  btnGame1.begin();
-  btnGame2.begin();
-  btnGame3.begin();
-  btnGame4.begin();
+  btnSwapScore.begin();  
+  btnReset.begin();  
 
   btnHomeUp.onPressed(onHomeUpPressed);
   btnHomeDown.onPressed(onHomeDownPressed);
   btnAwayUp.onPressed(onAwayUpPressed);
   btnAwayDown.onPressed(onAwayDownPressed);
-  btnHomePlayer.onPressed(onHomePlayerPressed);
-  btnAwayPlayer.onPressed(onAwayPlayerPressed);  
-  btnGame1.onPressed(onGame1Pressed);
-  btnGame2.onPressed(onGame2Pressed);
-  btnGame3.onPressed(onGame3Pressed);
-  btnGame4.onPressed(onGame4Pressed);
-  btnReset.onPressedFor(5000, onResetPressed);
+  btnSwapScore.onPressed(onSwapScorePressed);  
+  btnReset.onPressedFor(2000, onResetPressed);
+  
 
   pinMode(13, OUTPUT);  
   Serial.println("Buttons initialized");
@@ -162,12 +104,7 @@ void loop() {
   btnHomeUp.read();
   btnHomeDown.read();
   btnAwayUp.read();
-  btnAwayDown.read();
-  btnHomePlayer.read();
-  btnAwayPlayer.read();
-  btnReset.read();
-  btnGame1.read();
-  btnGame2.read();
-  btnGame3.read();
-  btnGame4.read();
+  btnAwayDown.read();  
+  btnSwapScore.read();
+  btnReset.read();  
 }
