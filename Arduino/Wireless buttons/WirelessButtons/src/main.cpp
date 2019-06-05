@@ -14,7 +14,13 @@
 #define BTN_AWAY_DOWN A1
 #define BTN_SWAP A4
 #define BTN_RESET_ALL A5
+#define BTN_POWER 8
 #define COMMUNICATION_PIN 3
+#define BUZZER_PIN 12
+#define POWER_LATCH_PIN 7
+
+unsigned long lastActionMillis;
+const unsigned long inactivityPeriod = 1000 * 60 * 10 ;  //the value is a number of milliseconds here 10 minutes
 
 bool homePlayer = true;
 bool awayPlayer = true;
@@ -26,15 +32,19 @@ EasyButton btnAwayUp(BTN_AWAY_UP);
 EasyButton btnAwayDown(BTN_AWAY_DOWN);
 EasyButton btnSwapScore(BTN_SWAP);
 EasyButton btnReset(BTN_RESET_ALL);
-
+EasyButton btnPower(BTN_POWER);
 
 void sendMessage(char* message) {
+  // to reset the last action counter for self shutdown
+  lastActionMillis = millis();
   Serial.println("Sending message");
   digitalWrite(13, HIGH);  
   vw_send((uint8_t *)message, strlen(message));  
-  vw_wait_tx();  
+  vw_wait_tx();
+  tone(BUZZER_PIN, 800);
   delay(1000);
   digitalWrite(13, LOW);
+  noTone(BUZZER_PIN);
 }
 
 // Callback functions 
@@ -64,11 +74,38 @@ void onSwapScorePressed() {
 }
 
 void onResetPressed() {	
+  if (millis() < 1000) {
+    Serial.println("Reset was cancelled due to initialization code");
+    return;
+  }
   Serial.println("Reset pressed");
   sendMessage("@");
 }
 
+void onPowerPressed() {
+  Serial.println("Power button pressed");
+  tone(BUZZER_PIN, 1600);
+  delay(400);
+  noTone(BUZZER_PIN);
+  delay(400);
+  tone(BUZZER_PIN, 1000);
+  delay(400);
+  noTone(BUZZER_PIN);
+  delay(400);
+  tone(BUZZER_PIN, 700);
+  delay(400);
+  noTone(BUZZER_PIN);
+  // this will shut down the power
+  digitalWrite(POWER_LATCH_PIN, LOW);
+}
+
 void setup() {  
+  
+  pinMode(POWER_LATCH_PIN, OUTPUT); 
+  
+  // Keeps the circuit on
+  digitalWrite(POWER_LATCH_PIN, HIGH);
+
 
   Serial.begin(9600);
   Serial.println("Initializing");
@@ -87,6 +124,7 @@ void setup() {
   btnAwayDown.begin();
   btnSwapScore.begin();  
   btnReset.begin();  
+  btnPower.begin();
 
   btnHomeUp.onPressed(onHomeUpPressed);
   btnHomeDown.onPressed(onHomeDownPressed);
@@ -94,7 +132,7 @@ void setup() {
   btnAwayDown.onPressed(onAwayDownPressed);
   btnSwapScore.onPressed(onSwapScorePressed);  
   btnReset.onPressedFor(2000, onResetPressed);
-  
+  btnPower.onPressed(onPowerPressed);
 
   pinMode(13, OUTPUT);  
   Serial.println("Buttons initialized");
@@ -106,5 +144,13 @@ void loop() {
   btnAwayUp.read();
   btnAwayDown.read();  
   btnSwapScore.read();
-  btnReset.read();  
+  btnReset.read();
+  btnPower.read();
+  delay(50);
+
+  // cut off the power if there was no activity for some time
+  if (millis() - lastActionMillis >= inactivityPeriod) {
+    onPowerPressed();
+  }  
+
 }
