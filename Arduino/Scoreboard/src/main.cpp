@@ -151,11 +151,25 @@ void loop() {
     uint8_t message[VW_MAX_MESSAGE_LEN];
     uint8_t messageLen = 1;
     if (vw_get_message(message, &messageLen)) {
-        Serial.write("433Mhz channel");
+
         // little hack here
         // we do not expect to get any more chars than exact one (not planning use it for settings) 
         // given the hardware implementation (just 4 buttons for updating score)
         // I'd be probably able to construct a string but I've heard it consumes lots of memory
+        data = message[0];
+
+        Serial.print("433Mhz channel - message: ");
+        Serial.println((char)data);
+
+        if (data == RESET_ALL) {
+            score.reset();
+            return;
+        }
+
+        if (data == SWAP_DISPLAY) {
+            score.swapScore();
+            return;
+        }        
         score.updateScore(message[0]);
     }
     delay(50);
