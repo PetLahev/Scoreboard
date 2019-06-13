@@ -20,7 +20,7 @@
 #define POWER_LATCH_PIN 7
 
 unsigned long lastActionMillis;
-const unsigned long inactivityPeriod = 1000 * 60 * 10 ;  //the value is a number of milliseconds here 10 minutes
+const unsigned long inactivityPeriod = 60000 * 10; //the value is a number of milliseconds here 10 minutes
 
 bool homePlayer = true;
 bool awayPlayer = true;
@@ -74,7 +74,7 @@ void onSwapScorePressed() {
 }
 
 void onResetPressed() {	
-  if (millis() < 1000) {
+  if (millis() < 3000) {
     Serial.println("Reset was cancelled due to initialization code");
     return;
   }
@@ -84,16 +84,16 @@ void onResetPressed() {
 
 void onPowerPressed() {
   Serial.println("Power button pressed");
-  tone(BUZZER_PIN, 1600);
+  tone(BUZZER_PIN, 1300);
   delay(400);
   noTone(BUZZER_PIN);
   delay(400);
-  tone(BUZZER_PIN, 1000);
+  tone(BUZZER_PIN, 1300);
   delay(400);
   noTone(BUZZER_PIN);
   delay(400);
-  tone(BUZZER_PIN, 700);
-  delay(400);
+  tone(BUZZER_PIN, 1500);
+  delay(600);
   noTone(BUZZER_PIN);
   // this will shut down the power
   digitalWrite(POWER_LATCH_PIN, LOW);
@@ -135,6 +135,10 @@ void setup() {
   btnPower.onPressed(onPowerPressed);
 
   pinMode(13, OUTPUT);  
+  tone(BUZZER_PIN, 1300);
+  delay(600);
+  noTone(BUZZER_PIN);
+
   Serial.println("Buttons initialized");
 }
 
@@ -149,8 +153,8 @@ void loop() {
   delay(50);
 
   // cut off the power if there was no activity for some time
-  if (millis() - lastActionMillis >= inactivityPeriod) {
-    onPowerPressed();
+  if ((millis() - lastActionMillis) >= inactivityPeriod) {
+     onPowerPressed();
   }  
 
 }
