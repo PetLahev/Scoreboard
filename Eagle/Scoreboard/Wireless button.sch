@@ -4752,24 +4752,25 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 &lt;/ul&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="F/CM12P" urn="urn:adsk.eagle:footprint:5223/1" library_version="1">
+<package name="F/EE17P" urn="urn:adsk.eagle:footprint:5247/1" library_version="1">
 <description>&lt;b&gt;BUZZER&lt;/b&gt;</description>
-<wire x1="3.175" y1="3.048" x2="4.445" y2="3.048" width="0.254" layer="21"/>
-<wire x1="3.81" y1="3.683" x2="3.81" y2="2.413" width="0.254" layer="21"/>
-<circle x="0" y="0" radius="6.985" width="0.1524" layer="21"/>
-<circle x="0" y="0" radius="1.27" width="0.1524" layer="21"/>
-<circle x="3.81" y="3.048" radius="1.27" width="0.1524" layer="21"/>
-<pad name="-" x="-3.81" y="0" drill="1.016" diameter="2.54" shape="octagon"/>
-<pad name="+" x="3.81" y="0" drill="1.016" diameter="2.54" shape="octagon"/>
-<text x="2.54" y="6.985" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-4.445" y="-3.81" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<wire x1="9.525" y1="1.016" x2="9.525" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="8.448" y1="1.016" x2="9.525" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="8.448" y1="-1.016" x2="9.525" y2="-1.016" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="8.509" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="2.54" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="7.239" width="0.1524" layer="21"/>
+<pad name="1" x="-5.0038" y="0" drill="1.1938" diameter="2.54" shape="octagon"/>
+<pad name="2" x="5.0038" y="0" drill="1.1938" diameter="2.54" shape="octagon"/>
+<text x="4.445" y="7.62" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-5.08" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 </package>
 </packages>
 <packages3d>
-<package3d name="F/CM12P" urn="urn:adsk.eagle:package:5265/1" type="box" library_version="1">
+<package3d name="F/EE17P" urn="urn:adsk.eagle:package:5285/1" type="box" library_version="1">
 <description>BUZZER</description>
 <packageinstances>
-<packageinstance name="F/CM12P"/>
+<packageinstance name="F/EE17P"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -4805,19 +4806,19 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="F/CM12P" urn="urn:adsk.eagle:component:5310/1" prefix="SG" library_version="1">
+<deviceset name="F/EE17P" urn="urn:adsk.eagle:component:5328/1" prefix="SG" library_version="1">
 <description>&lt;b&gt;BUZZER&lt;/b&gt;&lt;p&gt; Source: Buerklin</description>
 <gates>
 <gate name="G$1" symbol="B2P" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="F/CM12P">
+<device name="" package="F/EE17P">
 <connects>
-<connect gate="G$1" pin="1" pad="+"/>
-<connect gate="G$1" pin="2" pad="-"/>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:5265/1"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:5285/1"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -5425,10 +5426,9 @@ high speed (Philips)</description>
 <part name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="100k"/>
 <part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="100k"/>
 <part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="220"/>
-<part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
-<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
-<part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
-<part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/CM12P" device="" package3d_urn="urn:adsk.eagle:package:5265/1"/>
+<part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
+<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
+<part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
 <part name="POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
 <part name="POW_BTN" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
 <part name="BTN_1" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
@@ -5442,9 +5442,9 @@ high speed (Philips)</description>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
-<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
-<part name="R11" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1"/>
+<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
+<part name="R10" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
+<part name="R11" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
 <part name="R12" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="100"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -5452,11 +5452,12 @@ high speed (Philips)</description>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="X1" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/3" device="" package3d_urn="urn:adsk.eagle:package:9883/1"/>
 <part name="X2" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
-<part name="X3" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
-<part name="X4" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/2" device="" package3d_urn="urn:adsk.eagle:package:9880/1"/>
 <part name="R13" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="10k"/>
 <part name="R14" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0207/7" package3d_urn="urn:adsk.eagle:package:25942/1" value="6k8"/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="SG1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="F/EE17P" device="" package3d_urn="urn:adsk.eagle:package:5285/1"/>
+<part name="X5" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/3" device="" package3d_urn="urn:adsk.eagle:package:9883/1"/>
+<part name="5V" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK500/3" device="" package3d_urn="urn:adsk.eagle:package:9883/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -5473,19 +5474,16 @@ high speed (Philips)</description>
 <instance part="R4" gate="G$1" x="17.78" y="76.2" rot="R180"/>
 <instance part="R5" gate="G$1" x="27.94" y="60.96"/>
 <instance part="R6" gate="G$1" x="111.76" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="111.5314" y="37.084" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="115.062" y="39.37" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="110.0074" y="37.084" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="109.728" y="42.672" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R7" gate="G$1" x="116.84" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="116.3574" y="37.084" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="120.142" y="39.37" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="115.5954" y="37.084" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="115.316" y="42.672" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R8" gate="G$1" x="121.92" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="121.1834" y="37.084" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="125.222" y="39.37" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="SG1" gate="G$1" x="83.82" y="27.94" smashed="yes" rot="R180">
-<attribute name="NAME" x="74.676" y="28.956" size="1.778" layer="95" rot="R270"/>
+<attribute name="NAME" x="120.4214" y="37.338" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="120.142" y="42.418" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="POWER" gate="-1" x="-20.32" y="83.82"/>
 <instance part="POWER" gate="-2" x="-20.32" y="78.74"/>
@@ -5516,16 +5514,16 @@ high speed (Philips)</description>
 <instance part="GND3" gate="1" x="-7.62" y="2.54"/>
 <instance part="GND4" gate="1" x="22.86" y="2.54"/>
 <instance part="R9" gate="G$1" x="127" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="126.2634" y="37.084" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="130.302" y="39.37" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="125.2474" y="37.084" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="125.222" y="42.418" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R10" gate="G$1" x="132.08" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="131.5974" y="35.814" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="135.382" y="39.37" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="130.5814" y="36.83" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="130.302" y="42.418" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R11" gate="G$1" x="137.16" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="136.6774" y="35.814" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="140.462" y="39.37" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="135.4074" y="36.83" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="135.382" y="42.672" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R12" gate="G$1" x="96.52" y="30.48" smashed="yes">
 <attribute name="NAME" x="89.154" y="32.2326" size="1.778" layer="95"/>
@@ -5542,16 +5540,19 @@ high speed (Philips)</description>
 <instance part="X1" gate="-3" x="-20.32" y="35.56"/>
 <instance part="X2" gate="-1" x="-20.32" y="30.48"/>
 <instance part="X2" gate="-2" x="-20.32" y="25.4"/>
-<instance part="X3" gate="-1" x="-20.32" y="20.32"/>
-<instance part="X3" gate="-2" x="-20.32" y="15.24"/>
-<instance part="X4" gate="-1" x="-20.32" y="10.16"/>
-<instance part="X4" gate="-2" x="-20.32" y="5.08"/>
 <instance part="R13" gate="G$1" x="2.54" y="63.5" smashed="yes">
 <attribute name="NAME" x="-1.27" y="64.9986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="3.81" y="65.278" size="1.778" layer="96"/>
 </instance>
 <instance part="R14" gate="G$1" x="35.56" y="53.34" rot="R90"/>
 <instance part="GND8" gate="1" x="35.56" y="2.54"/>
+<instance part="SG1" gate="G$1" x="83.82" y="27.94" rot="R180"/>
+<instance part="X5" gate="-1" x="-20.32" y="20.32"/>
+<instance part="X5" gate="-2" x="-20.32" y="15.24"/>
+<instance part="X5" gate="-3" x="-20.32" y="10.16"/>
+<instance part="5V" gate="-1" x="144.78" y="81.28" rot="R180"/>
+<instance part="5V" gate="-2" x="144.78" y="86.36" rot="R180"/>
+<instance part="5V" gate="-3" x="144.78" y="91.44" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -5581,9 +5582,10 @@ high speed (Philips)</description>
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="GND@2"/>
 <wire x1="101.6" y1="73.66" x2="106.68" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="73.66" x2="106.68" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="73.66" x2="106.68" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="GND6" gate="1" pin="GND"/>
 <pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="106.68" y1="27.94" x2="106.68" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="20.32" x2="106.68" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="38.1" x2="137.16" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="20.32" x2="132.08" y2="20.32" width="0.1524" layer="91"/>
@@ -5619,7 +5621,7 @@ high speed (Philips)</description>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="73.66" y1="5.08" x2="73.66" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="SG1" gate="G$1" pin="2"/>
-<wire x1="73.66" y1="30.48" x2="78.74" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="30.48" x2="73.66" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R14" gate="G$1" pin="1"/>
@@ -5703,32 +5705,9 @@ high speed (Philips)</description>
 <wire x1="109.22" y1="83.82" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="VIN"/>
 <wire x1="109.22" y1="76.2" x2="101.6" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="433MHZ" gate="-3" pin="KL"/>
-<wire x1="142.24" y1="27.94" x2="109.22" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="109.22" y1="27.94" x2="109.22" y2="76.2" width="0.1524" layer="91"/>
-<junction x="109.22" y="76.2"/>
 </segment>
 </net>
-<net name="433_IN" class="0">
-<segment>
-<wire x1="58.42" y1="25.4" x2="58.42" y2="38.1" width="0.1524" layer="91"/>
-<pinref part="433MHZ" gate="-1" pin="KL"/>
-<wire x1="58.42" y1="38.1" x2="58.42" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="142.24" y1="17.78" x2="58.42" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="17.78" x2="58.42" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO1" gate="G$1" pin="D2/INT0"/>
-<wire x1="60.96" y1="66.04" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="66.04" x2="58.42" y2="38.1" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$9" class="0">
-<segment>
-<pinref part="SG1" gate="G$1" pin="1"/>
-<pinref part="R12" gate="G$1" pin="1"/>
-<wire x1="86.36" y1="30.48" x2="91.44" y2="30.48" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$10" class="0">
+<net name="AWAY_UP" class="0">
 <segment>
 <pinref part="R11" gate="G$1" pin="2"/>
 <pinref part="BTN_1" gate="-1" pin="KL"/>
@@ -5739,7 +5718,7 @@ high speed (Philips)</description>
 <junction x="137.16" y="48.26"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="AWAY_DOWN" class="0">
 <segment>
 <pinref part="R10" gate="G$1" pin="2"/>
 <pinref part="BTN_1" gate="-2" pin="KL"/>
@@ -5751,7 +5730,7 @@ high speed (Philips)</description>
 <junction x="132.08" y="50.8"/>
 </segment>
 </net>
-<net name="N$12" class="0">
+<net name="HOME_UP" class="0">
 <segment>
 <pinref part="R9" gate="G$1" pin="2"/>
 <pinref part="BTN_2" gate="-1" pin="KL"/>
@@ -5763,7 +5742,7 @@ high speed (Philips)</description>
 <junction x="127" y="53.34"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="HOME_DOWN" class="0">
 <segment>
 <pinref part="R8" gate="G$1" pin="2"/>
 <pinref part="BTN_2" gate="-2" pin="KL"/>
@@ -5775,7 +5754,7 @@ high speed (Philips)</description>
 <junction x="121.92" y="55.88"/>
 </segment>
 </net>
-<net name="N$14" class="0">
+<net name="SWAP" class="0">
 <segment>
 <pinref part="R7" gate="G$1" pin="2"/>
 <pinref part="BTN_3" gate="-1" pin="KL"/>
@@ -5787,7 +5766,7 @@ high speed (Philips)</description>
 <junction x="116.84" y="58.42"/>
 </segment>
 </net>
-<net name="N$16" class="0">
+<net name="RESET" class="0">
 <segment>
 <pinref part="R6" gate="G$1" pin="2"/>
 <pinref part="BTN_3" gate="-2" pin="KL"/>
@@ -5862,7 +5841,7 @@ high speed (Philips)</description>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="D10/OC1B/!SS"/>
 <wire x1="49.53" y1="45.466" x2="49.53" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="49.53" y1="45.72" x2="60.96" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="X3" gate="-1" pin="KL"/>
+<pinref part="X5" gate="-1" pin="KL"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -5871,7 +5850,7 @@ high speed (Philips)</description>
 <wire x1="50.8" y1="15.24" x2="50.8" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="D11/MOSI"/>
 <wire x1="50.8" y1="43.18" x2="60.96" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="X3" gate="-2" pin="KL"/>
+<pinref part="X5" gate="-2" pin="KL"/>
 </segment>
 </net>
 <net name="N$20" class="0">
@@ -5880,16 +5859,25 @@ high speed (Philips)</description>
 <wire x1="60.96" y1="40.64" x2="53.34" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="40.64" x2="53.34" y2="10.16" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="10.16" x2="-15.24" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="X4" gate="-1" pin="KL"/>
+<pinref part="X5" gate="-3" pin="KL"/>
 </segment>
 </net>
 <net name="5V" class="0">
 <segment>
-<pinref part="X4" gate="-2" pin="KL"/>
-<wire x1="-15.24" y1="5.08" x2="104.14" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="5.08" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="68.58" x2="104.14" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="86.36" x2="139.7" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="86.36" x2="139.7" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="5V"/>
-<wire x1="104.14" y1="68.58" x2="101.6" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="68.58" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="5V" gate="-1" pin="KL"/>
+<pinref part="5V" gate="-2" pin="KL"/>
+<junction x="139.7" y="86.36"/>
+<pinref part="5V" gate="-3" pin="KL"/>
+<wire x1="139.7" y1="91.44" x2="139.7" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="68.58" x2="104.14" y2="27.94" width="0.1524" layer="91"/>
+<junction x="104.14" y="68.58"/>
+<pinref part="433MHZ" gate="-3" pin="KL"/>
+<wire x1="104.14" y1="27.94" x2="142.24" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -5912,9 +5900,30 @@ high speed (Philips)</description>
 <junction x="35.56" y="63.5"/>
 </segment>
 </net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="SG1" gate="G$1" pin="1"/>
+<wire x1="91.44" y1="30.48" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="ARDUINO_NANO1" gate="G$1" pin="D2/INT0"/>
+<wire x1="60.96" y1="66.04" x2="58.42" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="66.04" x2="58.42" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="433MHZ" gate="-1" pin="KL"/>
+<wire x1="58.42" y1="17.78" x2="142.24" y2="17.78" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="202,1,60.96,71.12,ARDUINO_NANO1,!RESET,,,,"/>
+<approved hash="202,1,101.6,45.72,ARDUINO_NANO1,AREF,,,,"/>
+<approved hash="202,1,101.6,71.12,ARDUINO_NANO1,!RESET,,,,"/>
+</errors>
 </schematic>
 </drawing>
 <compatibility>
