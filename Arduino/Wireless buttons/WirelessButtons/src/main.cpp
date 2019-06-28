@@ -14,13 +14,14 @@
 #define BTN_AWAY_DOWN A1
 #define BTN_SWAP A4
 #define BTN_RESET_ALL A5
-#define BTN_POWER 8
-#define COMMUNICATION_PIN 3
-#define BUZZER_PIN 12
-#define POWER_LATCH_PIN 7
+#define BTN_POWER_OFF 3
+#define COMMUNICATION_PIN 2
+#define BUZZER_PIN 13
+#define POWER_LATCH_PIN 4
+
 
 unsigned long lastActionMillis;
-const unsigned long inactivityPeriod = 60000 * 10; //the value is a number of milliseconds here 10 minutes
+const unsigned long inactivityPeriod = 60000; //the value is a number of milliseconds here 10 minutes
 
 bool homePlayer = true;
 bool awayPlayer = true;
@@ -32,7 +33,7 @@ EasyButton btnAwayUp(BTN_AWAY_UP);
 EasyButton btnAwayDown(BTN_AWAY_DOWN);
 EasyButton btnSwapScore(BTN_SWAP);
 EasyButton btnReset(BTN_RESET_ALL);
-EasyButton btnPower(BTN_POWER);
+EasyButton btnPowerOff(BTN_POWER_OFF);
 
 void sendMessage(char* message) {
   // to reset the last action counter for self shutdown
@@ -99,13 +100,20 @@ void onPowerPressed() {
   digitalWrite(POWER_LATCH_PIN, LOW);
 }
 
+void onPowerOffPressed() {
+  Serial.println("Power OFF button pressed");
+  tone(BUZZER_PIN, 3500);
+  delay(600);
+  noTone(BUZZER_PIN);
+}
+
 void setup() {  
   
-  pinMode(POWER_LATCH_PIN, OUTPUT); 
+  pinMode(POWER_LATCH_PIN, OUTPUT);
+  pinMode(BTN_POWER_OFF, INPUT);
   
   // Keeps the circuit on
   digitalWrite(POWER_LATCH_PIN, HIGH);
-
 
   Serial.begin(9600);
   Serial.println("Initializing");
@@ -123,16 +131,16 @@ void setup() {
   btnAwayUp.begin();
   btnAwayDown.begin();
   btnSwapScore.begin();  
-  btnReset.begin();  
-  btnPower.begin();
+  btnReset.begin();
+  btnPowerOff.begin();
 
   btnHomeUp.onPressed(onHomeUpPressed);
   btnHomeDown.onPressed(onHomeDownPressed);
   btnAwayUp.onPressed(onAwayUpPressed);
   btnAwayDown.onPressed(onAwayDownPressed);
   btnSwapScore.onPressed(onSwapScorePressed);  
-  btnReset.onPressedFor(2000, onResetPressed);
-  btnPower.onPressed(onPowerPressed);
+  btnReset.onPressedFor(2000, onResetPressed);  
+  btnPowerOff.onPressed(onPowerPressed);
 
   pinMode(13, OUTPUT);  
   tone(BUZZER_PIN, 1300);
@@ -148,8 +156,8 @@ void loop() {
   btnAwayUp.read();
   btnAwayDown.read();  
   btnSwapScore.read();
-  btnReset.read();
-  btnPower.read();
+  btnReset.read();  
+  btnPowerOff.read();
   delay(50);
 
   // cut off the power if there was no activity for some time
