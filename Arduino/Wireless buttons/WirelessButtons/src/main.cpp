@@ -21,7 +21,7 @@
 
 
 unsigned long lastActionMillis;
-const unsigned long inactivityPeriod = 60000; //the value is a number of milliseconds here 10 minutes
+const unsigned long inactivityPeriod = 600000; //the value is a number of milliseconds here 10 minutes
 
 bool homePlayer = true;
 bool awayPlayer = true;
