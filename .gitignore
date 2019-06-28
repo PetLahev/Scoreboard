@@ -51,3 +51,4 @@ eagle.epf
 # file locks introduced since 7.x
 *.lck
 Eagle/~$Connector labels.xlsx
+Arduino/Scoreboard/.pio/build/structure.hash
