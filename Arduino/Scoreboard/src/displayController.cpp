@@ -190,6 +190,29 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
     Serial.println("Display sets ends");
 }
 
+void displayController::updateTime(uint8_t minutes) {
+    Serial.println("Updating minutes starts");
+
+    if (minutes < 0 || minutes > 99) {
+        showSets(0, 0);
+        Serial.println("Minutes out of range");
+        return;
+    }    
+
+    if (minutes < 10) {
+        showSets(0, minutes);
+    }
+    else {
+        uint8_t remind = 0;
+        uint8_t digit = 0;    
+        remind = minutes/10;
+        digit = minutes % 10;
+        showSets(remind, digit);
+    }
+
+    Serial.println("Updating minutes ends");
+}
+
 /**
  * Displays greetings on the display and blinks with it
  **/

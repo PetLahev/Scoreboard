@@ -23,7 +23,7 @@ public:
     /**
      *  Enumeration for messages
      **/ 
-    enum Messages { SetsPerGame, PointsPerSets, SetPointsDifference, Server, DisplaySets, TieBreakSupport, TiebreakSet, PointsInTiebreak, PointsTiebreakDifference };
+    enum Messages { SetsPerGame, PointsPerSets, SetPointsDifference, Server, DisplaySets, SetsAsMinute , TieBreakSupport, TiebreakSet, PointsInTiebreak, PointsTiebreakDifference };
 
 private:
 
@@ -58,6 +58,7 @@ private:
     const char *msgDiff  = "Set points difference:";
     const char *msgServe = "Display player on service:"; // should it lights the player on serve bar?
     const char *msgDisplaySets = "Display sets:";
+    const char *msgSetsAsMinute = "Sets segments turned to minute counter";
     const char *msgTiebreakSupport = "Supports tiebreak:"; 
     const char *msgTiebreakSet = "Tiebreak set:";
     const char *msgTiebreakPoints = "Points in tiebreak:";
@@ -74,6 +75,7 @@ private:
     const char *s_tiebreakSet = "q";
     const char *s_tiebreakPoints = "f";
     const char *s_tiebreakPointsDifference = "w";
+    const char *s_setsAsMinutes = "u"; // this will turn the sets to be a minute timer
 };
 
 #endif

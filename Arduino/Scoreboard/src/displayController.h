@@ -37,6 +37,11 @@ void blink();
  **/
 void greetings();
 
+/**
+ *  Updates sets segments with given minute information
+ **/
+void updateTime(uint8_t minutes);
+
 private:
 // Each number represents a segment on 7-segment, the last 8bit is not used = always 0
 // 1 means it's ON, 0 means it's OFF

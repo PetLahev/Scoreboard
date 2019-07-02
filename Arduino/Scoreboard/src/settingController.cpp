@@ -47,6 +47,12 @@ void settingsController::set(char *keyValuePair) {
         printMessage(DisplaySets);
     }
 
+    if ( strcmp(key, s_setsAsMinutes) == 0 ) {
+        setsAsMinute = convertToBoolean(value);
+        if (s_setsAsMinutes) enableSets = true;
+        printMessage(SetsAsMinute);
+    }
+
     if ( strcmp(key, s_supportTiebreak) == 0 ) {
         supportTiebreak = convertToBoolean(value);
         printMessage(TieBreakSupport);

@@ -11,6 +11,8 @@
 #include "VirtualWire.h"
 #include "settingController.h"
 
+unsigned long minutes = 0;
+uint8_t lastDisplayedMinute = 0;
 bool inSettingsMode;
 bool inPlayerSettings;
 scoreController score;
@@ -172,5 +174,22 @@ void loop() {
         }        
         score.updateScore(message[0]);
     }
+
+    if (setsAsMinute) {
+        // updates the minute on the board 
+        // if the minute has changed from last displayed state
+        minutes = millis() / 60000;
+
+        if (minutes > 99) {
+            // if it's over 99 minutes, starts from zero
+            //TODO: Finish the logic in the scoreController
+        }
+
+        if (minutes != lastDisplayedMinute) {
+            display.updateTime(minutes);
+            lastDisplayedMinute = minutes;
+        }        
+    }
+    
     delay(50);
 }

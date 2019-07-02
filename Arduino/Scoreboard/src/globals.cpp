@@ -23,6 +23,8 @@ uint8_t winningPoints = 1 ;
 bool enableServers = true;
 // true if displaying sets is enabled
 bool enableSets = true;
+// true if sets should display length of a game in minutes
+bool setsAsMinute = false;
 // true if the game supports tiebreak
 bool supportTiebreak = false;
 // the set that will be considered as tiebreak set, like 3
