@@ -55,6 +55,8 @@ The code now (*April 2019*) understands certain `key=value` pairs. Listed below 
 * Swap score = `$`
 * Set player on service = `p` and then number 1 - 4
 * Reset the whole game = `@`
+* Turn sets segments to minute timer = `u`
+    * Will automatically enable displaying sets
 
 Examples of key-value setting
 
@@ -95,6 +97,10 @@ Examples of key-value setting
     r=true
     Will enable displaying player on service (The LEDs will be powered)
     Note: There are always 4 players pre-set, not configurable as of April 2019)
+
+    u=true
+    Will turn the sets segments to display minute timer. So it will count from 0 to 9999 minutes
+     
 
 ### Example of game settings
 #### A free match (like football)
