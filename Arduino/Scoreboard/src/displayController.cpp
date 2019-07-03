@@ -193,11 +193,17 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
 void displayController::updateTime(uint8_t minutes) {
     Serial.println("Updating minutes starts");
 
-    if (minutes < 0 || minutes > 99) {
+    if (minutes < 0 > minutes > 9999) {
         showSets(0, 0);
         Serial.println("Minutes out of range");
-        return;
-    }    
+        return;        
+    }
+    else if (minutes > 99 && minutes <= 999) {
+        minutes = minutes - ((minutes / 100) * 100);
+    }
+    else if (minutes > 999 && minutes <= 9999) {
+        minutes = minutes - ((minutes / 1000) * 1000);
+    }
 
     if (minutes < 10) {
         showSets(0, minutes);

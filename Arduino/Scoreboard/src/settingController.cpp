@@ -11,9 +11,12 @@
  **/ 
 void settingsController::set(char *keyValuePair) {
 
+    Serial.print("Key-Value pair =>");
+    Serial.println(keyValuePair);
+
     // the correct setting string must have '=' between key and value
     char *foundChar = strchr(keyValuePair, '=');
-    if (foundChar == NULL) {
+    if (foundChar == NULL) {        
         bluetooth.println(msgnotValidSetting);
         Serial.println(msgnotValidSetting);
         return;
@@ -85,6 +88,7 @@ void settingsController::read() {
     printMessage(SetPointsDifference);
     printMessage(Server);
     printMessage(DisplaySets);
+    printMessage(SetsAsMinute);
     printMessage(TieBreakSupport);
     printMessage(TiebreakSet);
     printMessage(PointsInTiebreak);
@@ -131,6 +135,13 @@ void settingsController::printMessage(Messages msg) {
             bluetooth.println(enableSets);
             Serial.print(msgDisplaySets);
             Serial.println(enableSets);
+            break;
+        
+        case SetsAsMinute :
+            bluetooth.print(msgSetsAsMinute);
+            bluetooth.println(setsAsMinute);
+            Serial.print(msgSetsAsMinute);
+            Serial.println(setsAsMinute);
             break;
 
         case TieBreakSupport :

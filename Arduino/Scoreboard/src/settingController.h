@@ -58,7 +58,7 @@ private:
     const char *msgDiff  = "Set points difference:";
     const char *msgServe = "Display player on service:"; // should it lights the player on serve bar?
     const char *msgDisplaySets = "Display sets:";
-    const char *msgSetsAsMinute = "Sets segments turned to minute counter";
+    const char *msgSetsAsMinute = "Sets segments turned to minute counter:";
     const char *msgTiebreakSupport = "Supports tiebreak:"; 
     const char *msgTiebreakSet = "Tiebreak set:";
     const char *msgTiebreakPoints = "Points in tiebreak:";

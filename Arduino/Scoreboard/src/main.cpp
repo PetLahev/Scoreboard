@@ -11,6 +11,7 @@
 #include "VirtualWire.h"
 #include "settingController.h"
 
+unsigned long startTime = 0;
 unsigned long minutes = 0;
 uint8_t lastDisplayedMinute = 0;
 bool inSettingsMode;
@@ -19,6 +20,7 @@ scoreController score;
 displayController display;
 settingsController settings;
 const int KEY_VALUE_PAIR_LEN = 30;
+const int unsigned long minuteInMillis = 60000;
 
 void setup() {
     
@@ -84,6 +86,7 @@ void loop() {
                 data = bluetooth.read();
                 if (data == SETTINGS)  {
                     inSettingsMode = false;
+                    startTime = millis();
                     bluetooth.println("Ended settings mode");
                     Serial.println("Ended settings mode");
                     return;
@@ -118,6 +121,8 @@ void loop() {
 
             if (data == RESET_ALL) {
                 score.reset();
+                startTime = millis();
+                lastDisplayedMinute = 0;
                 return;
             }
 
@@ -165,6 +170,8 @@ void loop() {
 
         if (data == RESET_ALL) {
             score.reset();
+            startTime = millis();
+            lastDisplayedMinute = 0;
             return;
         }
 
@@ -175,19 +182,16 @@ void loop() {
         score.updateScore(message[0]);
     }
 
-    if (setsAsMinute) {
+    if (setsAsMinute && !inSettingsMode) {
         // updates the minute on the board 
-        // if the minute has changed from last displayed state
-        minutes = millis() / 60000;
-
-        if (minutes > 99) {
-            // if it's over 99 minutes, starts from zero
-            //TODO: Finish the logic in the scoreController
-        }
-
-        if (minutes != lastDisplayedMinute) {
-            display.updateTime(minutes);
-            lastDisplayedMinute = minutes;
+        // if the minute has changed from last captured time
+        // the 'startTime' and 'lastDisplayedMinute' is reset when
+        // - scoreboard is reset by user
+        // - settings mode ends
+        if (millis() - startTime >= minuteInMillis) {
+            startTime = millis();
+            display.updateTime(lastDisplayedMinute);
+            lastDisplayedMinute += 1;
         }        
     }
     
