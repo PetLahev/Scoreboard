@@ -24,7 +24,7 @@ const int unsigned long minuteInMillis = 60000;
 
 void setup() {
     
-    Serial.println("Initializing…");    
+    Serial.println("Initializing…");
 
     // Initializing transmitter/receiver communication
     Serial.begin(9600);
@@ -35,7 +35,7 @@ void setup() {
     Serial.println("VirtualWire initialized");
     
     // Initializing bluetooth communication
-    bluetooth.begin(9600);    
+    bluetooth.begin(9600);
     bluetooth.println("Bluetooth turned on");
     Serial.println("Bluetooth initialized");
 
@@ -52,13 +52,14 @@ void setup() {
     pinMode(PLAYER_DATA_PIN, OUTPUT);
 
     inPlayerSettings = false;
+    inSettingsMode = false;
     display.greetings();
     score.reset();
 }
 
 void loop() {
 
-    uint8_t data;
+    uint8_t data = 0;
     if (bluetooth.available() > 0) {
         // read the data from bluetooth
         if (!inSettingsMode) data = bluetooth.read();
@@ -71,6 +72,7 @@ void loop() {
                 Serial.println("In settings mode");
                 // prints out current setting
                 settings.read();
+                Serial.println(data);
                 return;
             }
         }
@@ -93,7 +95,7 @@ void loop() {
                 }
                 else {
                     keyValuePair[0] = data;
-                    dataAvailable = true;                    
+                    dataAvailable = true;
                 }
             }
 
@@ -101,7 +103,7 @@ void loop() {
             {                
                 // gets the settings data
                 if (bluetooth.available() > 0) {
-                    keyValuePair[i] = bluetooth.read();                    
+                    keyValuePair[i] = bluetooth.read();
                     dataAvailable = true;
                     delay(10);
                 }
@@ -115,7 +117,7 @@ void loop() {
             if (dataAvailable) settings.set(keyValuePair);
             
         }
-        else {            
+        else {
             // set the variable for receiver message, max length is 78
             Serial.println(data);
 
@@ -192,7 +194,7 @@ void loop() {
             startTime = millis();
             display.updateTime(lastDisplayedMinute);
             lastDisplayedMinute += 1;
-        }        
+        }
     }
     
     delay(50);

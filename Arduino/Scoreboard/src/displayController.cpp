@@ -39,11 +39,11 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
         
     uint8_t remind = 0;
     uint8_t digit = 0;
-    if (score1 > 9) {        
+    if (score1 > 9) {
         remind = score1/10;
         digit = score1 % 10;
         digits[0] = digitOne[remind];
-        digits[1] = digitOne[digit];        
+        digits[1] = digitOne[digit];
     }
     else {
         // the second segment from left will be set to the represent number from 0-9
@@ -54,7 +54,7 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
         remind = score2/10;
         digit = score2 % 10;
         digits[2] = digitOne[remind];
-        digits[3] = digitOne[digit];        
+        digits[3] = digitOne[digit];
     }
     else {
         // the from segment from left will be set to the represent number from 0-9
@@ -134,7 +134,7 @@ void displayController::blinkScore() {
         for (uint8_t i = 0; i < 4; i++) {
             shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, SEGMENT_OFF);
         }        
-        digitalWrite(SCORE_LATCH_PIN, HIGH);        
+        digitalWrite(SCORE_LATCH_PIN, HIGH);
         delay(300);
 
         // and now everything on
@@ -143,7 +143,7 @@ void displayController::blinkScore() {
         shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, data.secondBigSegment);
         shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, data.thirdBigSegment);
         shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, data.fourthdBigSegment);
-        digitalWrite(SCORE_LATCH_PIN, HIGH);        
+        digitalWrite(SCORE_LATCH_PIN, HIGH);
         if (i < 3) delay(700); // wait just first two cycles, last one no need to wait
     }
     Serial.println("Display score blink ends");
@@ -171,6 +171,14 @@ void displayController::showWhoServe(uint8_t player) {
             digitalWrite(PLAYER_LATCH_PIN, HIGH);
         }    
     }
+    else {
+        // turn the LED off if not enabled
+        data.flags = 0b00000000;
+        digitalWrite(PLAYER_LATCH_PIN, LOW);
+        shiftOut(PLAYER_DATA_PIN, PLAYER_CLK_PIN, MSBFIRST,  data.flags);
+        digitalWrite(PLAYER_LATCH_PIN, HIGH);
+    }
+
     Serial.println("Display who is on service ends");
 }
 
@@ -187,6 +195,14 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
         shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, data.secondSmallSegment);
         digitalWrite(SETS_LATCH_PIN, HIGH);
     }
+    else {
+        // turn them all off if not enabled
+        digitalWrite(SETS_LATCH_PIN, LOW);
+        for (uint8_t i = 0; i < 4; i++) {
+            shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, SEGMENT_OFF);
+        }
+        digitalWrite(SETS_LATCH_PIN, HIGH);
+    }
     Serial.println("Display sets ends");
 }
 
@@ -196,7 +212,7 @@ void displayController::updateTime(uint8_t minutes) {
     if (minutes < 0 > minutes > 9999) {
         showSets(0, 0);
         Serial.println("Minutes out of range");
-        return;        
+        return;
     }
     else if (minutes > 99 && minutes <= 999) {
         minutes = minutes - ((minutes / 100) * 100);
@@ -210,7 +226,7 @@ void displayController::updateTime(uint8_t minutes) {
     }
     else {
         uint8_t remind = 0;
-        uint8_t digit = 0;    
+        uint8_t digit = 0;
         remind = minutes/10;
         digit = minutes % 10;
         showSets(remind, digit);
@@ -236,7 +252,7 @@ void displayController::greetings() {
         for (uint8_t i = 0; i < 4; i++) {
             shiftOut(SCORE_DATA_PIN, SCORE_CLK_PIN, LSBFIRST, AHOJ[i]);
         }        
-        digitalWrite(SCORE_LATCH_PIN, HIGH);       
+        digitalWrite(SCORE_LATCH_PIN, HIGH);
     }
 
     digitalWrite(SETS_LATCH_PIN, LOW);

@@ -25,7 +25,7 @@ void settingsController::set(char *keyValuePair) {
     char *key = strtok (keyValuePair,"=");
     char *value =  strtok (NULL, "");
     
-    if ( strcmp(key, s_setsPerGame) == 0 && isNumber(value)) {        
+    if ( strcmp(key, s_setsPerGame) == 0 && isNumber(value)) {
         setsPerGame = convertToNumber(value);
         printMessage(SetsPerGame);
     }
@@ -194,9 +194,9 @@ int settingsController::convertToNumber(char* value) {
 }
 
 bool settingsController::convertToBoolean(char* value) {
-    if ( strcmp(value, "Y") ) return true;
-    if ( strcmp(value, "y") ) return true;
-    if ( strcmp(value, "true") ) return true;
-    if ( strcmp(value, "TRUE") ) return true;
-    return false;
+    if ( strcmp(value, "Y") == 0 ) return true;
+    if ( strcmp(value, "y") == 0 ) return true;
+    if ( strcmp(value, "true") == 0 ) return true;
+    if ( strcmp(value, "TRUE") == 0) return true;
+    return 0;
 }
