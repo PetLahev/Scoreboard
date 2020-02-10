@@ -13,7 +13,7 @@
 
 unsigned long startTime = 0;
 unsigned long minutes = 0;
-uint8_t lastDisplayedMinute = 0;
+uint8_t lastDisplayedMinute = 1;
 bool inSettingsMode;
 bool inPlayerSettings;
 scoreController score;
@@ -124,7 +124,8 @@ void loop() {
             if (data == RESET_ALL) {
                 score.reset();
                 startTime = millis();
-                lastDisplayedMinute = 0;
+                display.updateTime(0);
+                lastDisplayedMinute = 1;
                 return;
             }
 
@@ -173,7 +174,8 @@ void loop() {
         if (data == RESET_ALL) {
             score.reset();
             startTime = millis();
-            lastDisplayedMinute = 0;
+            display.updateTime(0);
+            lastDisplayedMinute = 1;            
             return;
         }
 

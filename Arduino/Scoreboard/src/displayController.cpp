@@ -21,7 +21,7 @@ displayController::displayController() {
 void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player) {        
     showScore(score1, score2);
     showWhoServe(player);
-    showSets(set1, set2);
+    if (!setsAsMinute) showSets(set1, set2); // do not update the sets when it's beeing used for minutes
 }
 
 void displayController::showScore(uint8_t score1, uint8_t score2) {
@@ -197,6 +197,7 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
     }
     else {
         // turn them all off if not enabled
+        Serial.println("Sets disabled");
         digitalWrite(SETS_LATCH_PIN, LOW);
         for (uint8_t i = 0; i < 4; i++) {
             shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, SEGMENT_OFF);
@@ -209,7 +210,7 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
 void displayController::updateTime(uint8_t minutes) {
     Serial.println("Updating minutes starts");
 
-    if (minutes < 0 > minutes > 9999) {
+    if (minutes < 0 && minutes > 9999) {
         showSets(0, 0);
         Serial.println("Minutes out of range");
         return;
