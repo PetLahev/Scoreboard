@@ -35,8 +35,8 @@ env:
 install:
     - pip install -U platformio
     - platformio update
-    # VirtualWire (251), NeoSWSerial (1653) 
-    - platformio lib install 251 1653    
+    # VirtualWire (251), NeoSWSerial (1653), IR Remote (4) 
+    - platformio lib install 251 1653 4
 
 script:
     - platformio ci --board=uno
