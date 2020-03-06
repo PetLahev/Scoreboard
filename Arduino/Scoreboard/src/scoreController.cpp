@@ -41,8 +41,8 @@ void scoreController::updateScore(uint8_t message) {
             score2 -=1;
             break;        
         default:
-            bluetooth.println("Unknown command");
-            Serial.println("Unknown command");
+            bluetooth.println(F("Unknown command"));
+            Serial.println(F("Unknown command"));
             break;
     }
 
@@ -51,7 +51,7 @@ void scoreController::updateScore(uint8_t message) {
     bool setDone = false;
     hasSetFinished(setDone);
     if(setDone) {        
-        Serial.println("A set has finished");
+        Serial.println(F("A set has finished"));
         uint8_t setResult;
         team1WonSet(setResult);
         if (setResult == 1) {
@@ -70,10 +70,10 @@ void scoreController::updateScore(uint8_t message) {
     bool matchDone = false;
     hasMatchFinished(matchDone);    
     if(matchDone) {
-        Serial.println("Match has finished");
-        bluetooth.print("Match has finished ");
+        Serial.println(F("Match has finished"));
+        bluetooth.print(F("Match has finished "));
         bluetooth.print(team1Sets);
-        bluetooth.print(":");
+        bluetooth.print(F(":"));
         bluetooth.println(team2Sets);
         // if match is finished, just blink the whole display and write down the result
         delay(700);
@@ -82,10 +82,10 @@ void scoreController::updateScore(uint8_t message) {
     }
     else if(setDone) {
         // if a set is finished, blink with the whole display, write down the result and resets score
-        Serial.println("Set has finished - blinking display and reseting score");
-        bluetooth.print("Set has finished ");
+        Serial.println(F("Set has finished - blinking display and reseting score"));
+        bluetooth.print(F("Set has finished "));
         bluetooth.print(team1Sets);
-        bluetooth.print(":");
+        bluetooth.print(F(":"));
         bluetooth.println(team2Sets);
         delay(700);
         display.blinkScore();
@@ -191,7 +191,7 @@ void scoreController::team1WonMatch(uint8_t& result) {
  *  Resets the game but the match continues
  **/
 void scoreController::resetGame() {
-    Serial.println("Reseting game");
+    Serial.println(F("Reseting game"));
     score1 = 0;
     score2 = 0;
     // if this is a match based on sets I set the next player to the team who lost previous set
@@ -216,7 +216,7 @@ void scoreController::resetGame() {
  *  Resets all variables and display
  **/
 void scoreController::reset() {
-    Serial.println("Reseting the whole match = Everything");
+    Serial.println(F("Reseting the whole match = Everything"));
     score1 = 0;
     score2 = 0;
     team1Sets = 0;
@@ -234,7 +234,7 @@ void scoreController::reset() {
     Use when teams change sides after a set is finished
 */
 void scoreController::swapScore() {
-    Serial.println("Swaping score");
+    Serial.println(F("Swaping score"));
 
     uint8_t tmpScore2 = score2;
     uint8_t tmpTeam2Sets = team2Sets;
@@ -313,7 +313,7 @@ void scoreController::revertLastPointData(bool team1GoingDown) {
  **/
 void scoreController::setPlayerServe(uint8_t data) {
     
-    Serial.print("Setting player on service: ");
+    Serial.print(F("Setting player on service: "));
     Serial.println(data);
     bool succeeded = false;
     switch (data) {
@@ -342,8 +342,8 @@ void scoreController::setPlayerServe(uint8_t data) {
             succeeded = true;
             break;
         default:
-            bluetooth.write("Unknown player");
-            Serial.write("Unknown player");
+            bluetooth.println(F("Unknown player"));
+            Serial.println(F("Unknown player"));
     }    
 
     if (succeeded) display.score(score1, score2, team1Sets, team2Sets, player);
@@ -354,14 +354,14 @@ void scoreController::setPlayerServe(uint8_t data) {
  * TODO: Should create some loging class to support some standard ways
  **/ 
 void scoreController::logGameResult() {
-    bluetooth.print("~Score updated|");
+    bluetooth.print(F("~Score updated|"));
     bluetooth.print(score1);
-    bluetooth.print(":");
+    bluetooth.print(F(":"));
     bluetooth.print(score2);
-    bluetooth.println("~");
-    Serial.print("~Score updated|");
+    bluetooth.println(F("~"));
+    Serial.print(F("~Score updated|"));
     Serial.print(score1);
-    Serial.print(":");
+    Serial.print(F(":"));
     Serial.print(score2);
-    Serial.println("~");
+    Serial.println(F("~"));
 }

@@ -79,7 +79,7 @@ void displayController::showScore(uint8_t score1, uint8_t score2) {
  **/
 void displayController::blink() {
 
-    Serial.println("Display blink start");
+    Serial.println(F("Display blink start"));
     // It assumes the information is already displayed 
     // turn everything off and then display again for 3 times
     for(uint8_t i = 0; i < 4; i++) {
@@ -120,11 +120,11 @@ void displayController::blink() {
         digitalWrite(SETS_LATCH_PIN, HIGH);
         if (i < 3) delay(700); // wait just first two cycles, last one no need to wait
     }
-    Serial.println("Display blink end");
+    Serial.println(F("Display blink end"));
 }
 
 void displayController::blinkScore() {
-    Serial.println("Display score blink start");
+    Serial.println(F("Display score blink start"));
     // It assumes the information is already displayed 
     // turn everything off and then display again for 3 times
     for(uint8_t i = 0; i < 4; i++) {
@@ -146,14 +146,14 @@ void displayController::blinkScore() {
         digitalWrite(SCORE_LATCH_PIN, HIGH);
         if (i < 3) delay(700); // wait just first two cycles, last one no need to wait
     }
-    Serial.println("Display score blink ends");
+    Serial.println(F("Display score blink ends"));
 }
 
 void displayController::showWhoServe(uint8_t player) {
-    Serial.println("Display who is on service start");
+    Serial.println(F("Display who is on service start"));
     // Checks if displaying who should serve is enabled
     if (enableServers) {
-        Serial.println("Displaying player on service");
+        Serial.println(F("Displaying player on service"));
         if (player >= 1 && player <= 4 ) {
             // here we don't use 7-segment display, just move the voltage to the correct pins
             // don't forget the shift register use just 7 bits!
@@ -179,14 +179,14 @@ void displayController::showWhoServe(uint8_t player) {
         digitalWrite(PLAYER_LATCH_PIN, HIGH);
     }
 
-    Serial.println("Display who is on service ends");
+    Serial.println(F("Display who is on service ends"));
 }
 
 void displayController::showSets(uint8_t set1, uint8_t set2) {
-    Serial.println("Display sets start");
+    Serial.println(F("Display sets start"));
     // Checks if displaying sets is enabled
     if (enableSets) {
-        Serial.println("Displaying sets");
+        Serial.println(F("Displaying sets"));
         data.firstSmallSegment = digitOne[set1];
         data.secondSmallSegment = digitOne[set2];
 
@@ -197,22 +197,22 @@ void displayController::showSets(uint8_t set1, uint8_t set2) {
     }
     else {
         // turn them all off if not enabled
-        Serial.println("Sets disabled");
+        Serial.println(F("Sets disabled"));
         digitalWrite(SETS_LATCH_PIN, LOW);
         for (uint8_t i = 0; i < 4; i++) {
             shiftOut(SETS_DATA_PIN, SETS_CLK_PIN, LSBFIRST, SEGMENT_OFF);
         }
         digitalWrite(SETS_LATCH_PIN, HIGH);
     }
-    Serial.println("Display sets ends");
+    Serial.println(F("Display sets ends"));
 }
 
 void displayController::updateTime(uint8_t minutes) {
-    Serial.println("Updating minutes starts");
+    Serial.println(F("Updating minutes starts"));
 
     if (minutes < 0 && minutes > 9999) {
         showSets(0, 0);
-        Serial.println("Minutes out of range");
+        Serial.println(F("Minutes out of range"));
         return;
     }
     else if (minutes > 99 && minutes <= 999) {
@@ -233,14 +233,14 @@ void displayController::updateTime(uint8_t minutes) {
         showSets(remind, digit);
     }
 
-    Serial.println("Updating minutes ends");
+    Serial.println(F("Updating minutes ends"));
 }
 
 /**
  * Displays greetings on the display and blinks with it
  **/
 void displayController::greetings() {
-    Serial.println("Display greetings start");
+    Serial.println(F("Display greetings start"));
     data.firstBigSegment = AHOJ[0];
     data.secondBigSegment = AHOJ[1];
     data.thirdBigSegment = AHOJ[2];
@@ -263,5 +263,5 @@ void displayController::greetings() {
 
     delay(700);
     blink();
-    Serial.println("Display greetings end");
+    Serial.println(F("Display greetings end"));
 }

@@ -10,6 +10,7 @@
 #include "scoreController.h"
 #include "VirtualWire.h"
 #include "settingController.h"
+#include "IRremote.h"
 
 unsigned long startTime = 0;
 unsigned long minutes = 0;
@@ -19,12 +20,21 @@ bool inPlayerSettings;
 scoreController score;
 displayController display;
 settingsController settings;
+
+/**
+*  Initializes IR remoteobject with pins
+**/
+IRrecv irRemote(IR_PIN);
+decode_results irMessage;
+
 const int KEY_VALUE_PAIR_LEN = 30;
 const int unsigned long minuteInMillis = 60000;
 
+void resetProcedures();
+
 void setup() {
     
-    Serial.println("Initializing…");
+    Serial.println(F("Initializing…"));
 
     // Initializing transmitter/receiver communication
     Serial.begin(9600);
@@ -32,12 +42,16 @@ void setup() {
     vw_setup(1000);
     vw_set_rx_pin(RECEIVER_PIN);
     vw_rx_start();
-    Serial.println("VirtualWire initialized");
+    Serial.println(F("VirtualWire initialized"));
     
+    // Initialize IR Remote communication
+    irRemote.enableIRIn();
+    Serial.println(F("IR Remote communication initialized"));
+
     // Initializing bluetooth communication
     bluetooth.begin(9600);
-    bluetooth.println("Bluetooth turned on");
-    Serial.println("Bluetooth initialized");
+    bluetooth.println(F("Bluetooth turned on"));
+    Serial.println(F("Bluetooth initialized"));
 
     pinMode(SCORE_LATCH_PIN, OUTPUT);
     pinMode(SCORE_CLK_PIN, OUTPUT);
@@ -68,8 +82,8 @@ void loop() {
             // it will toggle betwen the ON/OFF state
             inSettingsMode = !inSettingsMode;
             if (inSettingsMode) {
-                bluetooth.println("In settings mode");
-                Serial.println("In settings mode");
+                bluetooth.println(F("In settings mode"));
+                Serial.println(F("In settings mode"));
                 // prints out current setting
                 settings.read();
                 Serial.println(data);
@@ -89,8 +103,8 @@ void loop() {
                 if (data == SETTINGS)  {
                     inSettingsMode = false;
                     startTime = millis();
-                    bluetooth.println("Ended settings mode");
-                    Serial.println("Ended settings mode");
+                    bluetooth.println(F("Ended settings mode"));
+                    Serial.println(F("Ended settings mode"));
                     return;
                 }
                 else {
@@ -122,27 +136,24 @@ void loop() {
             Serial.println(data);
 
             if (data == RESET_ALL) {
-                score.reset();
-                startTime = millis();
-                display.updateTime(0);
-                lastDisplayedMinute = 1;
+                resetProcedures();
                 return;
             }
 
             if (data != SWAP_DISPLAY)  {
              
                 if (data == SET_SERVER || inPlayerSettings) {
-                    Serial.println("in player setting IF");
+                    Serial.println(F("in player setting IF"));
                     if (!inPlayerSettings) {
                         // let's wait for a number that represents the player who should serve
                         inPlayerSettings = !inPlayerSettings;
-                        Serial.println("Turning ON setting player mode");
+                        Serial.println(F("Turning ON setting player mode"));
                     }
                     else {
                         score.setPlayerServe(data);
                         // get out from the player settings mode
                         inPlayerSettings = !inPlayerSettings;
-                        Serial.println("Turning OFF setting player mode");
+                        Serial.println(F("Turning OFF setting player mode"));
                     }
                 }
                 else {
@@ -168,14 +179,11 @@ void loop() {
         // I'd be probably able to construct a string but I've heard it consumes lots of memory
         data = message[0];
 
-        Serial.print("433Mhz channel - message: ");
+        Serial.print(F("433Mhz channel - message: "));
         Serial.println((char)data);
 
         if (data == RESET_ALL) {
-            score.reset();
-            startTime = millis();
-            display.updateTime(0);
-            lastDisplayedMinute = 1;            
+            resetProcedures();
             return;
         }
 
@@ -184,6 +192,36 @@ void loop() {
             return;
         }        
         score.updateScore(message[0]);
+    }
+
+    // This is for IR Remote communication
+    if (irRemote.decode(&irMessage)) {
+        switch(irMessage.value) {
+            case 0xFFA25D:  // key CH- (Home team down)
+                score.updateScore(TEAM1_DOWN);
+                break;
+            case 0xFFE21D:   // key CH+ (Home team up)
+                score.updateScore(TEAM1_UP);
+                break;
+            case 0xFF22DD:  // key PREV (Away team down)
+                score.updateScore(TEAM2_DOWN);
+                break;
+            case 0xFFC23D:  // key PLAY (Away team up)
+                score.updateScore(TEAM2_UP);
+                break;
+            case 0xFF9867:  // 100
+                score.swapScore();
+                break;
+            case 0xFFB04F:  // 200
+                resetProcedures();
+                break;
+            default:                 
+                Serial.print("Unknow IR Remote button: ");
+                Serial.println(irMessage.value, HEX);
+        }
+        delay(500);
+        // continue to process IR commands
+        irRemote.resume();    
     }
 
     if (setsAsMinute && !inSettingsMode) {
@@ -200,4 +238,11 @@ void loop() {
     }
     
     delay(50);
+}
+
+void resetProcedures() {
+    score.reset();
+    startTime = millis();
+    display.updateTime(0);
+    lastDisplayedMinute = 1;
 }

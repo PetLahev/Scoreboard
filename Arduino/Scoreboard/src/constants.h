@@ -21,6 +21,11 @@ const uint8_t BLUE_TX = A0;
 const uint8_t RECEIVER_PIN = A5;
 
 /*
+  Defines pin for IR remote
+*/
+const uint8_t IR_PIN = 13;
+
+/*
   All segments off
 */
 const uint8_t SEGMENT_OFF = 0b00000000;

@@ -11,7 +11,7 @@
  **/ 
 void settingsController::set(char *keyValuePair) {
 
-    Serial.print("Key-Value pair =>");
+    Serial.print(F("Key-Value pair =>"));
     Serial.println(keyValuePair);
 
     // the correct setting string must have '=' between key and value
