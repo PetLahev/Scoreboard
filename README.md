@@ -11,7 +11,7 @@ Thus after I built everything and was in the testing phase I found out that blue
 * Each segment 10 cm (3.93 inch) length so 20 cm (7.9 inch) one number! (*for points*)
 * Each LED strip controlled by its own transistor
 * Controlled by bluetooth module ([HM-10 Bluetooth 4.0 BLE](https://www.amazon.com/DSD-TECH-Bluetooth-iBeacon-Arduino/dp/B06WGZB2N4/ref=sr_1_1_sspa?keywords=HM-10-Bluetooth&qid=1554232302&s=gateway&sr=8-1-spons&psc=1))
-    * Also possible to control via 433MHz module (*or infra but code needs to be written though*)    
+    * Also possible to control via 433MHz module or an infra red (IR) controller
 * You can use pre-defined setup for a game
 * You can setup your own game
 * Supports tiebreaks, sets and displaying players on service
