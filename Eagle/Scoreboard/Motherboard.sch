@@ -16537,12 +16537,8 @@ Source: Samtec SSW.pdf</description>
 <parts>
 <part name="ARDUINO_NANO1" library="ArduinoNanoV30" deviceset="ARDUINO_NANO" device=""/>
 <part name="REG" library="linear" library_urn="urn:adsk.eagle:library:262" deviceset="78*" device="T" package3d_urn="urn:adsk.eagle:package:16414/1" technology="05" value="LM7809"/>
-<part name="BTN_HOME" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
-<part name="BTN_AWAY" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
-<part name="R1" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/7" package3d_urn="urn:adsk.eagle:package:25945/1" value="10k"/>
-<part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/7" package3d_urn="urn:adsk.eagle:package:25945/1" value="10k"/>
-<part name="R3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/7" package3d_urn="urn:adsk.eagle:package:25945/1" value="10k"/>
-<part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="0204/7" package3d_urn="urn:adsk.eagle:package:25945/1" value="10k"/>
+<part name="433MHZ" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
+<part name="CLOCK" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="BTN_POW" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="VCC" library="con-wago-500" library_urn="urn:adsk.eagle:library:195" deviceset="W237-102" device="" package3d_urn="urn:adsk.eagle:package:10688/1"/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -16580,32 +16576,16 @@ Source: Samtec SSW.pdf</description>
 <plain>
 <text x="-22.86" y="71.12" size="1.778" layer="95">RXD</text>
 <text x="-22.86" y="76.2" size="1.778" layer="95">TXD</text>
-<text x="35.56" y="12.7" size="1.778" layer="91" rot="R90">433 MHz</text>
 <text x="48.26" y="12.7" size="1.778" layer="91" rot="R90">Infra</text>
+<text x="-22.86" y="43.18" size="1.778" layer="95">SCA</text>
+<text x="-22.86" y="48.26" size="1.778" layer="95">SDA</text>
 </plain>
 <instances>
 <instance part="ARDUINO_NANO1" gate="G$1" x="48.26" y="58.42" rot="R180"/>
 <instance part="REG" gate="A1" x="0" y="109.22"/>
-<instance part="BTN_HOME" gate="-1" x="-25.4" y="58.42"/>
-<instance part="BTN_HOME" gate="-2" x="-25.4" y="53.34"/>
-<instance part="BTN_AWAY" gate="-1" x="-25.4" y="48.26"/>
-<instance part="BTN_AWAY" gate="-2" x="-25.4" y="43.18"/>
-<instance part="R1" gate="G$1" x="-7.62" y="35.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="-11.2014" y="34.29" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="-10.922" y="39.37" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R2" gate="G$1" x="-2.54" y="35.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="-6.1214" y="34.29" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="-5.842" y="39.37" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R3" gate="G$1" x="2.54" y="35.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="-1.0414" y="34.29" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="-0.762" y="39.37" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R4" gate="G$1" x="7.62" y="35.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="4.0386" y="34.29" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="4.318" y="39.37" size="1.778" layer="96" rot="R270"/>
-</instance>
+<instance part="433MHZ" gate="-2" x="-25.4" y="53.34"/>
+<instance part="CLOCK" gate="-1" x="-25.4" y="48.26"/>
+<instance part="CLOCK" gate="-2" x="-25.4" y="43.18"/>
 <instance part="BTN_POW" gate="-1" x="-25.4" y="33.02"/>
 <instance part="BTN_POW" gate="-2" x="-25.4" y="27.94"/>
 <instance part="VCC" gate="-1" x="-25.4" y="109.22"/>
@@ -16645,7 +16625,6 @@ Source: Samtec SSW.pdf</description>
 <instance part="LED" gate="-1" x="45.72" y="93.98" rot="R180"/>
 <instance part="LED" gate="-2" x="45.72" y="99.06" rot="R180"/>
 <instance part="GND7" gate="1" x="40.64" y="86.36"/>
-<instance part="SIGNAL_IN" gate="-1" x="38.1" y="12.7" rot="R90"/>
 <instance part="SIGNAL_IN" gate="-2" x="43.18" y="12.7" rot="R90"/>
 <instance part="INFRA_VC" gate="-1" x="58.42" y="12.7" rot="R90"/>
 <instance part="INFRA_VC" gate="-2" x="63.5" y="12.7" rot="R90"/>
@@ -16725,24 +16704,12 @@ Source: Samtec SSW.pdf</description>
 <wire x1="12.7" y1="38.1" x2="12.7" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="27.94" x2="12.7" y2="15.24" width="0.1524" layer="91"/>
 <junction x="12.7" y="27.94"/>
-<pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="7.62" y1="27.94" x2="12.7" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="30.48" x2="7.62" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="2.54" y1="30.48" x2="2.54" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="2.54" y1="27.94" x2="7.62" y2="27.94" width="0.1524" layer="91"/>
-<junction x="7.62" y="27.94"/>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="-2.54" y1="30.48" x2="-2.54" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="-2.54" y1="27.94" x2="2.54" y2="27.94" width="0.1524" layer="91"/>
-<junction x="2.54" y="27.94"/>
-<pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="-7.62" y1="30.48" x2="-7.62" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="27.94" x2="-2.54" y2="27.94" width="0.1524" layer="91"/>
-<junction x="-2.54" y="27.94"/>
 <pinref part="BTN_POW" gate="-2" pin="KL"/>
 <wire x1="-20.32" y1="27.94" x2="-7.62" y2="27.94" width="0.1524" layer="91"/>
-<junction x="-7.62" y="27.94"/>
 </segment>
 <segment>
 <pinref part="GND4" gate="1" pin="GND"/>
@@ -16923,19 +16890,6 @@ Source: Samtec SSW.pdf</description>
 <wire x1="43.18" y1="22.86" x2="43.18" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="433MHZ" class="0">
-<segment>
-<wire x1="53.34" y1="30.48" x2="55.88" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="ARDUINO_NANO1" gate="G$1" pin="D2/INT0"/>
-<wire x1="55.88" y1="30.48" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="45.72" x2="86.36" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="45.72" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="SIGNAL_IN" gate="-1" pin="KL"/>
-<wire x1="55.88" y1="30.48" x2="38.1" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="30.48" x2="38.1" y2="17.78" width="0.1524" layer="91"/>
-<junction x="55.88" y="30.48"/>
-</segment>
-</net>
 <net name="N$5" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="D3/INT1"/>
@@ -16996,53 +16950,33 @@ Source: Samtec SSW.pdf</description>
 <junction x="10.16" y="86.36"/>
 </segment>
 </net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="BTN_HOME" gate="-1" pin="KL"/>
-<pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC2/A2"/>
-<wire x1="-20.32" y1="58.42" x2="-7.62" y2="58.42" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="-7.62" y1="58.42" x2="27.94" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="-7.62" y1="40.64" x2="-7.62" y2="58.42" width="0.1524" layer="91"/>
-<junction x="-7.62" y="58.42"/>
-</segment>
-</net>
-<net name="N$2" class="0">
+<net name="433MHZ" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC3/A3"/>
-<pinref part="BTN_HOME" gate="-2" pin="KL"/>
+<pinref part="433MHZ" gate="-2" pin="KL"/>
 <wire x1="27.94" y1="55.88" x2="-2.54" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="-2.54" y1="55.88" x2="-20.32" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="-20.32" y1="55.88" x2="-20.32" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="-2.54" y1="40.64" x2="-2.54" y2="55.88" width="0.1524" layer="91"/>
-<junction x="-2.54" y="55.88"/>
 </segment>
 </net>
-<net name="A4" class="0">
+<net name="A4SDA" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC4/SDA/A4"/>
 <wire x1="27.94" y1="53.34" x2="2.54" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="2.54" y1="53.34" x2="-17.78" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="53.34" x2="-17.78" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="BTN_AWAY" gate="-1" pin="KL"/>
+<pinref part="CLOCK" gate="-1" pin="KL"/>
 <wire x1="-17.78" y1="48.26" x2="-20.32" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="2.54" y1="40.64" x2="2.54" y2="53.34" width="0.1524" layer="91"/>
-<junction x="2.54" y="53.34"/>
 </segment>
 </net>
-<net name="A5" class="0">
+<net name="A5SCL" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC5/SCL/A5"/>
 <wire x1="27.94" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="7.62" y1="50.8" x2="-15.24" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="50.8" x2="-15.24" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="BTN_AWAY" gate="-2" pin="KL"/>
+<pinref part="CLOCK" gate="-2" pin="KL"/>
 <wire x1="-15.24" y1="43.18" x2="-20.32" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="R4" gate="G$1" pin="1"/>
-<wire x1="7.62" y1="40.64" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
-<junction x="7.62" y="50.8"/>
 </segment>
 </net>
 </nets>
