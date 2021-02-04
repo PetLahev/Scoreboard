@@ -27,6 +27,8 @@ Just one device can be connected to the module at time!
 Make sure you pair the bluetooth module with your smart phone, add it under the `Devices` tab and then go to the `Settings - Send` and set the `Newline` option to **none**. On the main menu tap on the connect symbol. You should get a text saying "Connected to unnamed". (*Make sure you bluetooth module is powered and the indication LED is blinking*)
 
 ## Settings
+By default, the scoreboard is set as a clock (sets segment are used for seconds). There is no specific setting for turning the clock
+off as this is always done by providing any setting. If you need to go back to the 'clock' mode, just turn the power off and then on.
 You can setup your own game either in code - [globals.cpp](/Arduino/Scoreboard/src/globals.cpp) - or at runtime when sending the SETTING character via the Serial Bluetooth Terminal. The SETTING character is = `!` (*exclamation mark*). This behaves as a toggle switch so when send first time `!` the scoreboard will switch to 'setting mode' and will accept certain settings, when sending second time `!` it will end the 'setting mode' and will be ready for a game!
 
 You can setup
@@ -47,7 +49,7 @@ The code now (*April 2019*) understands certain `key=value` pairs. Listed below 
 * Sets per match = `s`
 * Points per set = `e`
 * Points difference to win a set = `d`
-* Support tiebreak = `t`    
+* Support tiebreak = `t`
 * Set the tiebreak set = `q`
 * Points in tiebreak = `f`
 * Points difference to win a tiebreak = `w`
@@ -93,14 +95,14 @@ Examples of key-value setting
     AND
     2, the difference is equal to 2
     examples: 9:7 or 10:8 or 11:9 etc.
-    
+
     r=true
     Will enable displaying player on service (The LEDs will be powered)
     Note: There are always 4 players pre-set, not configurable as of April 2019)
 
     u=true
     Will turn the sets segments to display minute timer. So it will count from 0 to 9999 minutes
-     
+
 
 ### Example of game settings
 #### A free match (like football)

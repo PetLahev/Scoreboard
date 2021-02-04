@@ -22,7 +22,7 @@ public:
 
     /**
      *  Enumeration for messages
-     **/ 
+     **/
     enum Messages { SetsPerGame, PointsPerSets, SetPointsDifference, Server, DisplaySets, SetsAsMinute , TieBreakSupport, TiebreakSet, PointsInTiebreak, PointsTiebreakDifference };
 
 private:
@@ -52,14 +52,14 @@ private:
     void printMessage(Messages msg);
 
     // Defines constants for messages displayed to user
-    // Would be better if it doesn't take that much memory but hey ..    
+    // Would be better if it doesn't take that much memory but hey ..
     const char *msgSets = "Sets per game:";
     const char *msgPoints = "Points per set:";
     const char *msgDiff  = "Set points difference:";
     const char *msgServe = "Display player on service:"; // should it lights the player on serve bar?
     const char *msgDisplaySets = "Display sets:";
     const char *msgSetsAsMinute = "Sets segments turned to minute counter:";
-    const char *msgTiebreakSupport = "Supports tiebreak:"; 
+    const char *msgTiebreakSupport = "Supports tiebreak:";
     const char *msgTiebreakSet = "Tiebreak set:";
     const char *msgTiebreakPoints = "Points in tiebreak:";
     const char *msgTiebreakDifference = "Tiebreak points difference:";
@@ -71,7 +71,7 @@ private:
     const char *s_pointsDifference = "d";
     const char *s_enableServer = "r";
     const char *s_enableSets = "b";
-    const char *s_supportTiebreak = "t";    
+    const char *s_supportTiebreak = "t";
     const char *s_tiebreakSet = "q";
     const char *s_tiebreakPoints = "f";
     const char *s_tiebreakPointsDifference = "w";

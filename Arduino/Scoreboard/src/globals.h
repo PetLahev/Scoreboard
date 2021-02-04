@@ -1,5 +1,5 @@
 /*
-*  Provides access to globaly available objects
+*  Provides access to globally available objects
 */
 
 #ifndef GLOBALS_h
@@ -33,6 +33,8 @@ extern bool enableServers;
 extern bool enableSets;
 // true if sets should display length of a game in minutes
 extern bool setsAsMinute;
+// true if the scoreboard should be used as a clock
+extern bool setsAsClock;
 // true if the game supports tiebreak
 extern bool supportTiebreak;
 // the set that will be considered as tiebreak set, like 3

@@ -17019,7 +17019,7 @@ Source: Samtec SSW.pdf</description>
 <junction x="-2.54" y="55.88"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="A4" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC4/SDA/A4"/>
 <wire x1="27.94" y1="53.34" x2="2.54" y2="53.34" width="0.1524" layer="91"/>
@@ -17032,7 +17032,7 @@ Source: Samtec SSW.pdf</description>
 <junction x="2.54" y="53.34"/>
 </segment>
 </net>
-<net name="N$4" class="0">
+<net name="A5" class="0">
 <segment>
 <pinref part="ARDUINO_NANO1" gate="G$1" pin="ADC5/SCL/A5"/>
 <wire x1="27.94" y1="50.8" x2="7.62" y2="50.8" width="0.1524" layer="91"/>
