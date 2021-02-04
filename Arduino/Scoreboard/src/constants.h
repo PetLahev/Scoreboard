@@ -18,7 +18,7 @@ const uint8_t BLUE_TX = A0;
 /*
   Defines pins for wireless communication (433Mhz)
 */
-const uint8_t RECEIVER_PIN = A5;
+const uint8_t RECEIVER_PIN = A3;
 
 /*
   Defines pin for IR remote
