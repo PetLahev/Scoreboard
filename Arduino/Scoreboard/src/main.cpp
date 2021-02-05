@@ -16,6 +16,7 @@
 unsigned long startTime = 0;
 unsigned long minutes = 0;
 uint8_t lastDisplayedMinute = 1;
+uint8_t lastDisplayedSecond = 0;
 bool inSettingsMode;
 bool inPlayerSettings;
 scoreController score;
@@ -37,6 +38,7 @@ const int KEY_VALUE_PAIR_LEN = 30;
 const int unsigned long minuteInMillis = 60000;
 
 void resetProcedures();
+void decodeIRSignal(unsigned long irCode);
 
 void setup()
 {
@@ -166,7 +168,8 @@ void loop()
             }
 
             // if any data available for settings, calls the settings controller
-            if (dataAvailable) {
+            if (dataAvailable)
+            {
                 // always turn clock off
                 // the clock is default setting when the scoreboard is powered up
                 setsAsClock = false;
@@ -223,7 +226,6 @@ void loop()
     uint8_t messageLen = 1;
     if (vw_get_message(message, &messageLen))
     {
-
         // little hack here
         // we do not expect to get any more chars than exact one (not planning use it for settings)
         // given the hardware implementation (just 4 buttons for updating score)
@@ -250,7 +252,52 @@ void loop()
     // This is for IR Remote communication
     if (irRemote.decode(&irMessage))
     {
-        switch (irMessage.value)
+        decodeIRSignal(irMessage.value);
+        delay(500);
+        // continue to process IR commands
+        irRemote.resume();
+    }
+
+    if (setsAsMinute && !setsAsClock && !inSettingsMode)
+    {
+        // updates the minute on the board
+        // if the minute has changed from last captured time
+        // the 'startTime' and 'lastDisplayedMinute' is reset when
+        // - scoreboard is reset by user
+        // - settings mode ends
+        if (millis() - startTime >= minuteInMillis)
+        {
+            startTime = millis();
+            display.updateTime(lastDisplayedMinute);
+            lastDisplayedMinute += 1;
+        }
+    }
+
+    if (setsAsClock && !inSettingsMode)
+    {
+        DateTime now = rtc.now();
+        if (now.second() != lastDisplayedSecond)
+        {
+            lastDisplayedSecond = now.second();
+            display.updateTime(now.hour(), now.minute(), now.second());
+        }
+    }
+
+    delay(50);
+}
+
+void resetProcedures()
+{
+    score.reset();
+    startTime = millis();
+    display.updateTime(0);
+    lastDisplayedMinute = 1;
+    lastDisplayedSecond = 0;
+}
+
+void decodeIRSignal(unsigned long irCode)
+{
+    switch (irCode)
         {
         case 0xFFA25D: // key CH- (Home team down)
             score.updateScore(TEAM1_DOWN);
@@ -278,40 +325,4 @@ void loop()
             Serial.print("Unknow IR Remote button: ");
             Serial.println(irMessage.value, HEX);
         }
-        delay(500);
-        // continue to process IR commands
-        irRemote.resume();
-    }
-
-    if (setsAsMinute && !setsAsClock && !inSettingsMode)
-    {
-        // updates the minute on the board
-        // if the minute has changed from last captured time
-        // the 'startTime' and 'lastDisplayedMinute' is reset when
-        // - scoreboard is reset by user
-        // - settings mode ends
-        if (millis() - startTime >= minuteInMillis)
-        {
-            startTime = millis();
-            display.updateTime(lastDisplayedMinute);
-            lastDisplayedMinute += 1;
-        }
-    }
-
-    if (setsAsClock && !inSettingsMode)
-    {
-        DateTime now = rtc.now();
-        display.updateTime(now.hour(), now.minute(), now.second());
-        delay(950);
-    }
-
-    delay(50);
-}
-
-void resetProcedures()
-{
-    score.reset();
-    startTime = millis();
-    display.updateTime(0);
-    lastDisplayedMinute = 1;
 }
