@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -2429,8 +2429,8 @@ Source: www.kingbright.com</description>
 <part name="SIGNAL_IN" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
 <part name="BLUETOOTH_POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
 <part name="BLUETOOTH" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
-<part name="BTN_HOME" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
-<part name="BTN_AWAY" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="RES" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="DS3231" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
 <part name="BTN_POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
 <part name="433MHZ_POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
 <part name="INFRA_POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
@@ -2481,6 +2481,14 @@ Source: www.kingbright.com</description>
 <part name="SERVE2" library="eagle-ltspice" library_urn="urn:adsk.eagle:library:217" deviceset="LED_E" device="" package3d_urn="urn:adsk.eagle:package:13319/1"/>
 <part name="SERVE3" library="eagle-ltspice" library_urn="urn:adsk.eagle:library:217" deviceset="LED_E" device="" package3d_urn="urn:adsk.eagle:package:13319/1"/>
 <part name="SERVE4" library="eagle-ltspice" library_urn="urn:adsk.eagle:library:217" deviceset="LED_E" device="" package3d_urn="urn:adsk.eagle:package:13319/1"/>
+<part name="POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="DATA" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="433_POWER" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="DATA2" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="IR_POWER1" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="DATA1" library="con-ptr500" library_urn="urn:adsk.eagle:library:181" deviceset="AK300/2" device="" package3d_urn="urn:adsk.eagle:package:9881/1"/>
+<part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2531,15 +2539,14 @@ Source: www.kingbright.com</description>
 <text x="200.66" y="177.292" size="1.016" layer="96">CLK (SCK)</text>
 <text x="200.914" y="182.118" size="1.016" layer="96">DATA</text>
 <text x="313.69" y="146.812" size="1.016" layer="96">Infra IN</text>
-<text x="311.658" y="141.478" size="1.016" layer="96">433MHz IN</text>
 <text x="314.96" y="151.892" size="1.016" layer="96">3V3</text>
 <text x="314.96" y="156.718" size="1.016" layer="96">GND</text>
 <text x="315.214" y="161.798" size="1.016" layer="96">TXD</text>
 <text x="315.214" y="166.878" size="1.016" layer="96">RXD</text>
 <text x="315.214" y="171.704" size="1.016" layer="96">A2</text>
-<text x="315.214" y="176.53" size="1.016" layer="96">A3</text>
-<text x="315.722" y="181.61" size="1.016" layer="96">A4</text>
-<text x="315.722" y="186.944" size="1.016" layer="96">A5</text>
+<text x="315.214" y="176.53" size="1.016" layer="96">A3 433Mhz IN</text>
+<text x="315.722" y="181.61" size="1.016" layer="96">A4 (SDA)</text>
+<text x="315.722" y="186.944" size="1.016" layer="96">A5 (SCL)</text>
 <text x="200.406" y="192.278" size="1.016" layer="96">D3</text>
 <text x="200.66" y="186.944" size="1.016" layer="96">D1 (TX)</text>
 <wire x1="81.28" y1="101.6" x2="144.78" y2="101.6" width="0.1524" layer="90"/>
@@ -2728,6 +2735,37 @@ Source: www.kingbright.com</description>
 <text x="311.658" y="82.55" size="1.778" layer="97">4</text>
 <text x="311.912" y="77.47" size="1.778" layer="97">5</text>
 <text x="311.912" y="72.39" size="1.778" layer="97">6</text>
+<wire x1="340.36" y1="127" x2="373.38" y2="127" width="0.1524" layer="90"/>
+<wire x1="373.38" y1="127" x2="373.38" y2="109.22" width="0.1524" layer="90"/>
+<wire x1="373.38" y1="109.22" x2="340.36" y2="109.22" width="0.1524" layer="90"/>
+<wire x1="340.36" y1="109.22" x2="340.36" y2="127" width="0.1524" layer="90"/>
+<text x="361.696" y="122.682" size="1.778" layer="97">1</text>
+<text x="358.648" y="122.682" size="1.778" layer="97">2</text>
+<text x="348.742" y="122.682" size="1.778" layer="97">3</text>
+<text x="346.202" y="122.682" size="1.778" layer="97">4</text>
+<text x="369.824" y="109.728" size="1.778" layer="97" rot="R90">RTC (DS3231)</text>
+<text x="342.392" y="124.206" size="1.016" layer="96" rot="R270">SCL</text>
+<text x="353.06" y="121.412" size="1.016" layer="96" rot="R90">SDA</text>
+<text x="365.506" y="121.412" size="1.016" layer="96" rot="R90">GND</text>
+<text x="357.124" y="122.428" size="1.016" layer="96" rot="R90">5V</text>
+<wire x1="373.38" y1="238.76" x2="373.38" y2="218.44" width="0.1524" layer="90"/>
+<wire x1="373.38" y1="218.44" x2="342.9" y2="218.44" width="0.1524" layer="90"/>
+<wire x1="342.9" y1="218.44" x2="342.9" y2="238.76" width="0.1524" layer="90"/>
+<wire x1="342.9" y1="238.76" x2="373.38" y2="238.76" width="0.1524" layer="90"/>
+<text x="369.062" y="224.536" size="1.778" layer="97" rot="R90">433 MHz
+Receiver</text>
+<text x="348.488" y="220.472" size="1.016" layer="96" rot="R90">GND</text>
+<text x="353.568" y="220.472" size="1.016" layer="96" rot="R90">5V</text>
+<text x="358.648" y="220.472" size="1.016" layer="96" rot="R90">DATA</text>
+<wire x1="373.38" y1="167.64" x2="342.9" y2="167.64" width="0.1524" layer="90"/>
+<text x="356.108" y="149.86" size="1.016" layer="96" rot="R90">GND</text>
+<wire x1="342.9" y1="167.64" x2="342.9" y2="147.32" width="0.1524" layer="90"/>
+<wire x1="342.9" y1="147.32" x2="345.44" y2="147.32" width="0.1524" layer="90"/>
+<wire x1="345.44" y1="147.32" x2="373.38" y2="147.32" width="0.1524" layer="90"/>
+<wire x1="373.38" y1="147.32" x2="373.38" y2="167.64" width="0.1524" layer="90"/>
+<text x="361.188" y="149.86" size="1.016" layer="96" rot="R90">5V</text>
+<text x="351.028" y="149.86" size="1.016" layer="96" rot="R90">IN</text>
+<text x="367.284" y="150.368" size="1.778" layer="97" rot="R90">IR (HX1838)</text>
 </plain>
 <instances>
 <instance part="TR1" gate="G$1" x="55.88" y="233.68"/>
@@ -2742,10 +2780,10 @@ Source: www.kingbright.com</description>
 <instance part="BLUETOOTH_POWER" gate="-2" x="312.42" y="149.86"/>
 <instance part="BLUETOOTH" gate="-1" x="312.42" y="165.1"/>
 <instance part="BLUETOOTH" gate="-2" x="312.42" y="160.02"/>
-<instance part="BTN_HOME" gate="-1" x="312.42" y="175.26"/>
-<instance part="BTN_HOME" gate="-2" x="312.42" y="170.18"/>
-<instance part="BTN_AWAY" gate="-1" x="312.42" y="185.42"/>
-<instance part="BTN_AWAY" gate="-2" x="312.42" y="180.34"/>
+<instance part="RES" gate="-1" x="312.42" y="175.26"/>
+<instance part="RES" gate="-2" x="312.42" y="170.18"/>
+<instance part="DS3231" gate="-1" x="312.42" y="185.42"/>
+<instance part="DS3231" gate="-2" x="312.42" y="180.34"/>
 <instance part="BTN_POWER" gate="-1" x="312.42" y="195.58"/>
 <instance part="BTN_POWER" gate="-2" x="312.42" y="190.5"/>
 <instance part="433MHZ_POWER" gate="-1" x="312.42" y="205.74"/>
@@ -2887,6 +2925,24 @@ Source: www.kingbright.com</description>
 <instance part="SERVE2" gate="G$1" x="25.4" y="27.94" rot="R180"/>
 <instance part="SERVE3" gate="G$1" x="38.1" y="27.94" rot="R180"/>
 <instance part="SERVE4" gate="G$1" x="50.8" y="27.94" rot="R180"/>
+<instance part="POWER" gate="-1" x="358.14" y="119.38" rot="R90"/>
+<instance part="POWER" gate="-2" x="363.22" y="119.38" rot="R90"/>
+<instance part="DATA" gate="-1" x="345.44" y="119.38" rot="R90"/>
+<instance part="DATA" gate="-2" x="350.52" y="119.38" rot="R90"/>
+<instance part="GND7" gate="1" x="335.28" y="119.38"/>
+<instance part="433_POWER" gate="-1" x="355.6" y="226.06" rot="R270"/>
+<instance part="433_POWER" gate="-2" x="350.52" y="226.06" smashed="yes" rot="R270">
+<attribute name="NAME" x="351.409" y="227.33" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="346.837" y="229.87" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="DATA2" gate="-2" x="360.68" y="226.06" rot="R270"/>
+<instance part="IR_POWER1" gate="-1" x="353.06" y="154.94" rot="R270"/>
+<instance part="IR_POWER1" gate="-2" x="358.14" y="154.94" smashed="yes" rot="R270">
+<attribute name="NAME" x="359.029" y="156.21" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="354.457" y="158.75" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="DATA1" gate="-2" x="347.98" y="154.94" rot="R270"/>
+<instance part="GND8" gate="1" x="353.06" y="142.24"/>
 </instances>
 <busses>
 </busses>
@@ -2970,6 +3026,18 @@ Source: www.kingbright.com</description>
 <pinref part="PW5" gate="-1" pin="KL"/>
 <wire x1="22.86" y1="127" x2="35.56" y2="127" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="127" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IR_POWER1" gate="-1" pin="KL"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="353.06" y1="149.86" x2="353.06" y2="144.78" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND7" gate="1" pin="GND"/>
+<wire x1="335.28" y1="121.92" x2="335.28" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="335.28" y1="129.54" x2="363.22" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="POWER" gate="-2" pin="KL"/>
+<wire x1="363.22" y1="129.54" x2="363.22" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="12V" class="0">
@@ -3534,7 +3602,9 @@ Source: www.kingbright.com</description>
 </net>
 <net name="5V" class="0">
 <segment>
-<wire x1="378.46" y1="200.66" x2="378.46" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="200.66" x2="378.46" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="144.78" x2="378.46" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="378.46" y1="132.08" x2="378.46" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="378.46" y1="60.96" x2="304.8" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="304.8" y1="60.96" x2="304.8" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="PW6" gate="-2" pin="KL"/>
@@ -3567,6 +3637,14 @@ Source: www.kingbright.com</description>
 <wire x1="317.5" y1="205.74" x2="378.46" y2="205.74" width="0.1524" layer="91"/>
 <wire x1="378.46" y1="205.74" x2="378.46" y2="200.66" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="76.2" x2="76.2" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="POWER" gate="-1" pin="KL"/>
+<wire x1="358.14" y1="124.46" x2="358.14" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="358.14" y1="132.08" x2="378.46" y2="132.08" width="0.1524" layer="91"/>
+<junction x="378.46" y="132.08"/>
+<pinref part="IR_POWER1" gate="-2" pin="KL"/>
+<wire x1="358.14" y1="149.86" x2="358.14" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="358.14" y1="144.78" x2="378.46" y2="144.78" width="0.1524" layer="91"/>
+<junction x="378.46" y="144.78"/>
 </segment>
 </net>
 <net name="N$53" class="0">
@@ -3585,6 +3663,11 @@ Source: www.kingbright.com</description>
 <wire x1="317.5" y1="210.82" x2="322.58" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="322.58" y1="210.82" x2="322.58" y2="233.68" width="0.1524" layer="91"/>
 <wire x1="322.58" y1="233.68" x2="287.02" y2="233.68" width="0.1524" layer="91"/>
+<pinref part="433_POWER" gate="-1" pin="KL"/>
+<wire x1="355.6" y1="220.98" x2="355.6" y2="213.36" width="0.1524" layer="91"/>
+<wire x1="355.6" y1="213.36" x2="355.6" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="355.6" y1="210.82" x2="322.58" y2="210.82" width="0.1524" layer="91"/>
+<junction x="322.58" y="210.82"/>
 </segment>
 </net>
 <net name="N$27" class="0">
@@ -3676,6 +3759,51 @@ Source: www.kingbright.com</description>
 <pinref part="SEGMENTS5" gate="-7" pin="KL"/>
 <wire x1="12.7" y1="78.74" x2="12.7" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="12.7" y1="93.98" x2="33.02" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$61" class="0">
+<segment>
+<pinref part="DS3231" gate="-2" pin="KL"/>
+<wire x1="317.5" y1="180.34" x2="337.82" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="337.82" y1="180.34" x2="337.82" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="337.82" y1="134.62" x2="350.52" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="DATA" gate="-2" pin="KL"/>
+<wire x1="350.52" y1="134.62" x2="350.52" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$62" class="0">
+<segment>
+<pinref part="DS3231" gate="-1" pin="KL"/>
+<wire x1="332.74" y1="185.42" x2="317.5" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="332.74" y1="185.42" x2="335.28" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="335.28" y1="185.42" x2="335.28" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="335.28" y1="132.08" x2="345.44" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="DATA" gate="-1" pin="KL"/>
+<wire x1="345.44" y1="132.08" x2="345.44" y2="124.46" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$63" class="0">
+<segment>
+<pinref part="433_POWER" gate="-2" pin="KL"/>
+<wire x1="350.52" y1="220.98" x2="350.52" y2="215.9" width="0.1524" layer="91"/>
+<pinref part="INFRA_POWER" gate="-1" pin="KL"/>
+<wire x1="350.52" y1="215.9" x2="317.5" y2="215.9" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$65" class="0">
+<segment>
+<pinref part="RES" gate="-1" pin="KL"/>
+<wire x1="317.5" y1="175.26" x2="360.68" y2="175.26" width="0.1524" layer="91"/>
+<pinref part="DATA2" gate="-2" pin="KL"/>
+<wire x1="360.68" y1="175.26" x2="360.68" y2="220.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$64" class="0">
+<segment>
+<pinref part="SIGNAL_IN" gate="-1" pin="KL"/>
+<pinref part="DATA1" gate="-2" pin="KL"/>
+<wire x1="317.5" y1="144.78" x2="347.98" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="347.98" y1="144.78" x2="347.98" y2="149.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
