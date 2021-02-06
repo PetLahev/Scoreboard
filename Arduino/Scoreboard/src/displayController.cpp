@@ -16,7 +16,7 @@ displayController::displayController()
  *  @params score1 - score for the team 1
  *          score2 - score for the team 2
  *          set1   - number of sets won by first team (if enabled)
- *          set2   - number of sets won by second team (if enabled) 
+ *          set2   - number of sets won by second team (if enabled)
  *          player - player on service, supports value from 1- 4 (if enabled)
  **/
 void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player)
@@ -27,7 +27,7 @@ void displayController::score(uint8_t score1, uint8_t score2, uint8_t set1, uint
         showSets(set1, set2); // do not update the sets when it's beeing used for minutes
 }
 
-void displayController::showScore(uint8_t score1, uint8_t score2)
+void displayController::showScore(uint8_t score1, uint8_t score2, bool displayLeadingZero = false)
 {
 
     // We are going from left (team1) to right (team2)
@@ -53,6 +53,8 @@ void displayController::showScore(uint8_t score1, uint8_t score2)
     else
     {
         // the second segment from left will be set to the represent number from 0-9
+        if (displayLeadingZero)
+            digits[0] = digitOne[0];
         digits[1] = digitOne[score1];
     }
 
@@ -66,6 +68,8 @@ void displayController::showScore(uint8_t score1, uint8_t score2)
     else
     {
         // the from segment from left will be set to the represent number from 0-9
+        if (displayLeadingZero)
+            digits[0] = digitOne[0];
         digits[3] = digitOne[score2];
     }
 
@@ -282,7 +286,7 @@ void displayController::updateTime(uint8_t hour, uint8_t minute, uint8_t second)
     Serial.print(second, DEC);
     Serial.println();
 
-    showScore(hour, minute);
+    showScore(hour, minute, true);
     if (second < 10)
     {
         showSets(0, second);

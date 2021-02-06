@@ -17,7 +17,7 @@ public:
  *  @params score1 - score for the team 1
  *          score2 - score for the team 2
  *          set1   - number of sets won by first team (if enabled)
- *          set2   - number of sets won by second team (if enabled) 
+ *          set2   - number of sets won by second team (if enabled)
  *          player - player on service, supports value from 1- 4 (if enabled)
  **/
   void score(uint8_t score1, uint8_t score2, uint8_t set1, uint8_t set2, uint8_t player);
@@ -79,8 +79,9 @@ private:
  *  Converts the given score to 7-segment notation and displays it on the scoreboard
  *  @params score1 - score for the team 1
  *          score2 - score for the team 2
+ *          displayLeadingZero - true if the left segment should display `0`, default false
 **/
-  void showScore(uint8_t score1, uint8_t score2);
+  void showScore(uint8_t score1, uint8_t score2, bool displayLeadingZero = false);
 
   /**
  *  Displays the given number as a player who will serve next ball
