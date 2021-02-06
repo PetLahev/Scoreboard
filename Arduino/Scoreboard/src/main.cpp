@@ -64,9 +64,11 @@ void setup()
 
     if (!rtc.begin())
     {
-        Serial.println("Couldn't find RTC");
+        Serial.println("Couldn't find RTC, switching to 'minute' mode");
         Serial.flush();
-        abort();
+        // switching to 'minute' mode
+        setsAsMinute = true;
+        setsAsClock = false;
     }
 
     if (rtc.lostPower())
