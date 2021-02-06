@@ -15,8 +15,9 @@ Thus after I built everything and was in the testing phase I found out that blue
 * You can use pre-defined setup for a game
 * You can setup your own game
 * Supports tiebreaks, sets and displaying players on service
-* Score can be updated by buttons (either wired or wireless) - under development
+* Score can be updated by buttons (either wired or wireless)
 * As of April 2019 a free Androind application is used for controlling the scoreboard - [Serial Bluetooth Terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en_US) v1.17
+	* Update Feb 2021 - It was proven that the most convinient way how to control the scoreboard is an IR controller (people tend to prefer this way over others)
 * Eagle schematic and boards included
 * The scoreboard case designed on thinkercad.com
     * [The box](https://www.tinkercad.com/things/gNmK0jQ22qv)
@@ -117,7 +118,7 @@ Examples of key-value setting
     s=2       ' a team needs to win 2 sets to win a match
     e=21      ' a team needs to win 21 points to win a set
     d=2       ' the points difference between the two teams must be 2 to win a set
-    t=enabled ' tiebreak enabled
+    t=reuw    ' tiebreak enabled
     q=2       ' the tiebreak set is the second one to win. So the sets score is 1:1
     f=15      ' a team needs to win 15 points to win the tiebreak set
     w=2       ' the points difference between the two teams must be 2 to win the tiebreak set
