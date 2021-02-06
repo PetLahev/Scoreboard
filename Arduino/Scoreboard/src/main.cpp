@@ -331,13 +331,13 @@ void decodeIRSignal(unsigned long irCode)
             resetProcedures();
             break;
         case 0xD071A5F0: // green button
-
+            settings.setPreDefinedGame(settingsController::Setting::BeachVolleyball);
             break;
         case 0xEF7FB1A7: // yellow button
-
+            settings.setPreDefinedGame(settingsController::Setting::Volleyball);
             break;
         case 0xF18403D5: // blue button
-
+            settings.setPreDefinedGame(settingsController::Setting::Badminton);
             break;
         case 0xDC10E3F6: // time button
             setsAsMinute = false;

@@ -60,7 +60,8 @@ void settingsController::set(char *keyValuePair)
     if (strcmp(key, s_setsAsMinutes) == 0)
     {
         setsAsMinute = convertToBoolean(value);
-        if (setsAsMinute) {
+        if (setsAsMinute)
+        {
             enableSets = true;
         }
         printMessage(SetsAsMinute);
@@ -109,8 +110,55 @@ void settingsController::read()
     printMessage(PointsTiebreakDifference);
 }
 
+void settingsController::setPreDefinedGame(Setting predefinedSetting)
+{
+    switch (predefinedSetting)
+    {
+    case settingsController::Setting::FreeGame:
+        setsAsMinute = true;
+        setsAsClock = false;
+        break;
+
+    case settingsController::Setting::BeachVolleyball:
+        setBooleanSetting('b', true);
+        setNumericSetting('s', 2);
+        setNumericSetting('e', 21);
+        setNumericSetting('d', 2);
+        setBooleanSetting('t', true);
+        setNumericSetting('q', 2);
+        setNumericSetting('f', 15);
+        setNumericSetting('w', 2);
+        setBooleanSetting('r', true);
+        break;
+
+    case settingsController::Setting::Volleyball:
+        setBooleanSetting('b', true);
+        setNumericSetting('s', 3);
+        setNumericSetting('e', 25);
+        setNumericSetting('d', 2);
+        setBooleanSetting('t', true);
+        setNumericSetting('q', 4);
+        setNumericSetting('f', 15);
+        setNumericSetting('w', 2);
+        setBooleanSetting('r', false);
+        break;
+
+    case settingsController::Setting::Badminton:
+        setBooleanSetting('b', true);
+        setNumericSetting('s', 3);
+        setNumericSetting('e', 21);
+        setNumericSetting('d', 2);
+        setBooleanSetting('t', true);
+        setNumericSetting('q', 2);
+        setNumericSetting('f', 21);
+        setNumericSetting('w', 2);
+        setBooleanSetting('r', true);
+        break;
+    }
+}
+
 /**
- *  Prints message to the bluetooth device and Serial monitor 
+ *  Prints message to the bluetooth device and Serial monitor
  *  @params msg  - a value of the Messages enumeration to be displayed
 **/
 void settingsController::printMessage(Messages msg)
@@ -224,4 +272,50 @@ bool settingsController::convertToBoolean(char *value)
     if (strcmp(value, "TRUE") == 0)
         return true;
     return 0;
+}
+
+// Memory friendly way, almost 70% RAM already occupied
+void settingsController::setBooleanSetting(char settingName, bool val)
+{
+    if (val)
+    {
+        char s[] = {'x', '=', 't', 'r', 'u', 'e', '\0'};
+        s[0] = settingName;
+        set(s);
+    }
+    else
+    {
+        char s[] = {'x', '=', 'f', 'a', 'l', 's', 'e', '\0'};
+        s[0] = settingName;
+        set(s);
+    }
+}
+
+// Memory friendly way, almost 70% RAM already occupied
+void settingsController::setNumericSetting(char settingName, unsigned int val)
+{
+    if (val < 10)
+    {
+        char s[4];
+        s[0] = settingName;
+        s[1] = '=';
+        s[2] = '0' + val;
+        s[3] = '\0';
+        set(s);
+    }
+    else
+    {
+        char s[5];
+        uint8_t remind = 0;
+        uint8_t digit = 0;
+        digit = val / 10;
+        remind = val % 10;
+        s[0] = settingName;
+        s[1] = '=';
+        s[2] = '0' + digit;
+        s[3] = '0' + remind;
+        s[4] = '\0';
+        set(s);
+        set(s);
+    }
 }
