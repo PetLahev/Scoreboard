@@ -300,26 +300,47 @@ void decodeIRSignal(unsigned long irCode)
     switch (irCode)
         {
         case 0xFFA25D: // key CH- (Home team down)
+        case 0x69CE021D: // Volume down (Home team down)
             score.updateScore(TEAM1_DOWN);
             break;
         case 0xFFE21D: // key CH+ (Home team up)
+        case 0x76EC43A2: // volume up (Home team up)
             score.updateScore(TEAM1_UP);
             break;
         case 0xFF22DD: // key PREV (Away team down)
+        case 0xC5B4F5CF: // Prog down (Away team down)
             score.updateScore(TEAM2_DOWN);
             break;
         case 0xFFC23D: // key PLAY (Away team up)
+        case 0x5105CA72: // Prog up (Away team up)
             score.updateScore(TEAM2_UP);
             break;
         case 0xFF9867: // 100
+        case 0x15E972C1: // info
             score.swapScore();
             break;
         case 0xFFB04F: // 200
+        case 0xA4A34BB: // Recall
             resetProcedures();
             break;
-        case 0xFFB04D: // TODO: Find a suitable button for switching between minutes and time
+        case 0xCEF2A271: // red button
             setsAsMinute = true;
             setsAsClock = false;
+            resetProcedures();
+            break;
+        case 0xD071A5F0: // green button
+
+            break;
+        case 0xEF7FB1A7: // yellow button
+
+            break;
+        case 0xF18403D5: // blue button
+
+            break;
+        case 0xDC10E3F6: // time button
+            setsAsMinute = false;
+            setsAsClock = true;
+            resetProcedures();
             break;
         default:
             Serial.print("Unknow IR Remote button: ");
