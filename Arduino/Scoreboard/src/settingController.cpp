@@ -120,6 +120,8 @@ void settingsController::setPreDefinedGame(Setting predefinedSetting)
         break;
 
     case settingsController::Setting::BeachVolleyball:
+        setsAsClock = false;
+        setsAsMinute = false;
         setBooleanSetting('b', true);
         setNumericSetting('s', 2);
         setNumericSetting('e', 21);
@@ -132,6 +134,8 @@ void settingsController::setPreDefinedGame(Setting predefinedSetting)
         break;
 
     case settingsController::Setting::Volleyball:
+        setsAsClock = false;
+        setsAsMinute = false;
         setBooleanSetting('b', true);
         setNumericSetting('s', 3);
         setNumericSetting('e', 25);
@@ -144,6 +148,8 @@ void settingsController::setPreDefinedGame(Setting predefinedSetting)
         break;
 
     case settingsController::Setting::Badminton:
+        setsAsClock = false;
+        setsAsMinute = false;
         setBooleanSetting('b', true);
         setNumericSetting('s', 3);
         setNumericSetting('e', 21);
