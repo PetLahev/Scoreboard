@@ -37,6 +37,8 @@ install:
     - platformio update
     # VirtualWire (251), NeoSWSerial (1653), IR Remote (4) 
     - platformio lib install 251 1653 4
+    # Install an library for Real Time Clock
+    - platformio lib -g install "RTClib"
 
 script:
     - platformio ci --board=uno
