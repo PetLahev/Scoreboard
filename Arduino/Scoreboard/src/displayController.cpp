@@ -53,7 +53,8 @@ void displayController::showScore(uint8_t score1, uint8_t score2, bool displayLe
     else
     {
         // the second segment from left will be set to the represent number from 0-9
-        if (displayLeadingZero) {
+        if (displayLeadingZero)
+        {
             digits[0] = digitOne[0];
         }
         digits[1] = digitOne[score1];
@@ -69,8 +70,9 @@ void displayController::showScore(uint8_t score1, uint8_t score2, bool displayLe
     else
     {
         // the from segment from left will be set to the represent number from 0-9
-        if (displayLeadingZero) {
-            digits[0] = digitOne[0];
+        if (displayLeadingZero)
+        {
+            digits[2] = digitOne[0];
         }
         digits[3] = digitOne[score2];
     }
