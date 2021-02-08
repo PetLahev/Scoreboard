@@ -329,15 +329,22 @@ void decodeIRSignal(unsigned long irCode)
             setsAsMinute = true;
             setsAsClock = false;
             resetProcedures();
+            display.blinkScore();
             break;
         case 0xD071A5F0: // green button
+            resetProcedures();
             settings.setPreDefinedGame(settingsController::Setting::BeachVolleyball);
+            display.blinkScore();
             break;
         case 0xEF7FB1A7: // yellow button
+            resetProcedures();
             settings.setPreDefinedGame(settingsController::Setting::Volleyball);
+            display.blinkScore();
             break;
         case 0xF18403D5: // blue button
+            resetProcedures();
             settings.setPreDefinedGame(settingsController::Setting::Badminton);
+            display.blinkScore();
             break;
         case 0xDC10E3F6: // time button
             setsAsMinute = false;
